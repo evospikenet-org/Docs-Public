@@ -1,0 +1,8418 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://evospikenet-org.github.io/Docs-Public/en/EVOSPIKENET_PLUGIN_IMPLEMENTATION_ROADMAP/">
+      
+      
+        <link rel="prev" href="../EVOSPIKENET_PLUGIN_FEASIBILITY_ANALYSIS/">
+      
+      
+        <link rel="next" href="../PLUGIN_DOC_SYNC_MATRIX/">
+      
+      
+        
+          <link rel="alternate" href="../../EVOSPIKENET_PLUGIN_IMPLEMENTATION_ROADMAP/" hreflang="ja">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>プラグイン化 実装ロードマップ - EvoSpikeNet Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#evospikenet-core-plugin-architecture-implementation-roadmap" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="EvoSpikeNet Documentation" class="md-header__button md-logo" aria-label="EvoSpikeNet Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EvoSpikeNet Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              プラグイン化 実装ロードマップ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../EVOSPIKENET_PLUGIN_IMPLEMENTATION_ROADMAP/" hreflang="ja" class="md-select__link">
+              日本語
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../learning_guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  学習ガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../faq/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../release_notes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  リリースノート
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quizzes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  クイズ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MULTILINGUAL_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  多言語ドキュメントガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MULTILINGUAL_COMPLETION_REPORT/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  多言語化完了レポート
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/installation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  スタートガイド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/basic_features/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  概念・製品仕様
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/biomimetic_systems/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  生物学的模倣・自己進化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/distributed_brain/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  分散脳アーキテクチャ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/memory_and_rag/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  記憶・言語・RAG
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../guides/sdk_and_api/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SDK・API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/deployment_and_operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  運用・インフラ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/security_and_quality/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  セキュリティ・テスト・品質
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/research_and_multimodal/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  研究・応用・拡張
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../applications/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  応用例
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../documentation_index/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  索引・リファレンス
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="EvoSpikeNet Documentation" class="md-nav__button md-logo" aria-label="EvoSpikeNet Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/favicon.png" alt="logo">
+
+    </a>
+    EvoSpikeNet Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learning_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学習ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    リリースノート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クイズ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MULTILINGUAL_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多言語ドキュメントガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MULTILINGUAL_COMPLETION_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多言語化完了レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    スタートガイド
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    スタートガイド
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インストール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/first_simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    初めてのシミュレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BUILD_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ビルドガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_BUILD_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker ビルドガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_BUILD_MODES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker ビルドモード完全ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_PUBLISHING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker パブリッシングガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TROUBLESHOOTING_DOCKER_BUILDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker トラブルシューティング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONDA_SETUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conda セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GPU_CPU_LAUNCH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU/CPU クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MKDOCS_BUILD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs ビルド手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概念・製品仕様
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    概念・製品仕様
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/basic_features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core features and onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVOSPIKENET_CONCEPTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet コア概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRODUCT_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    製品概要書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEATURE_SPEC_TABLE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    機能スペック表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SOURCE_CODE_IMPLEMENTATION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ソースコード実装詳細ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../REMAINING_FUNCTIONALITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装ステータス（残存機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INFERENCE_PIPELINE_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推論パイプライン実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DATA_HANDLING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    データハンドリング方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEPENDENCY_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係管理ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEPENDENCY_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係アーキテクチャ改善
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEPENDENCY_IMPROVEMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係改善完了レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONFIGURATION_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    設定外部化実装ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ENVIRONMENT_VARIABLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    環境変数運用方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONNECT_BACKENDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バックエンド接続手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生物学的模倣・自己進化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    生物学的模倣・自己進化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/biomimetic_systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Biomimetic systems and evolutionary learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BIOMIMETIC_IMPLIMENTATION_PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生物模倣強化プラン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_SELF_EVOLUTION_11_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自己進化高度化 11.7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_EVOLUTION_PHASE5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    進化フェーズ 5-6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AEG_IMPLEMENTATION_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AEG 実装概要
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_DECISION_ENGINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高度意思決定エンジン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AUTO_RECOVERY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自動回復機能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Q_PFC_ADAPTIVE_CONTROL_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Q-PFC 適応制御ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BACKPROP_IMPLEMENTATION_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バックプロパゲーション実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEV_BATCH_SHAPING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バッチシェーピング設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TRACKING_ACTION_MODELS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    トラッキング・行為認識モデル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../architecture/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分散脳アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    分散脳アーキテクチャ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/distributed_brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Distributed brain architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_SYSTEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分散脳システム技術仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_NODE_TYPES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノードタイプ仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_NODE_CONFIGURATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノード構成とモデルマッピング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_SPATIAL_NODES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    空間処理ノード仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_28NODE_EVALUATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28ノード評価
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DYNAMIC_LOAD_BALANCING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動的負荷分散
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FULL_BRAIN_NODE_REQUIREMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フル脳ノード要件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FULL_BRAIN_UI_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フル脳UI実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_SEQUENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動作フロー・シーケンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_EEG_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EEG 統合システム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_LLM_VERIFICATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_IMPLEMENTATION_VERIFICATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装完了検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_LOGGING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノードログ表示ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_MODEL_ARTIFACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モデルアーティファクト一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_METRICS_UI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メトリクス UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SPIKE_COMMUNICATION_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spike 通信分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBNノードアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_EXTERNAL_OPTIMIZATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN外部定義最適化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SECURE_DISTRIBUTED_BRAIN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュア分散脳シミュレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_NODE_DISCOVERY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノード発見（高度）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GEO_NODE_MANAGER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地理ノードマネージャー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ZENOH_VS_TORCH_DISTRIBUTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zenoh vs torch.distributed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CENTRALIZED_LOGGING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集中ロギングシステム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEDERATED_DB_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フェデレーテッドDB統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEDERATED_AGGREGATOR_SELECTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集約LLM選択戦略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/dense_chronospike_lm_training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dense Chrono-Spike LM 学習
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    記憶・言語・RAG
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    記憶・言語・RAG
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/memory_and_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory management and RAG systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../architecture/sparse_event_memory/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sparse Event-Memory LM
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12_2" id="__nav_12_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sparse Event-Memory LM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/sparse_event_memory/specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/sparse_event_memory/detailed_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    詳細数理・メモリ設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SPARSE_EVO_MEMORYLM_SYSTEM_REVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sparse Evo-MemoryLM システムレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMORY_ORCHESTRATION_E2E_SPEC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Orchestration End-to-End 仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMORY_ORCHESTRATION_MONITORING_SLO_SLA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Orchestration 監視仕様（SLO/SLA）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMORY_LEARNING_INTEGRATION_CONTROL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メモリと学習の統合制御設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EPISODIC_MEMORY_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エピソード記憶実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BRAIN_LANGUAGE_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脳内言語アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BRain_Language_Vocab_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Language Vocab README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMERIED_SPIKENETLM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEMERIED SpikeNetLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SWITCH_TO_EVOSPIKENET_LM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet LM への切替
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EvoLLMConverter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo-LLM Converter 設計書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM_INTEGRATION_STRATEGY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 統合戦略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM_TRAINING_SYSTEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 学習システム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LANGUAGE_MODEL_ARCHITECTURE_COMPATIBILITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LanguageModel アーキテクチャ互換性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LANGUAGE_MODEL_GPU_CAPACITY_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LanguageModel GPU 容量検証ポリシー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_SYSTEM_DETAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG システム詳細解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_REMAINING_FUNCTIONALITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 2.0 残存機能・将来フェーズ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_JAPANESE_SpecV2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語仕様書 V2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_JAPANESE_EVALUATE_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語評価ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_JAPANESE_PARTICLE_ISSUE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語助詞問題
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QUERY_RESPONSE_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全脳クエリレスポンス解析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SIMULATION_RECORDING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シミュレーション記録ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SIMULATION_RECORDING_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シミュレーション記録 README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ZIGZAG_WHERE_WHAT_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Where-What 統合ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK・API
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SDK・API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/sdk_and_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK and API integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_QUICKSTART/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_INSTALLATION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK インストールガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_TUTORIAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK チュートリアル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DEVELOPER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 開発者ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_CONFIGURATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 設定ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK API リファレンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EvoSpikeNet_SDK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK（全機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DOCUMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ドキュメント概要
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DOCUMENTATION_INDEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ドキュメントインデックス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 変更履歴
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_ENHANCEMENT_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 機能強化・実装詳細
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_SPARSE_EVENT_MEMORY_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK Sparse Event-Memory LM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DEVICE_PLUGIN_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK デバイスプラグインガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_SDK_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN SDK統合ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBNノードアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_EXTERNAL_OPTIMIZATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN外部定義最適化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_SOLVER_PLUGIN_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ソルバープラグインガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_LOIHI_BRAIN2LOIHI_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK Loihi Brain2Loihi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVALUATOR_SDK_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    評価系 SDK ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVALUATOR_SDK_SAMPLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    評価系 SDK サンプル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PLUGIN_MICROSERVICES_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグインアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVOSPIKENET_PLUGIN_FEASIBILITY_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグイン化 実装可能性評価
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグイン化 実装ロードマップ
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグイン化 実装ロードマップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-progress-august-21-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation Progress (August 21, 2026)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overall-implementation-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Overall Implementation Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-deviceplugin-integration-3-4-weeks-8-10-person-months" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 Phase 1: DevicePlugin Integration (3-4 weeks, 8-10 person-months)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔴 Phase 1: DevicePlugin Integration (3-4 weeks, 8-10 person-months)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-plugintype-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 PluginType Extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-deviceplugin-base-class-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 DevicePlugin Base Class Creation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-cpuplugin-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 CPUPlugin Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-loihiplugin-with-lava" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 LoihiPlugin 実装 (with LAVA検出)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-jetsonplugin-edgetpuplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 JetsonPlugin と EdgeTPUPlugin (同様の実装)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-devicefactory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 DeviceFactory 統合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 後方互換性レイヤー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.8 設定ファイル拡張
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.9 統合テスト
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-1-2-2-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 Phase 2: 依存関係管理 (1-2週間, 2-3人月)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟡 Phase 2: 依存関係管理 (1-2週間, 2-3人月)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-pyprojecttoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 pyproject.toml オプション依存追加
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-dependencychecker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 DependencyChecker クラス
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 CI/CD での依存関係検証
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-3-2-3-4-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟠 Phase 3: ニューロン層完成 (2-3週間, 4-5人月)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 全体工数サマリー
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 推奨実装シナリオ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 推奨実装シナリオ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-a-mvp-5-6-10-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario A: MVP (5-6週間, 10-12人月)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-b-16-22-32-41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario B: フルサポート (16-22週間, 32-41人月)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PLUGIN_DOC_SYNC_MATRIX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin ドキュメント同期マトリクス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker_sdk_model_status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker SDK モデル配置状況
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/openapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAPI スキーマ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    運用・インフラ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    運用・インフラ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/deployment_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment, operations, and infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPC_SETUP_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPC 環境セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NGC_JUPYTER_SETUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NGC Jupyter セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NGC_VERIFICATION_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NGC 動作確認チェックリスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LARGE_SCALE_TRAINING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大規模学習ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INFRASTRUCTURE_AS_CODE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure as Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DB_MIGRATION_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    データベースマイグレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../E2E_RUNBOOK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E2E 実行ランブック
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MULTI_NODE_INTEGRATION_TESTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    マルチノード統合テスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HCP_DOWNLOAD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HCP ダウンロード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VAULT_K8S_EXAMPLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vault + Kubernetes 例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュリティ・テスト・品質
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    セキュリティ・テスト・品質
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/security_and_quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, audit, and quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TESTING_MARKERS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストマーカーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TEST_DATA_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストデータ管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TEST_MENU_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テスト統合メニュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TEST_CONSOLIDATION_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テスト統合レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VALIDATION_EXECUTION_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    検証実行サマリー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SECURE_KEY_INJECTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュアキー注入管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AUDIT_LOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    監査ログ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ERROR_MESSAGES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エラーメッセージ一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EXCEPTION_HANDLING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    例外処理ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EXCEPTION_LOGGING_IMPROVEMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    例外ログ改善レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BROKEN_LINKS_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    壊れたリンクレポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CI_BUILD_MATRIX_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI ビルドマトリクスガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FORK_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fork & Upstream 同期ポリシー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRIVACY_AND_AUTH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プライバシー・認証
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HEALTH_DATA_COMPLIANCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    健康データコンプライアンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/coding_standards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コーディング規約
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究・応用・拡張
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    研究・応用・拡張
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/research_and_multimodal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research, multimodal, and expansion domains
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NEUROSCIENCE_BRAIN_SIMULATION_BRIEF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    神経科学・脳シミュレーション研究要旨
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NEUROSCIENCE_BRAIN_SIMULATION_PAPER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    神経科学・脳シミュレーション論文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HUMAN_BRAIN_FULL_SIMULATION_CONCEPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全脳再現システム概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONNECTOME_INTEGRATION_PAPER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム統合論文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connectome_evospikenet_implementation_policy.ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム統合実装方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connectome_literature_review.ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム文献レビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONNECTOME_MIRROR_TEMPLATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトームミラーテンプレート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../detailed_paper_summaries.ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代表論文詳細要約
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HUMANOID_ROBOT_DESIGN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ヒューマノイドロボット詳細設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SENSOR_DRIVER_DEVELOPMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    センサードライバ開発
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VIDEO_AUDIO_ANALYSIS_SPEC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動画・音声解析仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VIDEO_AUDIO_MODEL_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動画・音声モデル統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edge_implementation_plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エッジ実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edge_phase1_5_implementation_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エッジ Phase 1-5 実装報告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evospikenet_edge_validation_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet エッジ検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FRONTEND_FILE_UI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フロントエンドファイル管理 UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FRONTEND_UI_IMPLEMENTATION_PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フロントエンド UI 実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../applications/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    応用例
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    応用例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_17_2" id="__nav_17_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainOS（次世代版）
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BrainOS（次世代版）
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_overview_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概要仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_detailed_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    詳細仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_implementation_plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装プラン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユースケース・応用例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/BrainOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainOS 互換ページ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/core_social_implementation_apps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet-Core 社会実装アプリ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    索引・リファレンス
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    索引・リファレンス
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ドキュメントマップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../USER_MANUAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーマニュアル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK API リファレンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EvoSpikeNet_SDK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK（全機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-progress-august-21-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation Progress (August 21, 2026)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overall-implementation-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Overall Implementation Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-deviceplugin-integration-3-4-weeks-8-10-person-months" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 Phase 1: DevicePlugin Integration (3-4 weeks, 8-10 person-months)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔴 Phase 1: DevicePlugin Integration (3-4 weeks, 8-10 person-months)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-plugintype-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 PluginType Extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-deviceplugin-base-class-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 DevicePlugin Base Class Creation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-cpuplugin-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 CPUPlugin Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-loihiplugin-with-lava" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 LoihiPlugin 実装 (with LAVA検出)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-jetsonplugin-edgetpuplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 JetsonPlugin と EdgeTPUPlugin (同様の実装)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-devicefactory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 DeviceFactory 統合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 後方互換性レイヤー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.8 設定ファイル拡張
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.9 統合テスト
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-1-2-2-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 Phase 2: 依存関係管理 (1-2週間, 2-3人月)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟡 Phase 2: 依存関係管理 (1-2週間, 2-3人月)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-pyprojecttoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 pyproject.toml オプション依存追加
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-dependencychecker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 DependencyChecker クラス
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 CI/CD での依存関係検証
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-3-2-3-4-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟠 Phase 3: ニューロン層完成 (2-3週間, 4-5人月)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 全体工数サマリー
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 推奨実装シナリオ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 推奨実装シナリオ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-a-mvp-5-6-10-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario A: MVP (5-6週間, 10-12人月)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-b-16-22-32-41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario B: フルサポート (16-22週間, 32-41人月)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="evospikenet-core-plugin-architecture-implementation-roadmap">EvoSpikeNet-Core Plugin Architecture Implementation Roadmap</h1>
+<p><strong>Created</strong>: May 15, 2026<br />
+<strong>Target</strong>: Plugin integration supporting Loihi, IBM Quantum, and quantum computing<br />
+<strong>Recommended Approach</strong>: Scenario A (Minimal Integration) -&gt; Scenario B (Full Integration)</p>
+<hr />
+<h2 id="implementation-progress-august-21-2026">Implementation Progress (August 21, 2026)</h2>
+<ul>
+<li>Phase 1 DevicePlugin Integration: Completed（DevicePlugin base + CPU/GPU/Loihi/Jetson/EdgeTPU/G-QuAT/IBM NorthPole + UniversalIntegrator bridge）</li>
+<li>Phase 2 Dependency Management: Completed（optional dependencies + requirements splitting + DependencyChecker + CI matrix）</li>
+<li>Phase 3 Neuron Layer Completion: Completed（Entangled compatibility fixes + HH/Conductance layer + plugin addition）</li>
+<li>Phase 4 Quantum Layer Integration: Completed（QuantumNeuronLayer + QAOANeuronLayer + VQENeuronLayer + QuantumAnnealingPlasticity + integration tests）</li>
+<li>Phase 5 IBM Quantum: Completed（IBMQuantumPlugin + QAOA/VQE nodes + Runtime/Sampler/Estimator + simulator fallback (actual hardware auth/job execution environment-dependent)）</li>
+<li>Phase 6 Optimization Pipeline: Completed（OptimizationPlugin + Quantization/Pruning/Fusion + YAML pipeline）</li>
+</ul>
+<hr />
+<h2 id="overall-implementation-architecture">📋 Overall Implementation Architecture</h2>
+<div class="highlight"><pre><span></span><code>Current Structure (Unintegrated):
+┌─────────────────────────────────────────┐
+│ PluginFactory / PluginSystem            │
+│ ├─ NeuronLayerPlugin                    │
+│ │  ├─ LIFNeuron                         │
+│ │  ├─ IzhikevichNeuron                  │
+│ │  └─ EntangledSynchrony [Incomplete]       │
+│ ├─ EncoderPlugin                        │
+│ └─ PlasticityPlugin                     │
+└─────────────────────────────────────────┘
+        ↓
+        × (Separated)
+        ↓
+┌─────────────────────────────────────────┐
+│ UniversalIntegrator                     │
+│ ├─ CPUAdapter                           │
+│ ├─ GPUAdapter                           │
+│ ├─ LoihiAdapter [Hard-coded]             │
+│ ├─ JetsonAdapter [Hard-coded]           │
+│ └─ EdgeTPUAdapter [Hard-coded]          │
+└─────────────────────────────────────────┘
+
+        ↓ [Required: Integrated]
+
+Proposed Structure (Integrated):
+┌─────────────────────────────────────────┐
+│ PluginFactory / PluginSystem            │
+│ ├─ NeuronLayerPlugin                    │
+│ │  ├─ LIFNeuron                         │
+│ │  ├─ IzhikevichNeuron                  │
+│ │  ├─ EntangledSynchrony [Completed version]       │
+│ │  ├─ QuantumNeuronLayer                │
+│ │  ├─ QAOANeuronLayer (IBM)             │
+│ │  └─ VQENeuronLayer (IBM)             │
+│ ├─ EncoderPlugin                        │
+│ ├─ PlasticityPlugin                     │
+│ │  └─ QuantumAnnealingPlasticity        │
+│ └─ DevicePlugin [New]                  │
+│    ├─ CPUPlugin                         │
+│    ├─ GPUPlugin                         │
+│    ├─ LoihiPlugin (with LAVA)           │
+│    ├─ JetsonPlugin (with TensorRT)      │
+│    ├─ EdgeTPUPlugin                     │
+│    ├─ GQuATPlugin                       │
+│    └─ IBMQuantumPlugin (with Qiskit)    │
+└─────────────────────────────────────────┘
+</code></pre></div>
+<hr />
+<h2 id="phase-1-deviceplugin-integration-3-4-weeks-8-10-person-months">🔴 Phase 1: DevicePlugin Integration (3-4 weeks, 8-10 person-months)</h2>
+<p><strong>Goal</strong>: Integrate platform adapters into the plugin system</p>
+<h3 id="11-plugintype-extension">1.1 PluginType Extension</h3>
+<p><strong>File</strong>: <a href="EvoSpikeNet-Core/evospikenet/plugins/__init__.py">evospikenet/plugins/<strong>init</strong>.py</a></p>
+<p><strong>Changes</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PluginType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Types of plugins supported by the system."""</span>
+    <span class="n">NEURON</span> <span class="o">=</span> <span class="s2">"neuron"</span>              <span class="c1"># Existing</span>
+    <span class="n">ENCODER</span> <span class="o">=</span> <span class="s2">"encoder"</span>            <span class="c1"># Existing</span>
+    <span class="n">PLASTICITY</span> <span class="o">=</span> <span class="s2">"plasticity"</span>      <span class="c1"># Existing</span>
+    <span class="n">FUNCTIONAL</span> <span class="o">=</span> <span class="s2">"functional"</span>      <span class="c1"># Existing</span>
+    <span class="n">LEARNING</span> <span class="o">=</span> <span class="s2">"learning"</span>          <span class="c1"># Existing</span>
+    <span class="n">MONITORING</span> <span class="o">=</span> <span class="s2">"monitoring"</span>      <span class="c1"># Existing</span>
+    <span class="n">COMMUNICATION</span> <span class="o">=</span> <span class="s2">"communication"</span> <span class="c1"># Existing</span>
+
+    <span class="c1"># ↓ New追加 (Phase 1)</span>
+    <span class="n">DEVICE</span> <span class="o">=</span> <span class="s2">"device"</span>                      <span class="c1"># CPU, GPU, Loihi, Jetson, etc.</span>
+    <span class="n">OPTIMIZATION</span> <span class="o">=</span> <span class="s2">"optimization"</span>         <span class="c1"># Quantization, Pruning, etc.</span>
+    <span class="n">QUANTUM_LAYER</span> <span class="o">=</span> <span class="s2">"quantum_layer"</span>       <span class="c1"># Quantum neuron layer</span>
+    <span class="n">SYNAPSE</span> <span class="o">=</span> <span class="s2">"synapse"</span>                   <span class="c1"># Synapse type</span>
+    <span class="n">CHANNEL</span> <span class="o">=</span> <span class="s2">"channel"</span>                   <span class="c1"># Communication channel</span>
+</code></pre></div></p>
+<p><strong>Effort</strong>: 1 day, <strong>Testing</strong>: Confirm no duplicate enum values</p>
+<hr />
+<h3 id="12-deviceplugin-base-class-creation">1.2 DevicePlugin Base Class Creation</h3>
+<p><strong>File</strong>: <a href="EvoSpikeNet-Core/evospikenet/plugins/device_plugin.py">evospikenet/plugins/device_plugin.py</a> (New)</p>
+<p><strong>Implementation</strong>:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.device_plugin</span><span class="w"> </span><span class="kn">import</span> <span class="n">BasePlugin</span><span class="p">,</span> <span class="n">PluginMetadata</span><span class="p">,</span> <span class="n">PluginStatus</span><span class="p">,</span> <span class="n">PluginType</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DevicePlugin</span><span class="p">(</span><span class="n">BasePlugin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Abstract base class for device/platform plugins."""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">platform_info</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Return platform capabilities.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            {</span>
+<span class="sd">                "platform": str,              # "cpu" | "gpu" | "loihi" | ...</span>
+<span class="sd">                "max_neurons": int,</span>
+<span class="sd">                "supported_precisions": List[str],  # ["FP32", "INT8", ...]</span>
+<span class="sd">                "optimization_support": List[str],  # ["quantization", ...]</span>
+<span class="sd">                "compute_type": str,          # "cpu" | "gpu" | "neuromorphic" | ...</span>
+<span class="sd">                "available": bool,            # hardware/dependency available?</span>
+<span class="sd">            }</span>
+<span class="sd">        """</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">optimize_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+                      <span class="n">model</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> 
+                      <span class="n">config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+                      <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Optimize model for target platform.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model: PyTorch model</span>
+<span class="sd">            config: optimization config (precision, quantization bits, etc.)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Optimized model</span>
+<span class="sd">        """</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">convert_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+                      <span class="n">model</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> 
+                      <span class="n">output_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Convert model to platform-specific format."""</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">deploy_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Deploy model to platform hardware."""</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate_deployment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Optional: Validate deployment success."""</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div></p>
+<p><strong>Effort</strong>: 2-3 days, <strong>Testing</strong>: NotImplementedError raised on abstract method invocation</p>
+<hr />
+<h3 id="13-cpuplugin-implementation">1.3 CPUPlugin Implementation</h3>
+<p><strong>File</strong>: <a href="EvoSpikeNet-Core/evospikenet/plugins/builtin/device_plugins.py">evospikenet/plugins/builtin/device_plugins.py</a> (New)</p>
+<p><strong>Implementation</strong>:
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..device_plugin</span><span class="w"> </span><span class="kn">import</span> <span class="n">DevicePlugin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">...</span><span class="w"> </span><span class="kn">import</span> <span class="n">PluginMetadata</span><span class="p">,</span> <span class="n">PluginType</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CPUPlugin</span><span class="p">(</span><span class="n">DevicePlugin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""CPU platform plugin."""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PluginMetadata</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">PluginMetadata</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">,</span>
+            <span class="n">version</span><span class="o">=</span><span class="s2">"1.0.0"</span><span class="p">,</span>
+            <span class="n">plugin_type</span><span class="o">=</span><span class="n">PluginType</span><span class="o">.</span><span class="n">DEVICE</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">"CPU backend (multi-threading supported)"</span><span class="p">,</span>
+            <span class="n">author</span><span class="o">=</span><span class="s2">"Moonlight Technologies Inc."</span><span class="p">,</span>
+            <span class="n">config_schema</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">"num_threads"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                <span class="s2">"enable_mkl"</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Initialize CPU plugin."""</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_threads</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"num_threads"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">set_num_threads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_threads</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Failed to initialize CPUPlugin: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">activate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Activate CPU device."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">PluginStatus</span><span class="o">.</span><span class="n">ACTIVE</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">deactivate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Deactivate CPU device."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">PluginStatus</span><span class="o">.</span><span class="n">UNLOADED</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">"platform"</span><span class="p">:</span> <span class="s2">"cpu"</span><span class="p">,</span>
+            <span class="s2">"max_neurons"</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">,</span>  <span class="c1"># theoretical limit</span>
+            <span class="s2">"supported_precisions"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"FP32"</span><span class="p">,</span> <span class="s2">"FP16"</span><span class="p">,</span> <span class="s2">"INT8"</span><span class="p">],</span>
+            <span class="s2">"optimization_support"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"quantization"</span><span class="p">,</span> <span class="s2">"pruning"</span><span class="p">],</span>
+            <span class="s2">"compute_type"</span><span class="p">:</span> <span class="s2">"cpu"</span><span class="p">,</span>
+            <span class="s2">"available"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">"threads"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_threads</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">optimize_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""CPU optimization (minimal, mainly for reference)."""</span>
+        <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">model</span>
+
+        <span class="c1"># FP16 conversion if requested</span>
+        <span class="n">precision</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"precision"</span><span class="p">,</span> <span class="s2">"FP32"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">precision</span> <span class="o">==</span> <span class="s2">"FP16"</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">half</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">model</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">convert_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">output_path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Save model as PyTorch .pt format."""</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">output_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output_path</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">deploy_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""CPU deployment is always available."""</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"CPU deployment ready for </span><span class="si">{</span><span class="n">model_path</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div></p>
+<p><strong>工数</strong>: 1週間, <strong>テスト</strong>: get_capabilities, optimize_model, deploy_model の各メソッド</p>
+<hr />
+<h3 id="14-loihiplugin-with-lava">1.4 LoihiPlugin 実装 (with LAVA検出)</h3>
+<p><strong>File</strong>: <a href="EvoSpikeNet-Core/evospikenet/plugins/builtin/device_plugins.py">evospikenet/plugins/builtin/device_plugins.py</a> (続編)</p>
+<p><strong>Implementation</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LoihiPlugin</span><span class="p">(</span><span class="n">DevicePlugin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Intel Loihi neuromorphic chip plugin."""</span>
+
+    <span class="c1"># Class-level LAVA availability check</span>
+    <span class="n">_lava_available</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">_lava_version</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">lava.lib.dl.slayer</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">_slayer</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">lava.lib.dl</span><span class="w"> </span><span class="kn">import</span> <span class="n">snn</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">lava</span><span class="w"> </span><span class="kn">import</span> <span class="n">simulator</span>
+        <span class="n">_lava_available</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">lava</span>
+            <span class="n">_lava_version</span> <span class="o">=</span> <span class="n">lava</span><span class="o">.</span><span class="n">__version__</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="n">_lava_available</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PluginMetadata</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">PluginMetadata</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">"loihi"</span><span class="p">,</span>
+            <span class="n">version</span><span class="o">=</span><span class="s2">"1.0.0"</span><span class="p">,</span>
+            <span class="n">plugin_type</span><span class="o">=</span><span class="n">PluginType</span><span class="o">.</span><span class="n">DEVICE</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">"Intel Loihi neuromorphic chip (LAVA-NC framework)"</span><span class="p">,</span>
+            <span class="n">author</span><span class="o">=</span><span class="s2">"Moonlight Technologies Inc."</span><span class="p">,</span>
+            <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">"lava-nc&gt;=0.5.0"</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lava_available</span> <span class="k">else</span> <span class="p">[],</span>
+            <span class="n">config_schema</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">"use_hardware"</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+                <span class="s2">"spike_precision"</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>  <span class="c1"># "int8" | "binary"</span>
+                <span class="s2">"num_chips"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Initialize Loihi plugin."""</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">use_hardware</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"use_hardware"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">spike_precision</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"spike_precision"</span><span class="p">,</span> <span class="s2">"int8"</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_chips</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"num_chips"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_hardware</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lava_available</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"LAVA not available; will use CPU fallback"</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">use_hardware</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Failed to initialize LoihiPlugin: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">activate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lava_available</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Activated Loihi plugin (LAVA </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_lava_version</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"Loihi plugin activated but LAVA not available (INT8 fallback mode)"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">PluginStatus</span><span class="o">.</span><span class="n">ACTIVE</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">deactivate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">PluginStatus</span><span class="o">.</span><span class="n">UNLOADED</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">"platform"</span><span class="p">:</span> <span class="s2">"loihi"</span><span class="p">,</span>
+            <span class="s2">"max_neurons"</span><span class="p">:</span> <span class="mi">131072</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_chips</span><span class="p">,</span>  <span class="c1"># 131K per chip</span>
+            <span class="s2">"supported_precisions"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"INT8"</span><span class="p">,</span> <span class="s2">"binary"</span><span class="p">],</span>
+            <span class="s2">"optimization_support"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"spike_quantization"</span><span class="p">,</span> <span class="s2">"on_chip_learning"</span><span class="p">,</span> <span class="s2">"stdp"</span><span class="p">],</span>
+            <span class="s2">"compute_type"</span><span class="p">:</span> <span class="s2">"neuromorphic"</span><span class="p">,</span>
+            <span class="s2">"available"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lava_available</span><span class="p">,</span>
+            <span class="s2">"lava_version"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lava_version</span><span class="p">,</span>
+            <span class="s2">"hardware_available"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_hardware</span><span class="p">,</span>
+            <span class="s2">"note"</span><span class="p">:</span> <span class="s2">"Requires lava-nc &gt;= 0.5.0 for full support"</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">optimize_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Optimize model for Loihi execution."""</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lava_available</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"LAVA not available; using INT8 dynamic quantization"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">quantize_dynamic</span><span class="p">(</span>
+                <span class="n">model</span><span class="p">,</span> <span class="p">{</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">},</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">qint8</span>
+            <span class="p">)</span>
+
+        <span class="c1"># LAVA available: mark model for spike quantization</span>
+        <span class="c1"># (actual conversion in deploy_model)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">_loihi_optimized</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">_spike_precision</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spike_precision</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Model marked for Loihi spike quantization"</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">model</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">convert_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">output_path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Convert to NxSDK-compatible JSON format."""</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+        <span class="n">net_desc</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"platform"</span><span class="p">:</span> <span class="s2">"loihi"</span><span class="p">,</span>
+            <span class="s2">"lava_version"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lava_version</span><span class="p">,</span>
+            <span class="s2">"layers"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"name"</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+                    <span class="s2">"type"</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                    <span class="s2">"shape"</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span>
+                <span class="p">}</span>
+                <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">named_modules</span><span class="p">()</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">children</span><span class="p">())</span>
+            <span class="p">],</span>
+        <span class="p">}</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">net_desc</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Model exported to </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2"> (NxSDK format)"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output_path</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">deploy_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Deploy model to Loihi via LAVA runtime."""</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lava_available</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"LAVA not available; cannot deploy to hardware"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Deploying </span><span class="si">{</span><span class="n">model_path</span><span class="si">}</span><span class="s2"> to Loihi via LAVA"</span><span class="p">)</span>
+            <span class="c1"># Actual LAVA deployment logic here</span>
+            <span class="c1"># (requires loading NxSDK JSON and executing on hardware)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Loihi deployment failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div></p>
+<p><strong>工数</strong>: 1週間, <strong>テスト</strong>: LAVA availability check, INT8 fallback, 形式変換</p>
+<hr />
+<h3 id="15-jetsonplugin-edgetpuplugin">1.5 JetsonPlugin と EdgeTPUPlugin (同様の実装)</h3>
+<p><strong>File</strong>: <a href="EvoSpikeNet-Core/evospikenet/plugins/builtin/device_plugins.py">evospikenet/plugins/builtin/device_plugins.py</a> (続編)</p>
+<p><strong>JetsonPlugin</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">JetsonPlugin</span><span class="p">(</span><span class="n">DevicePlugin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""NVIDIA Jetson edge GPU plugin."""</span>
+
+    <span class="n">_tensorrt_available</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">tensorrt</span>
+        <span class="n">_tensorrt_available</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="n">_tensorrt_available</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># ... 同様の実装 (TensorRT使用)</span>
+</code></pre></div></p>
+<p><strong>EdgeTPUPlugin</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">EdgeTPUPlugin</span><span class="p">(</span><span class="n">DevicePlugin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Google Coral Edge TPU plugin."""</span>
+
+    <span class="n">_edgetpu_available</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">edgetpu.basic.basic_edge_tpu_interpreter</span><span class="w"> </span><span class="kn">import</span> <span class="n">BasicEdgeTpuInterpreter</span>
+        <span class="n">_edgetpu_available</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="n">_edgetpu_available</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># ... 同様の実装 (edgetpu_compiler使用)</span>
+</code></pre></div></p>
+<p><strong>工数</strong>: 各1週間 (合計 2週間)</p>
+<hr />
+<h3 id="16-devicefactory">1.6 DeviceFactory 統合</h3>
+<p><strong>File</strong>: <a href="EvoSpikeNet-Core/evospikenet/plugin_factory.py">evospikenet/plugin_factory.py</a> (修正)</p>
+<p><strong>追加内容</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DeviceFactory</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Factory for creating device plugins."""</span>
+
+    <span class="n">_device_plugins</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">DevicePlugin</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">register_device_plugin</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">plugin_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">plugin_class</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">DevicePlugin</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">"""Register a device plugin."""</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_device_plugins</span><span class="p">[</span><span class="n">plugin_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">plugin_class</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_device_plugin</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> 
+                            <span class="n">plugin_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                            <span class="n">config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DevicePlugin</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Create and initialize a device plugin."""</span>
+        <span class="k">if</span> <span class="n">plugin_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_device_plugins</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Device plugin '</span><span class="si">{</span><span class="n">plugin_type</span><span class="si">}</span><span class="s2">' not found"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">plugin_class</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_device_plugins</span><span class="p">[</span><span class="n">plugin_type</span><span class="p">]</span>
+        <span class="n">plugin</span> <span class="o">=</span> <span class="n">plugin_class</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin</span><span class="o">.</span><span class="n">initialize</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Failed to initialize </span><span class="si">{</span><span class="n">plugin_type</span><span class="si">}</span><span class="s2"> plugin"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">plugin</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_available_devices</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Get list of available device plugins."""</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_device_plugins</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="c1"># Automatic registration of built-in device plugins</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_register_builtin_device_plugins</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""Register built-in device plugins."""</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">evospikenet.plugins.builtin.device_plugins</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+        <span class="n">CPUPlugin</span><span class="p">,</span> <span class="n">GPUPlugin</span><span class="p">,</span> <span class="n">LoihiPlugin</span><span class="p">,</span> <span class="n">JetsonPlugin</span><span class="p">,</span> <span class="n">EdgeTPUPlugin</span>
+    <span class="p">)</span>
+
+    <span class="n">DeviceFactory</span><span class="o">.</span><span class="n">register_device_plugin</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="n">CPUPlugin</span><span class="p">)</span>
+    <span class="n">DeviceFactory</span><span class="o">.</span><span class="n">register_device_plugin</span><span class="p">(</span><span class="s2">"gpu"</span><span class="p">,</span> <span class="n">GPUPlugin</span><span class="p">)</span>
+    <span class="n">DeviceFactory</span><span class="o">.</span><span class="n">register_device_plugin</span><span class="p">(</span><span class="s2">"loihi"</span><span class="p">,</span> <span class="n">LoihiPlugin</span><span class="p">)</span>
+    <span class="n">DeviceFactory</span><span class="o">.</span><span class="n">register_device_plugin</span><span class="p">(</span><span class="s2">"jetson"</span><span class="p">,</span> <span class="n">JetsonPlugin</span><span class="p">)</span>
+    <span class="n">DeviceFactory</span><span class="o">.</span><span class="n">register_device_plugin</span><span class="p">(</span><span class="s2">"edge_tpu"</span><span class="p">,</span> <span class="n">EdgeTPUPlugin</span><span class="p">)</span>
+
+<span class="c1"># Call on module import</span>
+<span class="n">_register_builtin_device_plugins</span><span class="p">()</span>
+</code></pre></div></p>
+<p><strong>工数</strong>: 3-4日, <strong>テスト</strong>: device plugin registration/creation</p>
+<hr />
+<h3 id="17">1.7 後方互換性レイヤー</h3>
+<p><strong>File</strong>: <a href="EvoSpikeNet-Core/evospikenet/universal_integration.py">evospikenet/universal_integration.py</a> (修正)</p>
+<p><strong>修正内容</strong>:
+<div class="highlight"><pre><span></span><code><span class="c1"># 従来コードとの互換性を保つため、UniversalIntegrator を legacy mode で動作させる</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UniversalIntegrator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Legacy compatibility layer for existing code."""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_factory</span> <span class="o">=</span> <span class="n">DeviceFactory</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adapters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_legacy_adapters</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_legacy_adapters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Create adapter objects from device plugins."""</span>
+        <span class="n">adapters</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">device_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="s2">"gpu"</span><span class="p">,</span> <span class="s2">"loihi"</span><span class="p">,</span> <span class="s2">"jetson"</span><span class="p">,</span> <span class="s2">"edge_tpu"</span><span class="p">]:</span>
+            <span class="n">plugin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_factory</span><span class="o">.</span><span class="n">create_device_plugin</span><span class="p">(</span><span class="n">device_type</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">plugin</span><span class="p">:</span>
+                <span class="n">adapters</span><span class="p">[</span><span class="n">PlatformType</span><span class="p">(</span><span class="n">device_type</span><span class="p">)]</span> <span class="o">=</span> <span class="n">plugin</span>
+        <span class="k">return</span> <span class="n">adapters</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">detect_platform</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PlatformInfo</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Detect available platform (unchanged)."""</span>
+        <span class="c1"># 従来通りの実装</span>
+        <span class="o">...</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">adapters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Access adapters (deprecated, use DeviceFactory instead)."""</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"UniversalIntegrator.adapters is deprecated; use DeviceFactory"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adapters</span>
+</code></pre></div></p>
+<p><strong>工数</strong>: 3-4日, <strong>テスト</strong>: Existingコードの動作確認 (回帰テスト)</p>
+<hr />
+<h3 id="18">1.8 設定ファイル拡張</h3>
+<p><strong>File</strong>: <a href="EvoSpikeNet-Core/config/device_plugins.yaml">config/device_plugins.yaml</a> (New)</p>
+<p><strong>内容</strong>:
+<div class="highlight"><pre><span></span><code><span class="c1"># Device Plugin Configuration</span>
+
+<span class="nt">plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">num_threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">      </span><span class="nt">enable_mkl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">device_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">      </span><span class="nt">memory_fraction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.8</span>
+
+<span class="w">  </span><span class="nt">loihi</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># Requires LAVA-NC</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">use_hardware</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">spike_precision</span><span class="p">:</span><span class="w"> </span><span class="s">"int8"</span>
+<span class="w">      </span><span class="nt">num_chips</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">required_packages</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"lava-nc&gt;=0.5.0"</span>
+
+<span class="w">  </span><span class="nt">jetson</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># Requires TensorRT</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">precision</span><span class="p">:</span><span class="w"> </span><span class="s">"FP16"</span>
+<span class="w">    </span><span class="nt">required_packages</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"tensorrt&gt;=8.0"</span>
+
+<span class="w">  </span><span class="nt">edge_tpu</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">precision</span><span class="p">:</span><span class="w"> </span><span class="s">"INT8"</span>
+
+<span class="c1"># Device selection priority (first available is used)</span>
+<span class="nt">device_priority</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"gpu"</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"loihi"</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"jetson"</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"cpu"</span>
+</code></pre></div></p>
+<p><strong>工数</strong>: 1日, <strong>テスト</strong>: YAML パース、バリデーション</p>
+<hr />
+<h3 id="19">1.9 統合テスト</h3>
+<p><strong>File</strong>: <a href="EvoSpikeNet-Core/tests/unit/test_device_plugins.py">tests/unit/test_device_plugins.py</a> (New)</p>
+<p><strong>テストケース</strong>:
+- [ ] CPUPlugin initialization
+- [ ] CPUPlugin optimize_model (FP16 conversion)
+- [ ] CPUPlugin deploy_model (always succeeds)
+- [ ] LoihiPlugin with LAVA available
+- [ ] LoihiPlugin without LAVA (INT8 fallback)
+- [ ] JetsonPlugin with TensorRT available
+- [ ] JetsonPlugin without TensorRT (error handling)
+- [ ] EdgeTPUPlugin edge cases
+- [ ] DeviceFactory registration/creation
+- [ ] Backwards compatibility (UniversalIntegrator)
+- [ ] YAML config loading + validation
+- [ ] Device priority selection</p>
+<p><strong>工数</strong>: 1週間, <strong>目標カバレッジ</strong>: ≥ 85%</p>
+<hr />
+<h2 id="phase-2-1-2-2-3">🟡 Phase 2: 依存関係管理 (1-2週間, 2-3人月)</h2>
+<h3 id="21-pyprojecttoml">2.1 pyproject.toml オプション依存追加</h3>
+<p><strong>File</strong>: <a href="EvoSpikeNet-Core/pyproject.toml">EvoSpikeNet-Core/pyproject.toml</a> (修正)</p>
+<p><strong>追加内容</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">[project.optional-dependencies]</span>
+<span class="c1"># Existing</span>
+<span class="n">zenoh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"eclipse-zenoh&gt;=1.0.0,&lt;1.8"</span><span class="p">]</span>
+<span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="err">...]</span>
+<span class="n">docs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="err">...]</span>
+<span class="n">jupyter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="err">...]</span>
+<span class="n">dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="err">...]</span>
+
+<span class="c1"># New: ハードウェアサポート</span>
+<span class="n">loihi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">"lava-nc&gt;=0.5.0,&lt;0.6"</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">jetson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">"tensorrt&gt;=8.0,&lt;9.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"torch2trt&gt;=0.5.0"</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">edge_tpu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">"edgetpu&gt;=15.0,&lt;16.0"</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">quantum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">"qiskit&gt;=1.0,&lt;2.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"qiskit-machine-learning&gt;=0.7.0,&lt;0.8"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"qiskit-aer&gt;=0.13.0"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># New: Meta groups</span>
+<span class="n">hardware</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"loihi"</span><span class="p">,</span><span class="w"> </span><span class="s2">"jetson"</span><span class="p">,</span><span class="w"> </span><span class="s2">"edge_tpu"</span><span class="p">]</span>
+<span class="n">all_hardware</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"loihi"</span><span class="p">,</span><span class="w"> </span><span class="s2">"jetson"</span><span class="p">,</span><span class="w"> </span><span class="s2">"edge_tpu"</span><span class="p">,</span><span class="w"> </span><span class="s2">"quantum"</span><span class="p">]</span>
+</code></pre></div></p>
+<p><strong>工数</strong>: 2-3日</p>
+<hr />
+<h3 id="22-dependencychecker">2.2 DependencyChecker クラス</h3>
+<p><strong>File</strong>: <a href="EvoSpikeNet-Core/evospikenet/plugins/setup_awareness.py">evospikenet/plugins/setup_awareness.py</a> (New)</p>
+<p><strong>Implementation</strong>:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DependencyChecker</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Check availability of optional dependencies."""</span>
+
+    <span class="n">_cache</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_package</span><span class="p">(</span><span class="n">package_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">min_version</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Check if a package is installed and optionally verify minimum version.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            package_name: Package name (e.g., "lava-nc", "qiskit")</span>
+<span class="sd">            min_version: Minimum required version (e.g., "0.5.0")</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            (is_available, version_string_or_error)</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">package_name</span> <span class="ow">in</span> <span class="n">DependencyChecker</span><span class="o">.</span><span class="n">_cache</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">DependencyChecker</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">package_name</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">module</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="n">package_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"-"</span><span class="p">,</span> <span class="s2">"_"</span><span class="p">))</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="s2">"__version__"</span><span class="p">,</span> <span class="s2">"unknown"</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">min_version</span> <span class="ow">and</span> <span class="n">version</span> <span class="o">!=</span> <span class="s2">"unknown"</span><span class="p">:</span>
+                <span class="kn">from</span><span class="w"> </span><span class="nn">packaging</span><span class="w"> </span><span class="kn">import</span> <span class="n">version</span> <span class="k">as</span> <span class="n">pkg_version</span>
+                <span class="k">if</span> <span class="n">pkg_version</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">version</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">pkg_version</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">min_version</span><span class="p">):</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Version </span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s2"> &lt; </span><span class="si">{</span><span class="n">min_version</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                    <span class="n">DependencyChecker</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">package_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
+                    <span class="k">return</span> <span class="n">result</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
+            <span class="n">DependencyChecker</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">package_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
+            <span class="k">return</span> <span class="n">result</span>
+
+        <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="n">DependencyChecker</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">package_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
+            <span class="k">return</span> <span class="n">result</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_lava</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="k">return</span> <span class="n">DependencyChecker</span><span class="o">.</span><span class="n">check_package</span><span class="p">(</span><span class="s2">"lava"</span><span class="p">,</span> <span class="s2">"0.5.0"</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_qiskit</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="k">return</span> <span class="n">DependencyChecker</span><span class="o">.</span><span class="n">check_package</span><span class="p">(</span><span class="s2">"qiskit"</span><span class="p">,</span> <span class="s2">"1.0.0"</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_tensorrt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="k">return</span> <span class="n">DependencyChecker</span><span class="o">.</span><span class="n">check_package</span><span class="p">(</span><span class="s2">"tensorrt"</span><span class="p">,</span> <span class="s2">"8.0.0"</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_edgetpu</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="k">return</span> <span class="n">DependencyChecker</span><span class="o">.</span><span class="n">check_package</span><span class="p">(</span><span class="s2">"edgetpu"</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_missing_optional_deps</span><span class="p">(</span><span class="n">hardware_targets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Get list of missing dependencies for target hardware.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            hardware_targets: e.g., ["loihi", "jetson", "quantum"]</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of missing package names</span>
+<span class="sd">        """</span>
+        <span class="n">checkers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"loihi"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"lava"</span><span class="p">,</span> <span class="s2">"0.5.0"</span><span class="p">),</span>
+            <span class="s2">"jetson"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"tensorrt"</span><span class="p">,</span> <span class="s2">"8.0.0"</span><span class="p">),</span>
+            <span class="s2">"edge_tpu"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"edgetpu"</span><span class="p">,</span> <span class="s2">"15.0"</span><span class="p">),</span>
+            <span class="s2">"quantum"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"qiskit"</span><span class="p">,</span> <span class="s2">"1.0.0"</span><span class="p">),</span>
+        <span class="p">}</span>
+
+        <span class="n">missing</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">hardware_targets</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">checkers</span><span class="p">:</span>
+                <span class="n">pkg_name</span><span class="p">,</span> <span class="n">min_version</span> <span class="o">=</span> <span class="n">checkers</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
+                <span class="n">available</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">DependencyChecker</span><span class="o">.</span><span class="n">check_package</span><span class="p">(</span><span class="n">pkg_name</span><span class="p">,</span> <span class="n">min_version</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">available</span><span class="p">:</span>
+                    <span class="n">missing</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pkg_name</span><span class="si">}</span><span class="s2"> &gt;= </span><span class="si">{</span><span class="n">min_version</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">missing</span>
+</code></pre></div></p>
+<p><strong>工数</strong>: 2-3日</p>
+<hr />
+<h3 id="23-cicd">2.3 CI/CD での依存関係検証</h3>
+<p><strong>File</strong>: <a href="EvoSpikeNet-Core/.github/workflows/device-plugin-ci.yml">.github/workflows/device-plugin-ci.yml</a> (New)</p>
+<p><strong>内容</strong>:
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Device Plugin CI</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'evospikenet/plugins/**'</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'pyproject.toml'</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'evospikenet/plugins/**'</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test-device-plugins</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matrix</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"3.10"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"3.11"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"3.12"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">hardware</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"cpu"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"gpu"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"loihi"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"jetson"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"quantum"</span><span class="p p-Indicator">]</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.python-version }}</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install base dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">pip install -e .</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install optional hardware dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">case "${{ matrix.hardware }}" in</span>
+<span class="w">            </span><span class="no">loihi)</span>
+<span class="w">              </span><span class="no">pip install -e ".[loihi]"</span>
+<span class="w">              </span><span class="no">;;</span>
+<span class="w">            </span><span class="no">jetson)</span>
+<span class="w">              </span><span class="no">pip install -e ".[jetson]"</span>
+<span class="w">              </span><span class="no">;;</span>
+<span class="w">            </span><span class="no">quantum)</span>
+<span class="w">              </span><span class="no">pip install -e ".[quantum]"</span>
+<span class="w">              </span><span class="no">;;</span>
+<span class="w">          </span><span class="no">esac</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run device plugin tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">pytest tests/unit/test_device_plugins.py -v --hardware=${{ matrix.hardware }}</span>
+</code></pre></div></p>
+<p><strong>工数</strong>: 1-2日</p>
+<hr />
+<h2 id="phase-3-2-3-4-5">🟠 Phase 3: ニューロン層完成 (2-3週間, 4-5人月)</h2>
+<p>(Previous content continues with Phase 3, 4, 5, 6...)</p>
+<hr />
+<h2 id="_1">📊 全体工数サマリー</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Phase</strong></th>
+<th><strong>内容</strong></th>
+<th><strong>工数 (人月)</strong></th>
+<th><strong>期間</strong></th>
+<th><strong>依存</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>DevicePlugin統合</td>
+<td>8-10</td>
+<td>3-4週</td>
+<td>-</td>
+</tr>
+<tr>
+<td>2</td>
+<td>依存関係管理</td>
+<td>2-3</td>
+<td>1-2週</td>
+<td>Phase 1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ニューロン層完成</td>
+<td>4-5</td>
+<td>2-3週</td>
+<td>Phase 2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>量子層統合</td>
+<td>6-8</td>
+<td>3-4週</td>
+<td>Phase 3 (並列可)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>IBM Quantum</td>
+<td>8-10</td>
+<td>4-6週</td>
+<td>Phase 3, 2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>最適化パイプライン</td>
+<td>4-5</td>
+<td>2-3週</td>
+<td>Phase 4</td>
+</tr>
+<tr>
+<td><strong>合計</strong></td>
+<td><strong>全統合</strong></td>
+<td><strong>32-41</strong></td>
+<td><strong>16-22週</strong></td>
+<td><strong>並列実行で3ヶ月短縮可能</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_2">🎯 推奨実装シナリオ</h2>
+<h3 id="scenario-a-mvp-5-6-10-12">Scenario A: MVP (5-6週間, 10-12人月)</h3>
+<ul>
+<li>Phase 1: DevicePlugin フレームワーク完成</li>
+<li>Phase 2: 依存関係管理</li>
+<li><strong>成果</strong>: 基本的なハードウェア abstraction が使用可能に</li>
+</ul>
+<h3 id="scenario-b-16-22-32-41">Scenario B: フルサポート (16-22週間, 32-41人月)</h3>
+<ul>
+<li>Phase 1-6 すべて実装</li>
+<li>並列開発により工期短縮</li>
+</ul>
+<p><strong>推奨</strong>: Scenario A → Scenario B への段階的実装</p>
+<hr />
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 21, 2026 06:59:36 UTC">August 21, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+<div class="md-copyright__highlight">
+  最終更新日: 2026-08-28 07:33:19 UTC
+</div>
+<div class="md-copyright__highlight">
+  Copyright evospikenet.org
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/i18n-nav-fix.js"></script>
+      
+        <script src="../../javascripts/set-logo-link.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/polyfill-library/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,8577 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://evospikenet-org.github.io/Docs-Public/MEMERIED_SPIKENETLM/">
+      
+      
+        <link rel="prev" href="../BRain_Language_Vocab_README/">
+      
+      
+        <link rel="next" href="../SWITCH_TO_EVOSPIKENET_LM/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="ja">
+        
+          <link rel="alternate" href="../en/MEMERIED_SPIKENETLM/" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>MEMERIED SpikeNetLM - EvoSpikeNet Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#memeried-spikenetlm" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="EvoSpikeNet Documentation" class="md-header__button md-logo" aria-label="EvoSpikeNet Documentation" data-md-component="logo">
+      
+  <img src="../assets/images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EvoSpikeNet Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MEMERIED SpikeNetLM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="言語切り替え">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="ja" class="md-select__link">
+              日本語
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../en/MEMERIED_SPIKENETLM/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../learning_guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  学習ガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../faq/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../release_notes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  リリースノート
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quizzes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  クイズ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MULTILINGUAL_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  多言語ドキュメントガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MULTILINGUAL_COMPLETION_REPORT/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  多言語化完了レポート
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/installation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  スタートガイド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/basic_features/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  概念・製品仕様
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/biomimetic_systems/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  生物学的模倣・自己進化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/distributed_brain/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  分散脳アーキテクチャ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../guides/memory_and_rag/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  記憶・言語・RAG
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/sdk_and_api/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SDK・API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/deployment_and_operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  運用・インフラ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/security_and_quality/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  セキュリティ・テスト・品質
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/research_and_multimodal/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  研究・応用・拡張
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../applications/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  応用例
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../documentation_index/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  索引・リファレンス
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="EvoSpikeNet Documentation" class="md-nav__button md-logo" aria-label="EvoSpikeNet Documentation" data-md-component="logo">
+      
+  <img src="../assets/images/favicon.png" alt="logo">
+
+    </a>
+    EvoSpikeNet Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learning_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学習ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    リリースノート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クイズ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MULTILINGUAL_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多言語ドキュメントガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MULTILINGUAL_COMPLETION_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多言語化完了レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    スタートガイド
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    スタートガイド
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インストール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/first_simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    初めてのシミュレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BUILD_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ビルドガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_BUILD_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker ビルドガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_BUILD_MODES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker ビルドモード完全ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_PUBLISHING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker パブリッシングガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TROUBLESHOOTING_DOCKER_BUILDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker トラブルシューティング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONDA_SETUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conda セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GPU_CPU_LAUNCH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU/CPU クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MKDOCS_BUILD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs ビルド手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概念・製品仕様
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    概念・製品仕様
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/basic_features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本機能と導入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVOSPIKENET_CONCEPTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet コア概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRODUCT_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    製品概要書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEATURE_SPEC_TABLE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    機能スペック表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SOURCE_CODE_IMPLEMENTATION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ソースコード実装詳細ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../REMAINING_FUNCTIONALITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装ステータス（残存機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INFERENCE_PIPELINE_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推論パイプライン実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DATA_HANDLING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    データハンドリング方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEPENDENCY_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係管理ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEPENDENCY_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係アーキテクチャ改善
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEPENDENCY_IMPROVEMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係改善完了レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONFIGURATION_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    設定外部化実装ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ENVIRONMENT_VARIABLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    環境変数運用方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONNECT_BACKENDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バックエンド接続手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生物学的模倣・自己進化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    生物学的模倣・自己進化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/biomimetic_systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生物学的模倣と進化学習
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BIOMIMETIC_IMPLIMENTATION_PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生物模倣強化プラン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_SELF_EVOLUTION_11_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自己進化高度化 11.7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_EVOLUTION_PHASE5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    進化フェーズ 5-6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AEG_IMPLEMENTATION_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AEG 実装概要
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_DECISION_ENGINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高度意思決定エンジン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AUTO_RECOVERY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自動回復機能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Q_PFC_ADAPTIVE_CONTROL_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Q-PFC 適応制御ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BACKPROP_IMPLEMENTATION_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バックプロパゲーション実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEV_BATCH_SHAPING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バッチシェーピング設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TRACKING_ACTION_MODELS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    トラッキング・行為認識モデル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../architecture/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分散脳アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    分散脳アーキテクチャ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/distributed_brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分散脳アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_SYSTEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分散脳システム技術仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_NODE_TYPES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノードタイプ仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_NODE_CONFIGURATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノード構成とモデルマッピング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_SPATIAL_NODES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    空間処理ノード仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_28NODE_EVALUATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28ノード評価
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DYNAMIC_LOAD_BALANCING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動的負荷分散
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FULL_BRAIN_NODE_REQUIREMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フル脳ノード要件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FULL_BRAIN_UI_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フル脳UI実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_SEQUENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動作フロー・シーケンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_EEG_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EEG 統合システム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_LLM_VERIFICATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_IMPLEMENTATION_VERIFICATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装完了検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_LOGGING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノードログ表示ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_MODEL_ARTIFACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モデルアーティファクト一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_METRICS_UI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メトリクス UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SPIKE_COMMUNICATION_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spike 通信分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBNノードアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_EXTERNAL_OPTIMIZATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN外部定義最適化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SECURE_DISTRIBUTED_BRAIN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュア分散脳シミュレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_NODE_DISCOVERY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノード発見（高度）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GEO_NODE_MANAGER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地理ノードマネージャー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ZENOH_VS_TORCH_DISTRIBUTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zenoh vs torch.distributed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CENTRALIZED_LOGGING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集中ロギングシステム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEDERATED_DB_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フェデレーテッドDB統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEDERATED_AGGREGATOR_SELECTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集約LLM選択戦略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/dense_chronospike_lm_training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dense Chrono-Spike LM 学習
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    記憶・言語・RAG
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    記憶・言語・RAG
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/memory_and_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    記憶管理とRAGシステム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../architecture/sparse_event_memory/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sparse Event-Memory LM
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12_2" id="__nav_12_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sparse Event-Memory LM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/sparse_event_memory/specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/sparse_event_memory/detailed_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    詳細数理・メモリ設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SPARSE_EVO_MEMORYLM_SYSTEM_REVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sparse Evo-MemoryLM システムレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMORY_ORCHESTRATION_E2E_SPEC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Orchestration End-to-End 仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMORY_ORCHESTRATION_MONITORING_SLO_SLA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Orchestration 監視仕様（SLO/SLA）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMORY_LEARNING_INTEGRATION_CONTROL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メモリと学習の統合制御設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EPISODIC_MEMORY_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エピソード記憶実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BRAIN_LANGUAGE_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脳内言語アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BRain_Language_Vocab_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Language Vocab README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEMERIED SpikeNetLM
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEMERIED SpikeNetLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目次
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目的と結論
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現行実装の確認結果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="現行実装の確認結果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現行モデルとの差分
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        互換性マトリクス
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目標アーキテクチャ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="目標アーキテクチャ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        設計原則
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        モダリティごとのtoken化仕様
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="モダリティごとのtoken化仕様">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. テキスト
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 画像
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 音声
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 統合token列
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sparse-event-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        共通Sparse Event-Memoryバックボーン仕様
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="共通Sparse Event-Memoryバックボーン仕様">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実装済みモデル境界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mask" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        maskの要件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        位置と因果性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入出力・学習・アーティファクト契約
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="入出力・学習・アーティファクト契約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#head" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        出力head
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学習手順
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifact-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        artifact manifest
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メモリとストリーミングの設計判断
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メモリとストリーミングの設計判断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        静的モデルメモリ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ストリーミング
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実装計画
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実装計画">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#p0-backbone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P0 — テキストbackboneの契約固定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p1-tokenization-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P1 — モダリティtokenization bridgeと統合データ契約（実装済みコア）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2-sparse-event-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P2 — モダリティ対応Sparse Event-Memoryモデルとオフライン学習（部分実装）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P3 — ストリーミング音声・映像
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p4-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P4 — 追加sensorと運用最適化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        テスト、受入基準、リスク
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="テスト、受入基準、リスク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        必須試験
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主なリスク
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現行SDKとドキュメントの位置付け
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関連文書
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SWITCH_TO_EVOSPIKENET_LM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet LM への切替
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EvoLLMConverter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo-LLM Converter 設計書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM_INTEGRATION_STRATEGY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 統合戦略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM_TRAINING_SYSTEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 学習システム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LANGUAGE_MODEL_ARCHITECTURE_COMPATIBILITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LanguageModel アーキテクチャ互換性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LANGUAGE_MODEL_GPU_CAPACITY_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LanguageModel GPU 容量検証ポリシー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_SYSTEM_DETAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG システム詳細解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_REMAINING_FUNCTIONALITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 2.0 残存機能・将来フェーズ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_JAPANESE_SpecV2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語仕様書 V2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_JAPANESE_EVALUATE_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語評価ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_JAPANESE_PARTICLE_ISSUE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語助詞問題
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QUERY_RESPONSE_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全脳クエリレスポンス解析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SIMULATION_RECORDING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シミュレーション記録ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SIMULATION_RECORDING_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シミュレーション記録 README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ZIGZAG_WHERE_WHAT_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Where-What 統合ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK・API
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SDK・API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/sdk_and_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDKとAPI統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_QUICKSTART/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_INSTALLATION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK インストールガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_TUTORIAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK チュートリアル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DEVELOPER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 開発者ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_CONFIGURATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 設定ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK API リファレンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EvoSpikeNet_SDK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK（全機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DOCUMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ドキュメント概要
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DOCUMENTATION_INDEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ドキュメントインデックス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 変更履歴
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_ENHANCEMENT_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 機能強化・実装詳細
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_SPARSE_EVENT_MEMORY_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK Sparse Event-Memory LM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DEVICE_PLUGIN_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK デバイスプラグインガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_SDK_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN SDK統合ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBNノードアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_EXTERNAL_OPTIMIZATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN外部定義最適化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_SOLVER_PLUGIN_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ソルバープラグインガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_LOIHI_BRAIN2LOIHI_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK Loihi Brain2Loihi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVALUATOR_SDK_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    評価系 SDK ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVALUATOR_SDK_SAMPLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    評価系 SDK サンプル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PLUGIN_MICROSERVICES_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグインアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVOSPIKENET_PLUGIN_FEASIBILITY_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグイン化 実装可能性評価
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVOSPIKENET_PLUGIN_IMPLEMENTATION_ROADMAP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグイン化 実装ロードマップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PLUGIN_DOC_SYNC_MATRIX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin ドキュメント同期マトリクス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker_sdk_model_status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker SDK モデル配置状況
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/openapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAPI スキーマ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    運用・インフラ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    運用・インフラ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/deployment_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    運用・デプロイ・インフラ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPC_SETUP_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPC 環境セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NGC_JUPYTER_SETUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NGC Jupyter セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NGC_VERIFICATION_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NGC 動作確認チェックリスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LARGE_SCALE_TRAINING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大規模学習ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INFRASTRUCTURE_AS_CODE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure as Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DB_MIGRATION_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    データベースマイグレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../E2E_RUNBOOK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E2E 実行ランブック
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MULTI_NODE_INTEGRATION_TESTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    マルチノード統合テスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HCP_DOWNLOAD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HCP ダウンロード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VAULT_K8S_EXAMPLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vault + Kubernetes 例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュリティ・テスト・品質
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    セキュリティ・テスト・品質
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/security_and_quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュリティ・監査・品質
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TESTING_MARKERS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストマーカーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TEST_DATA_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストデータ管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TEST_MENU_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テスト統合メニュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TEST_CONSOLIDATION_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テスト統合レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VALIDATION_EXECUTION_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    検証実行サマリー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SECURE_KEY_INJECTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュアキー注入管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AUDIT_LOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    監査ログ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ERROR_MESSAGES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エラーメッセージ一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EXCEPTION_HANDLING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    例外処理ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EXCEPTION_LOGGING_IMPROVEMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    例外ログ改善レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BROKEN_LINKS_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    壊れたリンクレポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CI_BUILD_MATRIX_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI ビルドマトリクスガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FORK_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fork & Upstream 同期ポリシー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRIVACY_AND_AUTH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プライバシー・認証
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HEALTH_DATA_COMPLIANCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    健康データコンプライアンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/coding_standards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コーディング規約
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究・応用・拡張
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    研究・応用・拡張
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/research_and_multimodal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究資料・マルチモーダル・拡張領域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NEUROSCIENCE_BRAIN_SIMULATION_BRIEF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    神経科学・脳シミュレーション研究要旨
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NEUROSCIENCE_BRAIN_SIMULATION_PAPER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    神経科学・脳シミュレーション論文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HUMAN_BRAIN_FULL_SIMULATION_CONCEPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全脳再現システム概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONNECTOME_INTEGRATION_PAPER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム統合論文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connectome_evospikenet_implementation_policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム統合実装方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connectome_literature_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム文献レビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONNECTOME_MIRROR_TEMPLATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトームミラーテンプレート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../detailed_paper_summaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代表論文詳細要約
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HUMANOID_ROBOT_DESIGN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ヒューマノイドロボット詳細設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SENSOR_DRIVER_DEVELOPMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    センサードライバ開発
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VIDEO_AUDIO_ANALYSIS_SPEC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動画・音声解析仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VIDEO_AUDIO_MODEL_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動画・音声モデル統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edge_implementation_plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エッジ実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edge_phase1_5_implementation_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エッジ Phase 1-5 実装報告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evospikenet_edge_validation_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet エッジ検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FRONTEND_FILE_UI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フロントエンドファイル管理 UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FRONTEND_UI_IMPLEMENTATION_PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フロントエンド UI 実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../applications/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    応用例
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    応用例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_17_2" id="__nav_17_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainOS（次世代版）
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BrainOS（次世代版）
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_overview_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概要仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_detailed_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    詳細仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_implementation_plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装プラン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユースケース・応用例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/BrainOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainOS 互換ページ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/core_social_implementation_apps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet-Core 社会実装アプリ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    索引・リファレンス
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    索引・リファレンス
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ドキュメントマップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../USER_MANUAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーマニュアル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK API リファレンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EvoSpikeNet_SDK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK（全機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目次
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目的と結論
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現行実装の確認結果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="現行実装の確認結果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現行モデルとの差分
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        互換性マトリクス
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目標アーキテクチャ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="目標アーキテクチャ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        設計原則
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        モダリティごとのtoken化仕様
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="モダリティごとのtoken化仕様">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. テキスト
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 画像
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 音声
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 統合token列
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sparse-event-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        共通Sparse Event-Memoryバックボーン仕様
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="共通Sparse Event-Memoryバックボーン仕様">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実装済みモデル境界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mask" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        maskの要件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        位置と因果性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入出力・学習・アーティファクト契約
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="入出力・学習・アーティファクト契約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#head" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        出力head
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学習手順
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifact-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        artifact manifest
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メモリとストリーミングの設計判断
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メモリとストリーミングの設計判断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        静的モデルメモリ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ストリーミング
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実装計画
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実装計画">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#p0-backbone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P0 — テキストbackboneの契約固定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p1-tokenization-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P1 — モダリティtokenization bridgeと統合データ契約（実装済みコア）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2-sparse-event-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P2 — モダリティ対応Sparse Event-Memoryモデルとオフライン学習（部分実装）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P3 — ストリーミング音声・映像
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p4-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P4 — 追加sensorと運用最適化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        テスト、受入基準、リスク
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="テスト、受入基準、リスク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        必須試験
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主なリスク
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現行SDKとドキュメントの位置付け
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関連文書
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="memeried-spikenetlm">MEMERIED SpikeNetLM：音声・画像・マルチモーダル拡張仕様と実装状況</h1>
+<ul>
+<li>最終更新日: 2026年8月14日</li>
+</ul>
+<blockquote>
+<p><strong>文書ステータス:</strong> 実装済みコアと残作業を併記する仕様書。<br />
+<strong>実装ステータス:</strong> <code>MemoriedSpikeNetLM</code>、VQ vision/audio bridge、離散audio-language ID adapter、mask-aware sparse block、SDK artifact payload/upload は実装・単体テスト済み。学習済みbridge、専用trainer/API route、CTC/retrieval head、ストリーミング状態は未実装。<br />
+<strong>名称:</strong> プロジェクト呼称は <code>MEMERIED SpikeNetLM</code>、Python公開クラス名とSDK型名は <code>MemoriedSpikeNetLM</code> / <code>MemoriedSpikeNetLMConfig</code>。<br />
+<strong>設計意図:</strong> この文書は「最小実装」を意味するのではなく、<code>SparseEventMemoryLM</code> を土台にした将来拡張のための仕様として位置づける。テキスト専用のSparse path と multimodal 拡張は分離され、相互運用は artifact / vocabulary / task head 契約で管理する。</p>
+</blockquote>
+<h2 id="_1">目次</h2>
+<ol>
+<li>目的と結論</li>
+<li>現行実装の確認結果</li>
+<li>互換性マトリクス</li>
+<li>目標アーキテクチャ</li>
+<li>モダリティごとのtoken化仕様</li>
+<li>共通Sparse Event-Memoryバックボーン仕様</li>
+<li>入出力・学習・アーティファクト契約</li>
+<li>メモリとストリーミングの設計判断</li>
+<li>実装計画</li>
+<li>テスト、受入基準、リスク</li>
+<li>現行SDKとドキュメントの位置付け</li>
+</ol>
+<hr />
+<h2 id="_2">目的と結論</h2>
+<p><code>SparseEventMemoryLM</code> は、大きな主シナプスをINT8 CSR bufferとして保持し、Adamを共有語彙基底・router・adapter・LayerNormに限定するテキスト用バックボーンです。しかし現行の公開入力は整数<code>token_ids</code> <span class="arithmatex">\((B,S)\)</span> のみであり、画像tensor、波形、MFCC、連続センサー特徴を直接処理する一般モダリティモデルではありません。</p>
+<p>したがって、全EvoSpikeNet LLMへ単純に差し替えるのではなく、次の分離を導入します。</p>
+<ol>
+<li><strong>既存モダリティencoderを保持する。</strong> 画像は<code>SpikingEvoVisionEncoder</code>、音声は<code>SpikingEvoAudioEncoder</code>または<code>AudioToBrainLanguageSystem</code>を使用する。</li>
+<li><strong>encoder出力を離散的なモダリティtoken列へ変換するbridgeを使う。</strong> <code>VectorQuantizedTokenBridge</code>とvision/audio wrapper、既存audio-language ID用adapterを実装済みとする。</li>
+<li><strong>text/image/audio tokenを1つの明示的な語彙空間と系列形式にまとめる。</strong> <code>MultimodalSequenceBuilder</code>と<code>MemoriedSpikeNetLM</code>が低メモリCSRコアを共通backboneとして実装する。</li>
+<li><strong>生成・分類・検索・連続復元をtask headとして分離する。</strong> 現在は範囲制限されたtext/image/audio token logitsとpooling分類headを提供する。</li>
+</ol>
+<p>この設計により、テキストは低リスクで移行し、画像・音声・マルチモーダルはtokenization bridgeと専用headを実装した後に段階的に適用できます。</p>
+<hr />
+<h2 id="_3">現行実装の確認結果</h2>
+<table>
+<thead>
+<tr>
+<th>コンポーネント</th>
+<th>現行契約</th>
+<th>実装上の意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SparseEventMemoryLM</code></td>
+<td><code>forward(token_ids)</code>、整数token IDから全語彙logits</td>
+<td>image/audio引数、mask、modality ID、連続embedding入力を持たない</td>
+</tr>
+<tr>
+<td><code>TiedFactorizedVocabulary</code></td>
+<td>INT8 <code>codebook</code> <span class="arithmatex">\((V,R)\)</span> + 学習可能<code>basis</code> <span class="arithmatex">\((R,D)\)</span></td>
+<td>入力埋め込みと語彙投影を共有し、候補語彙CEを提供</td>
+</tr>
+<tr>
+<td><code>EventMemoryExpert</code></td>
+<td><span class="arithmatex">\((B,S,D)\)</span> dense float hidden stateを時刻順に処理</td>
+<td>主シナプスのみCSR。spike・hidden・出力stackはdense tensor</td>
+</tr>
+<tr>
+<td><code>VectorQuantizedTokenBridge</code></td>
+<td><span class="arithmatex">\((B,T,D)\)</span>特徴 → 固定長・範囲内token IDs、mask、量子化誤差</td>
+<td>最近傍VQ。タスク勾配をID選択へ通さないため、bridgeは事前学習・凍結が必要</td>
+</tr>
+<tr>
+<td><code>AudioLanguageTokenAdapter</code></td>
+<td>既存audio-language ID + confidence → audio range IDs + mask</td>
+<td>source語彙がaudio rangeに収まることを検証してoffsetする</td>
+</tr>
+<tr>
+<td><code>MultimodalSequenceBuilder</code></td>
+<td>text/image/audio IDs → delimiter・欠損token・padding付きbatch</td>
+<td><code>token_ids</code>、<code>modality_ids</code>、<code>validity_mask</code>を一貫して生成</td>
+</tr>
+<tr>
+<td><code>MemoriedSpikeNetLM</code></td>
+<td><code>MultimodalTokenBatch</code> → task範囲logitsまたは分類logits</td>
+<td>modality/position embedding、mask-aware router・event state・局所可塑性を実装</td>
+</tr>
+<tr>
+<td><code>SpikingEvoVisionEncoder</code></td>
+<td>画像 <span class="arithmatex">\((B,C,H,W)\)</span> → spike train <span class="arithmatex">\((B,T,D)\)</span></td>
+<td>現行では画像token列を出力しない</td>
+</tr>
+<tr>
+<td><code>SpikingEvoAudioEncoder</code></td>
+<td>MFCC <span class="arithmatex">\((B,T,F)\)</span> → spike train <span class="arithmatex">\((B,T_{snn},D)\)</span></td>
+<td>MFCC時間軸は平均してからLIFへ渡す実装</td>
+</tr>
+<tr>
+<td><code>AudioToBrainLanguageSystem</code></td>
+<td>波形 → token IDs <span class="arithmatex">\((B,S)\)</span>、confidence、任意中間特徴</td>
+<td>token bridgeの候補だが、出力語彙・token意味・学習済み品質の整合確認が必要</td>
+</tr>
+<tr>
+<td><code>SpikingEvoMultiModalLM</code></td>
+<td><code>tokens</code>, 任意<code>image</code>, 任意<code>audio_mfcc</code></td>
+<td>image/audio spikeをtext系列長へbroadcastし、concat後にdense spiking transformerへ渡す</td>
+</tr>
+<tr>
+<td>MEMERIED SDK helper</td>
+<td><code>MemoriedSpikeNetLMConfig</code>とモデル/config/manifest/report artifact</td>
+<td>range、codebook revision、encoder manifestをJSON化してuploadする</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">現行モデルとの差分</h3>
+<p><code>SpikingEvoMultiModalLM</code> は、テキストspike train <span class="arithmatex">\((B,T,S,D)\)</span> と、画像・音声から得た <span class="arithmatex">\((B,T,D)\)</span> をテキスト長 <span class="arithmatex">\(S\)</span> にexpandして融合します。対してSparse Event-Memoryコアは、因果的なtoken列 <span class="arithmatex">\((B,S)\)</span> を前提にしています。従って両者を接続するには、単にdense transformer blockを置換するだけでは足りません。</p>
+<p>特に、現在の<code>SparseEventMemoryLM.time_steps</code>は構成互換用に保持されていますが、forwardの外部spike時間軸を処理しません。外部SNN時間軸とtoken順序を混同しないことが必要です。</p>
+<hr />
+<h2 id="_5">互換性マトリクス</h2>
+<table>
+<thead>
+<tr>
+<th>対象</th>
+<th>現状のSparse適用</th>
+<th>必要な追加</th>
+<th>優先度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SpikingEvoTextLM</code>、<code>TransformerLM</code>のtoken LM用途</td>
+<td>可能</td>
+<td>checkpoint移行なし、位置/segment方針の明文化</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><code>AudioToBrainLanguageSystem</code>が生成する離散audio token</td>
+<td>条件付きで可能</td>
+<td>語彙範囲、pad/unk、confidence mask、tokenizer品質検証</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>画像caption/理解</td>
+<td>不可</td>
+<td>vision tokenization bridge、画像token語彙、画像task head</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>音声認識・音響イベント</td>
+<td>不可</td>
+<td>audio tokenization bridge、時間整列、CTCまたはcodec token head</td>
+<td>P1</td>
+</tr>
+<tr>
+<td><code>SpikingEvoMultiModalLM</code>相当のtext+image+audio生成</td>
+<td>不可</td>
+<td>統合sequence builder、modality/position表現、mask、fusion評価</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>リアルタイム音声・映像</td>
+<td>不可</td>
+<td>chunk tokenizer、状態cache、境界処理、遅延計測</td>
+<td>P3</td>
+</tr>
+<tr>
+<td>EEG/LiDAR/触覚など追加sensor</td>
+<td>不可</td>
+<td>sensor token adapter、語彙割当、task head、データ契約</td>
+<td>P4</td>
+</tr>
+</tbody>
+</table>
+<p>「可能」は現在のクラスをすべて置換できる意味ではありません。テキストのtoken-to-token言語モデリング契約に適合する、という意味です。</p>
+<hr />
+<h2 id="_6">目標アーキテクチャ</h2>
+<pre class="mermaid"><code>flowchart LR
+    TXT[Text tokenizer] --&gt; TS[Text token IDs]
+    IMG[SpikingEvoVisionEncoder] --&gt; IT[Vision token bridge]
+    AUD[Audio encoder or AudioToBrainLanguage] --&gt; AT[Audio token bridge]
+    TS --&gt; SB[Multimodal sequence builder]
+    IT --&gt; SB
+    AT --&gt; SB
+    SB --&gt; IDS[Unified token IDs]
+    SB --&gt; MOD[Modality IDs and validity mask]
+    IDS --&gt; VOC[Factorized multimodal vocabulary]
+    MOD --&gt; EMB[Small modality and position adapters]
+    VOC --&gt; B[Shared sparse event-memory blocks]
+    EMB --&gt; B
+    B --&gt; TH[Text token head]
+    B --&gt; IH[Image token or image task head]
+    B --&gt; AH[Audio token or audio task head]
+    TH --&gt; OUT[Task result]
+    IH --&gt; OUT
+    AH --&gt; OUT
+
+    classDef implemented fill:#e8f5e9,stroke:#2e7d32,color:#102a43
+    classDef planned fill:#fff3e0,stroke:#ef6c00,color:#102a43
+    class TXT,IMG,AUD,TS,IT,AT,SB,IDS,MOD,VOC,EMB,B,TH,IH,AH,OUT implemented</code></pre>
+<h3 id="_7">設計原則</h3>
+<ul>
+<li><strong>共通backboneは離散列を受ける。</strong> 画像・音声を直接CSR層に入力するのではなく、各モダリティの時間/空間構造をencoderとbridgeでtoken列化する。</li>
+<li><strong>モダリティの意味はtoken IDだけに依存しない。</strong> 小さい学習可能なmodality embeddingとposition/segment表現を加える。主CSRシナプスをAdam対象に戻さない。</li>
+<li><strong>欠損モダリティは明示する。</strong> <code>validity_mask</code>と開始・終了・欠損special tokenを使い、ゼロtensorの暗黙的な意味に依存しない。</li>
+<li><strong>headを分離する。</strong> テキスト生成は語彙head、音声認識は離散音声tokenまたはCTC head、画像生成はimage-code head、分類はpooling分類headを使う。</li>
+</ul>
+<hr />
+<h2 id="token">モダリティごとのtoken化仕様</h2>
+<h3 id="1">1. テキスト</h3>
+<p>既存HF tokenizerのIDをtext rangeへ割り当てます。</p>
+<div class="arithmatex">\[
+\mathcal{V}_{text}=[0,V_{text})
+\]</div>
+<p>P0では現在の<code>TiedFactorizedVocabulary</code>を再利用します。P1以降では特殊tokenと各モダリティrangeを加えた総語彙 <span class="arithmatex">\(V_{total}\)</span> に対し、既存text IDを移動せず保持する互換方針を採ります。</p>
+<h3 id="2">2. 画像</h3>
+<p><code>SpikingEvoVisionEncoder</code>は画像を <span class="arithmatex">\((B,T_{vision},D_v)\)</span> のspike trainへ変換します。新設する<code>VisionEventTokenizer</code>は、時間平均/学習可能pooling後の局所・patch特徴を <span class="arithmatex">\(N_{image}\)</span> 個のベクトルへ切り出し、有限codebookへ最近傍量子化します。</p>
+<div class="arithmatex">\[
+\mathbf{z}^{img}_n = g_{vision}(image)_n,
+\qquad
+q_n=\arg\min_{j\in\mathcal{V}_{image}}\lVert\mathbf{z}^{img}_n-\mathbf{c}^{img}_j\rVert_2^2
+\]</div>
+<p>画像token rangeは</p>
+<div class="arithmatex">\[
+\mathcal{V}_{image}=[V_{text},V_{text}+V_{image})
+\]</div>
+<p>です。<code>VisionEventTokenizer</code>と<code>VectorQuantizedTokenBridge</code>は実装済みです。量子化codebook、commitment loss、patch数、画像サイズ、正規化は学習済みbridgeを運用するartifact configに必須です。</p>
+<h3 id="3">3. 音声</h3>
+<p>音声には二系統を定義します。</p>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>token source</th>
+<th>主な学習目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>音声の意味理解・音声→言語</td>
+<td><code>AudioToBrainLanguageSystem</code>またはASR</td>
+<td>semantic/audio-language token CE</td>
+</tr>
+<tr>
+<td>音声認識・音響イベント・音楽</td>
+<td>新設<code>AudioEventTokenizer</code></td>
+<td>codec/event token CE、CTC、分類</td>
+</tr>
+</tbody>
+</table>
+<p><code>SpikingEvoAudioEncoder</code>はMFCCから<span class="arithmatex">\((B,T_{snn},D_a)\)</span>を返しますが、内部でMFCCの入力時間をmean集約します。フレーム同期が必要なASR/音響token化では、<code>AudioToBrainLanguageSystem.TemporalSpikingEncoder</code>を利用するか、時間軸を保持するencoder APIを新設します。</p>
+<p><code>AudioEventTokenizer</code>はencoder特徴を固定数 <span class="arithmatex">\(N_{audio}\)</span> のpooling binへ分割し、各binをcodebookへ割り当てます。既存<code>AudioToBrainLanguageSystem</code>のIDは<code>AudioLanguageTokenAdapter</code>でrange offsetとconfidence maskを付けられます。</p>
+<div class="arithmatex">\[
+\mathbf{z}^{aud}_n=g_{audio}(waveform_{nH:nH+W}),
+\qquad
+q_n=\arg\min_{j\in\mathcal{V}_{audio}}\lVert\mathbf{z}^{aud}_n-\mathbf{c}^{aud}_j\rVert_2^2
+\]</div>
+<p>音声token rangeは</p>
+<div class="arithmatex">\[
+\mathcal{V}_{audio}=[V_{text}+V_{image},V_{total})
+\]</div>
+<p>です。音声サンプルレート、feature設定、chunk境界、resampling方針、<code>torchaudio</code>依存可否をconfigとmanifestに保存します。</p>
+<h3 id="4-token">4. 統合token列</h3>
+<p>1サンプルは次の形式を標準とします。</p>
+<div class="arithmatex">\[
+[\mathrm{BOS},\mathrm{TEXT\_START},x_{1:S_t},\mathrm{TEXT\_END},
+\mathrm{IMAGE\_START},q^{img}_{1:N_i},\mathrm{IMAGE\_END},
+\mathrm{AUDIO\_START},q^{aud}_{1:N_a},\mathrm{AUDIO\_END}]
+\]</div>
+<p>未入力モダリティはその区間を省略するか、学習・推論で統一する場合にだけ<code>NO_IMAGE</code>または<code>NO_AUDIO</code> tokenを1つ配置します。paddingは必ず<code>validity_mask=False</code>で示し、損失計算から除外します。</p>
+<hr />
+<h2 id="sparse-event-memory">共通Sparse Event-Memoryバックボーン仕様</h2>
+<h3 id="_8">実装済みモデル境界</h3>
+<p>新しいバックボーンは、既存<code>SparseEventMemoryLM</code>を破壊的に変更せず、次の追加APIを持つ別クラスとして実装します。</p>
+<div class="highlight"><pre><span></span><code>MemoriedSpikeNetLM.forward(
+    batch: MultimodalTokenBatch,
+    task: str = "text_generation",
+) -&gt; MemoriedSpikeNetOutput
+</code></pre></div>
+<p><code>token_ids</code>は既存の因子化語彙へ入力し、<code>modality_ids</code>は小規模Adam対象のembedding/adapterを選択するために使います。例えば、埋め込みは</p>
+<div class="arithmatex">\[
+H^{(0)}=QE + M[\mathrm{modality\_id}] + P[\mathrm{position}]
+\]</div>
+<p>とします。<span class="arithmatex">\(Q\)</span>はINT8コード、<span class="arithmatex">\(E\)</span>は共有基底、<span class="arithmatex">\(M,P\)</span>は小さな学習可能parameterです。これらはAdam状態を持ちますが、INT8 CSR主シナプスは引き続きbufferです。</p>
+<h3 id="mask">maskの要件</h3>
+<p><code>EventMemoryExpert</code>と<code>SparseEventMemoryBlock</code>はoptionalなmaskを受け、統合列では次の動作を実装します。</p>
+<ul>
+<li>router poolingはvalid tokenだけの平均にする。</li>
+<li>expert state更新とplasticity集計はmaskされた位置を除外する。</li>
+<li>task head損失はignore indexまたはmaskを使う。</li>
+<li>空列・全padding batchを明示的にrejectする。</li>
+</ul>
+<p>この変更はtextの既存APIを維持するため、新クラスまたは後方互換のoptional引数で導入し、専用回帰試験を追加します。</p>
+<h3 id="_9">位置と因果性</h3>
+<p>現行イベント専門家はtoken順の再帰処理を行うため順序依存ですが、明示的なposition embeddingはありません。マルチモーダル列では、text、画像patch、音声chunkの位置を区別する必要があります。P1では学習可能なabsolute position embeddingを最大長まで持ち、P3でchunk offsetを含む相対/連続時間表現を検討します。</p>
+<hr />
+<h2 id="_10">入出力・学習・アーティファクト契約</h2>
+<h3 id="head">出力head</h3>
+<table>
+<thead>
+<tr>
+<th>task</th>
+<th>出力</th>
+<th>損失</th>
+<th>実装段階</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text generation</td>
+<td>text語彙logits</td>
+<td>sampled CE / full CE評価</td>
+<td>P0/P2</td>
+</tr>
+<tr>
+<td>multimodal instruction</td>
+<td>text語彙logits</td>
+<td>text token CE</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>audio semantic tokens</td>
+<td>audio語彙logits</td>
+<td>token CE</td>
+<td>P1/P2</td>
+</tr>
+<tr>
+<td>frame同期音声認識</td>
+<td>音素/wordpiece時系列</td>
+<td>CTCまたはseq2seq CE</td>
+<td>P3</td>
+</tr>
+<tr>
+<td>image reconstruction</td>
+<td>image-code logits</td>
+<td>image token CE</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>image/audio/text分類・検索</td>
+<td>pooled representation</td>
+<td>CE/contrastive loss</td>
+<td>P2</td>
+</tr>
+</tbody>
+</table>
+<p><code>sampled_cross_entropy()</code>は候補token集合のCEです。総語彙に対するfull softmaxと同一の最適化目的ではないため、検証時にはtaskごとの適切なfull vocabularyまたはcandidate retrieval評価を定義します。</p>
+<h3 id="_11">学習手順</h3>
+<ol>
+<li>モダリティencoderとtokenizer bridgeが統合token列、modality ID、mask、targetを生成する。</li>
+<li>backboneがCSR event-memory blocksを通してhidden stateを出力する。</li>
+<li>task headの勾配を共有基底、modality/position parameter、router、adapter、LayerNorm、必要に応じてbridgeへ伝播する。</li>
+<li><code>optimizer.step()</code>成功後に<code>apply_local_plasticity()</code>を1回だけ実行する。</li>
+<li>stepが中止・NaN・overflowで無効になった場合は<code>clear_local_plasticity()</code>を実行する。</li>
+</ol>
+<p>現行のprimary CSR局所更新はタスク誤差の厳密な勾配ではありません。モダリティ別性能、ルータ利用率、発火率、INT8値の飽和率を必須メトリクスにします。</p>
+<h3 id="artifact-manifest">artifact manifest</h3>
+<p>新しいartifactは少なくとも次を分離して保存します。</p>
+<table>
+<thead>
+<tr>
+<th>artifact</th>
+<th>必須内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model</td>
+<td>backbone、task head、モダリティadapterのstate dict</td>
+</tr>
+<tr>
+<td>config</td>
+<td>architecture識別子、全語彙range、<span class="arithmatex">\(D,R,L,M,K,A,\rho\)</span>、最大系列長、head設定</td>
+</tr>
+<tr>
+<td>tokenizer manifest</td>
+<td>text tokenizer ID/revision、image/audio codebook ID/revision、special token表</td>
+</tr>
+<tr>
+<td>encoder manifest</td>
+<td>vision/audio encoderクラス、入力shape、sample rate、feature設定、checkpoint digest</td>
+</tr>
+<tr>
+<td>memory report</td>
+<td>固定CSR、codebook、学習対象parameter、実測peak memory、batch/length条件</td>
+</tr>
+<tr>
+<td>metrics</td>
+<td>task metric、router利用率、発火/飽和率、遅延、データsplit</td>
+</tr>
+</tbody>
+</table>
+<p>既存<code>SparseEventMemoryConfig</code>はtext用であり、これらのモダリティ情報を表せません。新configは既存artifactとの互換性を偽装せず、別の<code>architecture</code>値を用います。</p>
+<hr />
+<h2 id="_12">メモリとストリーミングの設計判断</h2>
+<h3 id="_13">静的モデルメモリ</h3>
+<p>共通backboneのCSR保持量は既存の主式</p>
+<div class="arithmatex">\[
+M_{\mathrm{CSR}}=2LM\left(8(D+1)+9DF\right)
+\]</div>
+<p>を維持します。ただしマルチモーダル化で以下が追加されます。</p>
+<ul>
+<li>modality/position embeddingとadapterのAdam状態</li>
+<li>image/audio token codebook</li>
+<li>encoderおよびtokenizer bridgeの重み・活性化</li>
+<li>統合列長 <span class="arithmatex">\(S=S_t+N_i+N_a+special\)</span> に比例するdense hidden/output活性化</li>
+<li>task head logitsと候補集合</li>
+</ul>
+<p>したがって「CSR backboneが低メモリ」でも、画像/音声encoderと長い音声token列によりピークVRAMは増えます。各encoderのVRAMとbackboneを別計測し、統合時のピークを再測定します。</p>
+<h3 id="_14">ストリーミング</h3>
+<p>現行<code>generate()</code>は各新tokenでprefix全体を再評価し、<code>EventMemoryExpert</code>の膜電位はforward呼び出しごとに初期化されます。そのため現状はリアルタイムaudio/videoへ使えません。</p>
+<p>P3で導入する<code>MemoriedStreamingState</code>は、少なくとも以下を保持します。</p>
+<ul>
+<li>ブロック・選択expertごとのINT16 membraneとprevious spikes</li>
+<li>未確定audio chunkのtokenizer buffer</li>
+<li>統合token列のposition offset</li>
+<li>検証済みtoken数と生成cache境界</li>
+</ul>
+<p>最初の実装では、batch内のrouter選択がchunk間で変わる場合の状態再配置を安全に扱うため、<strong>routerをstream単位で固定するか、全expert状態を保持する</strong>方針を明示的に比較評価します。非選択expertをCPU/NVMeへpageする機能は現行に存在せず、P3完了条件には含めません。</p>
+<hr />
+<h2 id="_15">実装計画</h2>
+<h3 id="p0-backbone">P0 — テキストbackboneの契約固定</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>変更候補</th>
+<th>完了条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仕様固定</td>
+<td><code>evospikenet/sparse_event_memory.py</code>、本書</td>
+<td>token-only制約、時間状態、full logits、局所可塑性が明記される</td>
+</tr>
+<tr>
+<td>regression</td>
+<td><code>tests/unit/test_sparse_event_memory_lm.py</code></td>
+<td>token ID型、候補CE、CSR buffer/Adam分離を保持</td>
+</tr>
+<tr>
+<td>artifact</td>
+<td><code>evospikenet/sdk/sparse_event_memory.py</code></td>
+<td>既存text artifactを継続して再開可能</td>
+</tr>
+</tbody>
+</table>
+<h3 id="p1-tokenization-bridge">P1 — モダリティtokenization bridgeと統合データ契約（実装済みコア）</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>新規/変更候補</th>
+<th>完了条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>共通schema</td>
+<td><code>evospikenet/memoried_spikenetlm.py</code></td>
+<td><code>MultimodalTokenBatch</code>と<code>MultimodalSequenceBuilder</code>がIDs、modality IDs、maskを定義・生成</td>
+</tr>
+<tr>
+<td>画像bridge</td>
+<td><code>evospikenet/multimodal_tokenizers.py</code></td>
+<td><code>SpikingEvoVisionEncoder</code>出力から範囲内image IDsとmaskを返す</td>
+</tr>
+<tr>
+<td>音声bridge</td>
+<td>同上</td>
+<td>encoder特徴のVQと既存audio-language IDのrange adapterを提供。waveform直接入力・chunk metadataは未実装</td>
+</tr>
+<tr>
+<td>data loader</td>
+<td><code>dataloaders.py</code>または専用module</td>
+<td>text/image/audio欠損を含むbatchを一貫してcollate</td>
+</tr>
+<tr>
+<td>config</td>
+<td><code>evospikenet/sdk/memoried_spikenetlm.py</code></td>
+<td>語彙range、codebook revision、encoder設定をJSON化</td>
+</tr>
+</tbody>
+</table>
+<p>P1ではbridge単体を先に教師あり/自己教師ありで評価します。random codebookを実用tokenizerとして扱わず、codebookの学習・凍結・version固定の手順をテストで保証します。</p>
+<h3 id="p2-sparse-event-memory">P2 — モダリティ対応Sparse Event-Memoryモデルとオフライン学習（部分実装）</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>新規/変更候補</th>
+<th>完了条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>backbone</td>
+<td><code>MemoriedSpikeNetLM</code></td>
+<td>mask-aware router、modality/position表現、既存CSR局所更新を実装済み</td>
+</tr>
+<tr>
+<td>heads</td>
+<td><code>evospikenet/memoried_heads.py</code></td>
+<td>text、image-code、audio-code、pooling分類headを分離</td>
+</tr>
+<tr>
+<td>trainer</td>
+<td><code>examples/train_memoried_spikenetlm.py</code></td>
+<td>mixed modality batch、optimizer後のplasticity、resumeを実装</td>
+</tr>
+<tr>
+<td>metrics</td>
+<td><code>evospikenet/metrics/...</code></td>
+<td>task loss/accuracy、router分布、発火率、飽和率、peak memoryを記録</td>
+</tr>
+<tr>
+<td>API</td>
+<td><code>api_modules/multimodal_api.py</code></td>
+<td>既存denseモデルのrouteを壊さないarchitecture selectorを追加</td>
+</tr>
+<tr>
+<td>SDK</td>
+<td><code>evospikenet/sdk/memoried_spikenetlm.py</code></td>
+<td>config、artifact payload、uploadを実装済み。downloadとローカルdemoは未実装</td>
+</tr>
+</tbody>
+</table>
+<h3 id="p3">P3 — ストリーミング音声・映像</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>新規/変更候補</th>
+<th>完了条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>streaming state</td>
+<td><code>evospikenet/memoried_streaming.py</code></td>
+<td>chunk境界でtokenizer・event state・position offsetを保持</td>
+</tr>
+<tr>
+<td>audio route</td>
+<td><code>api_modules/multimodal_api.py</code>または専用router</td>
+<td>PCM/WAV chunk入力、backpressure、失効処理を実装</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>backbone/streaming module</td>
+<td>prefix再評価なしの増分結果が非streaming基準と許容差内で一致</td>
+</tr>
+<tr>
+<td>observability</td>
+<td>SDK/API metrics</td>
+<td>chunk latency、buffer量、drop率、router変化を記録</td>
+</tr>
+</tbody>
+</table>
+<h3 id="p4-sensor">P4 — 追加sensorと運用最適化</h3>
+<ul>
+<li>LiDAR、EEG、触覚などの<code>SensorTokenAdapter</code>を追加する。</li>
+<li>expert load balancing、capacity制御、長系列memory方策を導入する。</li>
+<li>GPU/CPU/NVMe expert pagingは、永続buffer転送と局所可塑性整合性のベンチマーク後に独立提案として扱う。</li>
+</ul>
+<hr />
+<h2 id="_16">テスト、受入基準、リスク</h2>
+<h3 id="_17">必須試験</h3>
+<table>
+<thead>
+<tr>
+<th>層</th>
+<th>試験</th>
+<th>受入基準</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tokenizer bridge</td>
+<td>image/audio ID範囲、決定性、pad/mask、codebook version</td>
+<td>範囲外IDなし、同一入力と凍結codebookで再現可能</td>
+</tr>
+<tr>
+<td>backbone</td>
+<td>mask、欠損モダリティ、mixed batch、局所可塑性clear</td>
+<td>paddingがrouter/可塑性統計に寄与しない</td>
+</tr>
+<tr>
+<td>head</td>
+<td>text/image/audio各損失</td>
+<td>target shape・ignore index・候補IDが検証される</td>
+</tr>
+<tr>
+<td>checkpoint</td>
+<td>text-only、audio、image、tri-modal</td>
+<td>config/manifest不一致時に安全に失敗する</td>
+</tr>
+<tr>
+<td>SDK/API</td>
+<td>artifact upload/download、architecture選択</td>
+<td>dense multimodal routeを回帰させない</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>peak VRAM、token/s、chunk遅延</td>
+<td>条件を併記したベースライン比較を保存する</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_18">主なリスク</h3>
+<ol>
+<li><strong>情報損失:</strong> 低rank/低codebookの量子化は画像細部や音声韻律を失う。bridge品質をbackbone性能と分離して測る。</li>
+<li><strong>長系列:</strong> 音声token数がtextを大幅に上回る。固定token予算、subsampling、chunkingを先に設計する。</li>
+<li><strong>局所可塑性の不安定性:</strong> 共有multimodal列では活動分布が異なる。モダリティ別統計、更新率、飽和率を監視する。</li>
+<li><strong>評価の混同:</strong> token CEだけでは画像/音声の知覚品質を保証しない。WER、event F1、retrieval、caption品質などtask metricを分ける。</li>
+<li><strong>既存互換性:</strong> <code>SpikingEvoMultiModalLM</code>のdense融合APIとcheckpointを上書きしない。新architecture discriminatorで並存させる。</li>
+</ol>
+<hr />
+<h2 id="sdk">現行SDKとドキュメントの位置付け</h2>
+<p><code>SparseEventMemoryConfig</code>、<code>build_sparse_event_memory_model()</code>、<code>upload_sparse_event_memory_artifacts()</code>は<strong>テキスト用Sparse Event-Memory LMだけ</strong>を対象にします。音声・画像・マルチモーダルartifactへ流用してはいけません。</p>
+<p>マルチモーダルには<code>MemoriedSpikeNetLMConfig</code>、<code>build_memoried_spikenetlm_model()</code>、<code>create_memoried_spikenetlm_artifact_payload()</code>、<code>upload_memoried_spikenetlm_artifacts()</code>を使用します。payloadにはモデル、config、token range・revision・encoder manifest、memory reportを分離して保存します。API architecture selector、artifact download、streaming APIは未実装です。</p>
+<h2 id="_19">関連文書</h2>
+<ul>
+<li><a href="../architecture/sparse_event_memory/detailed_model/">Sparse Evo-MemoryLM 詳細数理・メモリ設計</a></li>
+<li><a href="../architecture/sparse_event_memory/specification/">Sparse Event-Memory LM 仕様書</a></li>
+<li><a href="../SDK_SPARSE_EVENT_MEMORY_GUIDE/">SDK Sparse Event-Memory LM ガイド</a></li>
+<li><a href="../REMAINING_FUNCTIONALITY/">実装ステータス</a></li>
+<li><a href="./">English specification and plan</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最終更新日">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年8月14日 10:14:05 UTC">2026年8月14日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+<div class="md-copyright__highlight">
+  最終更新日: 2026-08-28 07:33:09 UTC
+</div>
+<div class="md-copyright__highlight">
+  Copyright evospikenet.org
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/i18n-nav-fix.js"></script>
+      
+        <script src="../javascripts/set-logo-link.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/polyfill-library/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

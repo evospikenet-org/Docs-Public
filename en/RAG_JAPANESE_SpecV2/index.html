@@ -1,0 +1,9358 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://evospikenet-org.github.io/Docs-Public/en/RAG_JAPANESE_SpecV2/">
+      
+      
+        <link rel="prev" href="../RAG_REMAINING_FUNCTIONALITY/">
+      
+      
+        <link rel="next" href="../RAG_JAPANESE_EVALUATE_GUIDE/">
+      
+      
+        
+          <link rel="alternate" href="../../RAG_JAPANESE_SpecV2/" hreflang="ja">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>RAG 日本語仕様書 V2 - EvoSpikeNet Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#evospikenet-rag-system-japanese-search-optimization-specification-detailed" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="EvoSpikeNet Documentation" class="md-header__button md-logo" aria-label="EvoSpikeNet Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EvoSpikeNet Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RAG 日本語仕様書 V2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../RAG_JAPANESE_SpecV2/" hreflang="ja" class="md-select__link">
+              日本語
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../learning_guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  学習ガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../faq/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../release_notes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  リリースノート
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quizzes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  クイズ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MULTILINGUAL_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  多言語ドキュメントガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MULTILINGUAL_COMPLETION_REPORT/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  多言語化完了レポート
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/installation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  スタートガイド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/basic_features/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  概念・製品仕様
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/biomimetic_systems/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  生物学的模倣・自己進化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/distributed_brain/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  分散脳アーキテクチャ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../guides/memory_and_rag/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  記憶・言語・RAG
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/sdk_and_api/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SDK・API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/deployment_and_operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  運用・インフラ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/security_and_quality/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  セキュリティ・テスト・品質
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/research_and_multimodal/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  研究・応用・拡張
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../applications/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  応用例
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../documentation_index/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  索引・リファレンス
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="EvoSpikeNet Documentation" class="md-nav__button md-logo" aria-label="EvoSpikeNet Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/favicon.png" alt="logo">
+
+    </a>
+    EvoSpikeNet Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learning_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学習ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    リリースノート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クイズ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MULTILINGUAL_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多言語ドキュメントガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MULTILINGUAL_COMPLETION_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多言語化完了レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    スタートガイド
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    スタートガイド
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インストール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/first_simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    初めてのシミュレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BUILD_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ビルドガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_BUILD_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker ビルドガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_BUILD_MODES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker ビルドモード完全ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_PUBLISHING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker パブリッシングガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TROUBLESHOOTING_DOCKER_BUILDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker トラブルシューティング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONDA_SETUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conda セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GPU_CPU_LAUNCH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU/CPU クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MKDOCS_BUILD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs ビルド手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概念・製品仕様
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    概念・製品仕様
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/basic_features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core features and onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVOSPIKENET_CONCEPTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet コア概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRODUCT_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    製品概要書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEATURE_SPEC_TABLE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    機能スペック表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SOURCE_CODE_IMPLEMENTATION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ソースコード実装詳細ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../REMAINING_FUNCTIONALITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装ステータス（残存機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INFERENCE_PIPELINE_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推論パイプライン実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DATA_HANDLING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    データハンドリング方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEPENDENCY_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係管理ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEPENDENCY_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係アーキテクチャ改善
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEPENDENCY_IMPROVEMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係改善完了レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONFIGURATION_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    設定外部化実装ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ENVIRONMENT_VARIABLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    環境変数運用方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONNECT_BACKENDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バックエンド接続手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生物学的模倣・自己進化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    生物学的模倣・自己進化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/biomimetic_systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Biomimetic systems and evolutionary learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BIOMIMETIC_IMPLIMENTATION_PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生物模倣強化プラン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_SELF_EVOLUTION_11_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自己進化高度化 11.7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_EVOLUTION_PHASE5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    進化フェーズ 5-6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AEG_IMPLEMENTATION_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AEG 実装概要
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_DECISION_ENGINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高度意思決定エンジン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AUTO_RECOVERY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自動回復機能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Q_PFC_ADAPTIVE_CONTROL_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Q-PFC 適応制御ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BACKPROP_IMPLEMENTATION_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バックプロパゲーション実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEV_BATCH_SHAPING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バッチシェーピング設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TRACKING_ACTION_MODELS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    トラッキング・行為認識モデル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../architecture/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分散脳アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    分散脳アーキテクチャ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/distributed_brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Distributed brain architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_SYSTEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分散脳システム技術仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_NODE_TYPES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノードタイプ仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_NODE_CONFIGURATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノード構成とモデルマッピング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_SPATIAL_NODES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    空間処理ノード仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_28NODE_EVALUATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28ノード評価
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DYNAMIC_LOAD_BALANCING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動的負荷分散
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FULL_BRAIN_NODE_REQUIREMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フル脳ノード要件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FULL_BRAIN_UI_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フル脳UI実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_SEQUENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動作フロー・シーケンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_EEG_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EEG 統合システム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_LLM_VERIFICATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_IMPLEMENTATION_VERIFICATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装完了検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_LOGGING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノードログ表示ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_MODEL_ARTIFACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モデルアーティファクト一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_METRICS_UI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メトリクス UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SPIKE_COMMUNICATION_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spike 通信分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBNノードアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_EXTERNAL_OPTIMIZATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN外部定義最適化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SECURE_DISTRIBUTED_BRAIN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュア分散脳シミュレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_NODE_DISCOVERY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノード発見（高度）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GEO_NODE_MANAGER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地理ノードマネージャー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ZENOH_VS_TORCH_DISTRIBUTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zenoh vs torch.distributed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CENTRALIZED_LOGGING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集中ロギングシステム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEDERATED_DB_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フェデレーテッドDB統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEDERATED_AGGREGATOR_SELECTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集約LLM選択戦略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/dense_chronospike_lm_training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dense Chrono-Spike LM 学習
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    記憶・言語・RAG
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    記憶・言語・RAG
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/memory_and_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory management and RAG systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../architecture/sparse_event_memory/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sparse Event-Memory LM
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12_2" id="__nav_12_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sparse Event-Memory LM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/sparse_event_memory/specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/sparse_event_memory/detailed_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    詳細数理・メモリ設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SPARSE_EVO_MEMORYLM_SYSTEM_REVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sparse Evo-MemoryLM システムレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMORY_ORCHESTRATION_E2E_SPEC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Orchestration End-to-End 仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMORY_ORCHESTRATION_MONITORING_SLO_SLA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Orchestration 監視仕様（SLO/SLA）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMORY_LEARNING_INTEGRATION_CONTROL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メモリと学習の統合制御設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EPISODIC_MEMORY_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エピソード記憶実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BRAIN_LANGUAGE_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脳内言語アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BRain_Language_Vocab_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Language Vocab README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMERIED_SPIKENETLM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEMERIED SpikeNetLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SWITCH_TO_EVOSPIKENET_LM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet LM への切替
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EvoLLMConverter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo-LLM Converter 設計書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM_INTEGRATION_STRATEGY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 統合戦略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM_TRAINING_SYSTEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 学習システム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LANGUAGE_MODEL_ARCHITECTURE_COMPATIBILITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LanguageModel アーキテクチャ互換性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LANGUAGE_MODEL_GPU_CAPACITY_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LanguageModel GPU 容量検証ポリシー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_SYSTEM_DETAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG システム詳細解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_REMAINING_FUNCTIONALITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 2.0 残存機能・将来フェーズ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語仕様書 V2
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語仕様書 V2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-system-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. System Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. System Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-architecture-overview-v30-memory-augmented" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Architecture Overview (v3.0: Memory-Augmented)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-2026-05-23-implementation-status-and-operational-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 2026-05-23 Implementation Status and Operational Notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-requirements-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Requirements Definition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Requirements Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Functional Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Functional Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fr-1-hybrid-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FR-1: Hybrid Search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fr-2-japanese-specific-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FR-2: Japanese-Specific Processing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fr-3-evaluation-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FR-3: Evaluation Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Non-Functional Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Non-Functional Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nfr-1-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NFR-1: Performance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nfr-2-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NFR-2: Availability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nfr-3-scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NFR-3: Scalability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nfr-4-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NFR-4: Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-technical-specification-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Technical Specification Details
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Technical Specification Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-34-previous-sections-language-detection-tokenization-ner-query-expansion-remain-unchanged" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 - 3.4 [Previous sections: Language Detection, Tokenization, NER, Query Expansion remain unchanged]
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-evospikenet-core-memory-system-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 EvoSpikeNet Core Memory System Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 EvoSpikeNet Core Memory System Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-core-components-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.1 Core Components Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-integration-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.2 Integration Sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-semanticmemory-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.3 SemanticMemory Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#354-episodicmemory-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.4 EpisodicMemory Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#355-longtermmemorymodule-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.5 LongTermMemoryModule Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#356-embedding-dimension-unification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.6 Embedding Dimension Unification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#357-ragmemoryintegrator-facade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.7 RAGMemoryIntegrator Façade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-feedback-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Feedback API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-memory-integrated-api-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Memory-Integrated API Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-search-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Search Algorithm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Search Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-language-specific-search-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Language-Specific Search Strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 Language-Specific Search Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#japanese-query-case-v30-memory-enhancednnnquery-project-ev-2024-001-progress-reportn-nnormalize-project-ev-2024-001-progress-reportn-ntokenize-with-sudachi-project-ev-2024-001-progress-reportn-nentity-extract-project_id-ev-2024-001n-nsemanticmemoryretrieve_semantic_knowledgeev-2024-001-top_k5n-related-concepts-q-pfc-loop-082-aeg-phase4-071n-boost-enrichment-project_id-50-1-082-05-705n-nepisodicmemoryintegrate_episodic_semanticquery_contextn-semantic_concepts-ev-2024-001-q-pfc-loopn-semantic_knowledge-ev-2024-001-is-q-pfc-control-integration-in-phase4n-nquery-expansion-optionaln-dictionary-llm-ev-2024-001-progress-phase-4-status-reportn-ndual-searchn-elasticsearch-bm25-sudachi-enriched-boost-705n-milvus-l2-384-dim-vector-searchn-nrrf-fusion-entity-boost-705-rankingn-nepisodicmemoryretrieve_memoriesquery_context-top_k3n-past-sessions-doc_idsdoc_adoc_b-reward08-score091-n-add-past-high-rated-documents-scores-with-memory_boostn-ntop-5-documents-response-generationn-nuser-rating-rating4-reward-08n-nlongtermmemorymodulestore_spike_episodespike_seq-context-reward08n-recurrentretentioncircuit-gru-importance-072n-episodicmemorystore_experienceimportance072n-nstore-to-long-term-memory-memory_idepi_20260520_001-used-in-future-similar-queriesn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Japanese Query Case (v3.0: Memory-Enhanced)\n\n\nQuery: "Project EV-2024-001 progress report"\n ↓\n[Normalize] → "Project EV-2024-001 progress report"\n ↓\n[Tokenize with Sudachi] → ["Project", "EV-2024-001", "progress", "report"]\n ↓\n[Entity Extract] → {PROJECT_ID: ["EV-2024-001"]}\n ↓\n[SemanticMemory.retrieve_semantic_knowledge("EV-2024-001", top_k=5)]\n → Related concepts: [("Q-PFC Loop", 0.82), ("AEG Phase4", 0.71)]\n → Boost enrichment: PROJECT_ID = 5.0 × (1 + 0.82 × 0.5) = 7.05\n ↓\n[EpisodicMemory.integrate_episodic_semantic(query_context)]\n → semantic_concepts: ["EV-2024-001", "Q-PFC Loop"]\n → semantic_knowledge: ["EV-2024-001 is Q-PFC control integration in Phase4"]\n ↓\n[Query Expansion (Optional)]\n - Dictionary + LLM: ["EV-2024-001 progress", "Phase 4 status report"]\n ↓\n[Dual Search]\n - Elasticsearch: BM25 (Sudachi + enriched Boost 7.05)\n - Milvus: L2 384-dim vector search\n ↓\n[RRF Fusion + Entity Boost (7.05)] → Ranking\n ↓\n[EpisodicMemory.retrieve_memories(query_context, top_k=3)]\n → Past sessions: [{doc_ids:["DOC_A","DOC_B"], reward:0.8, score:0.91}, ...]\n → Add past high-rated documents scores with +memory_boost\n ↓\n[Top-5 Documents] → Response generation\n ↓\n[User rating: rating=4] → reward = 0.8\n ↓\n[LongTermMemoryModule.store_spike_episode(spike_seq, context, reward=0.8)]\n → RecurrentRetentionCircuit (GRU) → importance = 0.72\n → EpisodicMemory.store_experience(importance=0.72)\n ↓\n[Store to long-term memory: memory_id="epi_20260520_001"] (used in future similar queries)\n
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#english-query-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        English Query Case
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-ranking-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Ranking Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-memory-enhanced-ranking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Memory-Enhanced Ranking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 Memory-Enhanced Ranking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scoring-formula-v30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scoring Formula (v3.0)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory_boost-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        memory_boost Calculation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-enhanced-ranking-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory-Enhanced Ranking Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-evaluation-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Evaluation &amp; Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Evaluation &amp; Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Test Cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-evaluation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Evaluation Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Deployment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-environment-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Environment Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-mrr-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: MRR &lt; 0.5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-entity-recall-08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Entity Recall &lt; 0.8
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-query-latency-500ms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Query latency &gt; 500ms
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-appendix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Appendix
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Appendix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-dependencies-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Dependencies List
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-related-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Related Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_JAPANESE_EVALUATE_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語評価ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_JAPANESE_PARTICLE_ISSUE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語助詞問題
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QUERY_RESPONSE_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全脳クエリレスポンス解析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SIMULATION_RECORDING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シミュレーション記録ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SIMULATION_RECORDING_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シミュレーション記録 README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ZIGZAG_WHERE_WHAT_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Where-What 統合ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK・API
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SDK・API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/sdk_and_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK and API integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_QUICKSTART/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_INSTALLATION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK インストールガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_TUTORIAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK チュートリアル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DEVELOPER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 開発者ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_CONFIGURATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 設定ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK API リファレンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EvoSpikeNet_SDK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK（全機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DOCUMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ドキュメント概要
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DOCUMENTATION_INDEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ドキュメントインデックス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 変更履歴
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_ENHANCEMENT_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 機能強化・実装詳細
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_SPARSE_EVENT_MEMORY_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK Sparse Event-Memory LM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DEVICE_PLUGIN_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK デバイスプラグインガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_SDK_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN SDK統合ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBNノードアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_EXTERNAL_OPTIMIZATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN外部定義最適化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_SOLVER_PLUGIN_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ソルバープラグインガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_LOIHI_BRAIN2LOIHI_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK Loihi Brain2Loihi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVALUATOR_SDK_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    評価系 SDK ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVALUATOR_SDK_SAMPLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    評価系 SDK サンプル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PLUGIN_MICROSERVICES_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグインアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVOSPIKENET_PLUGIN_FEASIBILITY_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグイン化 実装可能性評価
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVOSPIKENET_PLUGIN_IMPLEMENTATION_ROADMAP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグイン化 実装ロードマップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PLUGIN_DOC_SYNC_MATRIX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin ドキュメント同期マトリクス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker_sdk_model_status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker SDK モデル配置状況
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/openapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAPI スキーマ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    運用・インフラ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    運用・インフラ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/deployment_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment, operations, and infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPC_SETUP_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPC 環境セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NGC_JUPYTER_SETUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NGC Jupyter セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NGC_VERIFICATION_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NGC 動作確認チェックリスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LARGE_SCALE_TRAINING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大規模学習ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INFRASTRUCTURE_AS_CODE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure as Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DB_MIGRATION_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    データベースマイグレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../E2E_RUNBOOK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E2E 実行ランブック
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MULTI_NODE_INTEGRATION_TESTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    マルチノード統合テスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HCP_DOWNLOAD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HCP ダウンロード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VAULT_K8S_EXAMPLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vault + Kubernetes 例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュリティ・テスト・品質
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    セキュリティ・テスト・品質
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/security_and_quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, audit, and quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TESTING_MARKERS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストマーカーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TEST_DATA_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストデータ管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TEST_MENU_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テスト統合メニュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TEST_CONSOLIDATION_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テスト統合レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VALIDATION_EXECUTION_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    検証実行サマリー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SECURE_KEY_INJECTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュアキー注入管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AUDIT_LOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    監査ログ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ERROR_MESSAGES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エラーメッセージ一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EXCEPTION_HANDLING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    例外処理ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EXCEPTION_LOGGING_IMPROVEMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    例外ログ改善レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BROKEN_LINKS_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    壊れたリンクレポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CI_BUILD_MATRIX_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI ビルドマトリクスガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FORK_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fork & Upstream 同期ポリシー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRIVACY_AND_AUTH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プライバシー・認証
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HEALTH_DATA_COMPLIANCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    健康データコンプライアンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/coding_standards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コーディング規約
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究・応用・拡張
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    研究・応用・拡張
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/research_and_multimodal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research, multimodal, and expansion domains
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NEUROSCIENCE_BRAIN_SIMULATION_BRIEF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    神経科学・脳シミュレーション研究要旨
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NEUROSCIENCE_BRAIN_SIMULATION_PAPER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    神経科学・脳シミュレーション論文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HUMAN_BRAIN_FULL_SIMULATION_CONCEPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全脳再現システム概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONNECTOME_INTEGRATION_PAPER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム統合論文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connectome_evospikenet_implementation_policy.ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム統合実装方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connectome_literature_review.ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム文献レビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONNECTOME_MIRROR_TEMPLATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトームミラーテンプレート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../detailed_paper_summaries.ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代表論文詳細要約
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HUMANOID_ROBOT_DESIGN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ヒューマノイドロボット詳細設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SENSOR_DRIVER_DEVELOPMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    センサードライバ開発
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VIDEO_AUDIO_ANALYSIS_SPEC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動画・音声解析仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VIDEO_AUDIO_MODEL_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動画・音声モデル統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edge_implementation_plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エッジ実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edge_phase1_5_implementation_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エッジ Phase 1-5 実装報告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evospikenet_edge_validation_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet エッジ検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FRONTEND_FILE_UI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フロントエンドファイル管理 UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FRONTEND_UI_IMPLEMENTATION_PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フロントエンド UI 実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../applications/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    応用例
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    応用例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_17_2" id="__nav_17_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainOS（次世代版）
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BrainOS（次世代版）
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_overview_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概要仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_detailed_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    詳細仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_implementation_plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装プラン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユースケース・応用例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/BrainOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainOS 互換ページ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/core_social_implementation_apps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet-Core 社会実装アプリ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    索引・リファレンス
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    索引・リファレンス
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ドキュメントマップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../USER_MANUAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーマニュアル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK API リファレンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EvoSpikeNet_SDK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK（全機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-system-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. System Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. System Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-architecture-overview-v30-memory-augmented" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Architecture Overview (v3.0: Memory-Augmented)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-2026-05-23-implementation-status-and-operational-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 2026-05-23 Implementation Status and Operational Notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-requirements-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Requirements Definition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Requirements Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Functional Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Functional Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fr-1-hybrid-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FR-1: Hybrid Search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fr-2-japanese-specific-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FR-2: Japanese-Specific Processing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fr-3-evaluation-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FR-3: Evaluation Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Non-Functional Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Non-Functional Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nfr-1-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NFR-1: Performance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nfr-2-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NFR-2: Availability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nfr-3-scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NFR-3: Scalability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nfr-4-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NFR-4: Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-technical-specification-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Technical Specification Details
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Technical Specification Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-34-previous-sections-language-detection-tokenization-ner-query-expansion-remain-unchanged" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 - 3.4 [Previous sections: Language Detection, Tokenization, NER, Query Expansion remain unchanged]
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-evospikenet-core-memory-system-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 EvoSpikeNet Core Memory System Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 EvoSpikeNet Core Memory System Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-core-components-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.1 Core Components Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-integration-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.2 Integration Sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-semanticmemory-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.3 SemanticMemory Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#354-episodicmemory-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.4 EpisodicMemory Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#355-longtermmemorymodule-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.5 LongTermMemoryModule Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#356-embedding-dimension-unification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.6 Embedding Dimension Unification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#357-ragmemoryintegrator-facade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.7 RAGMemoryIntegrator Façade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-feedback-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Feedback API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-memory-integrated-api-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Memory-Integrated API Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-search-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Search Algorithm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Search Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-language-specific-search-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Language-Specific Search Strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 Language-Specific Search Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#japanese-query-case-v30-memory-enhancednnnquery-project-ev-2024-001-progress-reportn-nnormalize-project-ev-2024-001-progress-reportn-ntokenize-with-sudachi-project-ev-2024-001-progress-reportn-nentity-extract-project_id-ev-2024-001n-nsemanticmemoryretrieve_semantic_knowledgeev-2024-001-top_k5n-related-concepts-q-pfc-loop-082-aeg-phase4-071n-boost-enrichment-project_id-50-1-082-05-705n-nepisodicmemoryintegrate_episodic_semanticquery_contextn-semantic_concepts-ev-2024-001-q-pfc-loopn-semantic_knowledge-ev-2024-001-is-q-pfc-control-integration-in-phase4n-nquery-expansion-optionaln-dictionary-llm-ev-2024-001-progress-phase-4-status-reportn-ndual-searchn-elasticsearch-bm25-sudachi-enriched-boost-705n-milvus-l2-384-dim-vector-searchn-nrrf-fusion-entity-boost-705-rankingn-nepisodicmemoryretrieve_memoriesquery_context-top_k3n-past-sessions-doc_idsdoc_adoc_b-reward08-score091-n-add-past-high-rated-documents-scores-with-memory_boostn-ntop-5-documents-response-generationn-nuser-rating-rating4-reward-08n-nlongtermmemorymodulestore_spike_episodespike_seq-context-reward08n-recurrentretentioncircuit-gru-importance-072n-episodicmemorystore_experienceimportance072n-nstore-to-long-term-memory-memory_idepi_20260520_001-used-in-future-similar-queriesn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Japanese Query Case (v3.0: Memory-Enhanced)\n\n\nQuery: "Project EV-2024-001 progress report"\n ↓\n[Normalize] → "Project EV-2024-001 progress report"\n ↓\n[Tokenize with Sudachi] → ["Project", "EV-2024-001", "progress", "report"]\n ↓\n[Entity Extract] → {PROJECT_ID: ["EV-2024-001"]}\n ↓\n[SemanticMemory.retrieve_semantic_knowledge("EV-2024-001", top_k=5)]\n → Related concepts: [("Q-PFC Loop", 0.82), ("AEG Phase4", 0.71)]\n → Boost enrichment: PROJECT_ID = 5.0 × (1 + 0.82 × 0.5) = 7.05\n ↓\n[EpisodicMemory.integrate_episodic_semantic(query_context)]\n → semantic_concepts: ["EV-2024-001", "Q-PFC Loop"]\n → semantic_knowledge: ["EV-2024-001 is Q-PFC control integration in Phase4"]\n ↓\n[Query Expansion (Optional)]\n - Dictionary + LLM: ["EV-2024-001 progress", "Phase 4 status report"]\n ↓\n[Dual Search]\n - Elasticsearch: BM25 (Sudachi + enriched Boost 7.05)\n - Milvus: L2 384-dim vector search\n ↓\n[RRF Fusion + Entity Boost (7.05)] → Ranking\n ↓\n[EpisodicMemory.retrieve_memories(query_context, top_k=3)]\n → Past sessions: [{doc_ids:["DOC_A","DOC_B"], reward:0.8, score:0.91}, ...]\n → Add past high-rated documents scores with +memory_boost\n ↓\n[Top-5 Documents] → Response generation\n ↓\n[User rating: rating=4] → reward = 0.8\n ↓\n[LongTermMemoryModule.store_spike_episode(spike_seq, context, reward=0.8)]\n → RecurrentRetentionCircuit (GRU) → importance = 0.72\n → EpisodicMemory.store_experience(importance=0.72)\n ↓\n[Store to long-term memory: memory_id="epi_20260520_001"] (used in future similar queries)\n
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#english-query-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        English Query Case
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-ranking-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Ranking Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-memory-enhanced-ranking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Memory-Enhanced Ranking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 Memory-Enhanced Ranking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scoring-formula-v30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scoring Formula (v3.0)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory_boost-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        memory_boost Calculation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-enhanced-ranking-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory-Enhanced Ranking Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-evaluation-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Evaluation &amp; Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Evaluation &amp; Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Test Cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-evaluation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Evaluation Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Deployment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-environment-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Environment Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-mrr-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: MRR &lt; 0.5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-entity-recall-08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Entity Recall &lt; 0.8
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-query-latency-500ms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Query latency &gt; 500ms
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-appendix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Appendix
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Appendix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-dependencies-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Dependencies List
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-related-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Related Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="evospikenet-rag-system-japanese-search-optimization-specification-detailed">EvoSpikeNet RAG System - Japanese Search Optimization Specification (Detailed)</h1>
+<p><strong>Version</strong>: 3.1<br />
+<strong>Date</strong>: 2026-05-23<br />
+<strong>Status</strong>: Implemented with Operational Hardening<br />
+<strong>Document ID</strong>: RAG-JP-SPEC-V3.1-001<br />
+<strong>v3.1 Changes</strong>: Synchronized the API contract with the current implementation. Reflected RRF accumulation across query expansions, final-score reranking with <code>memory_boost</code>, and Unit / Integration / System / E2E contract tests.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>System Overview<ul>
+<li>1.4 2026-05-23 Implementation Status and Operational Notes</li>
+</ul>
+</li>
+<li>Requirements Definition</li>
+<li>Technical Specification Details</li>
+<li>3.5 EvoSpikeNet Core Memory System Integration</li>
+<li>API Specification</li>
+<li>4.3 Memory-Integrated API Flow</li>
+<li>Search Algorithm</li>
+<li>5.3 Memory-Enhanced Ranking</li>
+<li>Evaluation &amp; Testing</li>
+<li>Deployment</li>
+<li>Troubleshooting</li>
+<li>Appendix</li>
+</ol>
+<hr />
+<h2 id="1-system-overview">1. System Overview</h2>
+<h3 id="11-purpose">1.1 Purpose</h3>
+<p>Improve Japanese search accuracy of the EvoSpikeNet-Core RAG system by addressing:</p>
+<ul>
+<li><strong>Text Variations</strong>: Mutual search for "盆休み" and "お盆休み"</li>
+<li><strong>Named Entities</strong>: Accurate search for project ID "EV-2024-001"</li>
+<li><strong>Synonyms</strong>: Unified search for "会議", "ミーティング", "カンファレンス"</li>
+</ul>
+<h3 id="12-scope">1.2 Scope</h3>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Included</th>
+<th>Excluded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Language</td>
+<td>Japanese (primary), English</td>
+<td>Chinese, Korean</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>Hybrid (BM25 + Vector)</td>
+<td>Full-text only</td>
+</tr>
+<tr>
+<td>Features</td>
+<td>RAG Pipeline</td>
+<td>Generative Model</td>
+</tr>
+<tr>
+<td>Scale</td>
+<td>1M+ documents</td>
+<td>Real-time Streaming</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-architecture-overview-v30-memory-augmented">1.3 Architecture Overview (v3.0: Memory-Augmented)</h3>
+<pre class="mermaid"><code>flowchart TD
+    Q["User Query&lt;br/&gt;(Japanese)"] --&gt; DETECT["Language Detection"]
+    DETECT --&gt; NER["NER/Entity Extraction"]
+    NER --&gt; SM_Q["SemanticMemory&lt;br/&gt;.retrieve_semantic_knowledge()"]
+    SM_Q --&gt; EP_ENR["EpisodicMemory&lt;br/&gt;.integrate_episodic_semantic()"]
+
+    EP_ENR --&gt; NORM["Normalize &amp; Expand"]
+    NORM --&gt; ES["Elasticsearch&lt;br/&gt;BM25 + Entity Boost"]
+    NORM --&gt; MV["Milvus&lt;br/&gt;Vector Search"]
+
+    ES --&gt; RRF["RRF Fusion&lt;br/&gt;+ Boost"]
+    MV --&gt; RRF
+
+    RRF --&gt; EP_RET["EpisodicMemory&lt;br/&gt;.retrieve_memories()"]
+    EP_RET --&gt; STORE["Reranking with&lt;br/&gt;Memory Scores"]
+
+    STORE --&gt; TOP["Top-K Results"]
+    TOP --&gt; RESP["Generate Response"]
+
+    RESP --&gt; RATE["User Feedback&lt;br/&gt;(rating)"]
+    RATE --&gt; LTM["LongTermMemoryModule&lt;br/&gt;.store_spike_episode()"]
+
+    style SM_Q fill:#e1f5ff
+    style EP_ENR fill:#e1f5ff
+    style EP_RET fill:#e1f5ff
+    style LTM fill:#f3e5f5
+    style STORE fill:#fff3e0</code></pre>
+<h3 id="14-2026-05-23-implementation-status-and-operational-notes">1.4 2026-05-23 Implementation Status and Operational Notes</h3>
+<p>The core scope of this specification is already implemented, primarily in <code>EvoSpikeNet-Core/evospikenet/api_modules/rag_v2_api.py</code> and <code>EvoSpikeNet-Core/evospikenet/rag_memory_integrator.py</code>. The points below summarize the current runtime behavior.</p>
+<ul>
+<li>Implemented APIs:<ul>
+<li><code>POST /api/v2/rag/search</code></li>
+<li><code>POST /api/v2/rag/feedback</code></li>
+<li><code>GET /api/v2/rag/preprocessing/health</code></li>
+</ul>
+</li>
+<li>Preprocessing responsibilities are explicitly separated into:<ul>
+<li><code>SudachiTokenizer</code></li>
+<li><code>EntityRecognizer</code></li>
+<li><code>QueryExpander</code></li>
+</ul>
+</li>
+<li>Production-like policy:<ul>
+<li>In <code>production/staging</code>, unresolved dependencies are treated as fail-closed and the system does not fall back to placeholder embeddings or synthetic responses.</li>
+</ul>
+</li>
+<li>Embedding policy:<ul>
+<li>A real <code>SentenceTransformer</code> encoder is required and the embedding dimension is unified at 384.</li>
+</ul>
+</li>
+<li>QueryExpander:<ul>
+<li>Supports <code>rule|llm|hybrid</code> backends.</li>
+<li>LLM output is accepted only as JSON in the form <code>{"expansions": [...]}</code>.</li>
+</ul>
+</li>
+<li>Quality guard:<ul>
+<li>Evaluates diversity and redundancy and automatically falls back to the <code>rule</code> backend when expansion quality is low.</li>
+</ul>
+</li>
+<li>Observability:<ul>
+<li><code>debug_info.preprocessing</code> exposes quality metrics, guard statistics, history, and <code>query_hash</code> summaries.</li>
+<li>Startup warmup and the health endpoint are used to verify preprocessing readiness.</li>
+</ul>
+</li>
+<li>Main operational settings:<ul>
+<li><code>RAG_V2_NER_*</code></li>
+<li><code>RAG_V2_PREPROCESSING_*</code></li>
+<li><code>RAG_V2_SUDACHI_*</code></li>
+<li><code>RAG_V2_QUERY_EXPANDER_*</code></li>
+</ul>
+</li>
+<li>Future expansion items:<ul>
+<li>Context-aware RRF</li>
+<li>NER fine-tuning</li>
+<li>Automated feedback optimization</li>
+<li>Multilingual rollout</li>
+<li>See <a href="../RAG_REMAINING_FUNCTIONALITY/">RAG_REMAINING_FUNCTIONALITY.en.md</a> for roadmap details.</li>
+</ul>
+</li>
+<li>2026-05-23 verification update:<ul>
+<li>Search results from query expansions are merged by adding RRF scores per <code>doc_id</code>.</li>
+<li><code>memory_boost</code> is added to the final score, and result ranks are assigned after final-score sorting.</li>
+<li><code>POST /api/v2/rag/feedback</code> requires <code>session_id</code> and returns <code>memory_id</code> plus <code>importance</code> after storage.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="2-requirements-definition">2. Requirements Definition</h2>
+<h3 id="21-functional-requirements">2.1 Functional Requirements</h3>
+<h4 id="fr-1-hybrid-search">FR-1: Hybrid Search</h4>
+<p><strong>Requirement</strong>: Integrate BM25 keyword search and vector search</p>
+<div class="highlight"><pre><span></span><code>Query latency: &lt; 500ms @ top-10
+Accuracy (NDCG@10): &gt; 0.75 at production
+Throughput: 100 queries/sec
+</code></pre></div>
+<p><strong>Implementation</strong>: RRF (k=60) score integration</p>
+<h4 id="fr-2-japanese-specific-processing">FR-2: Japanese-Specific Processing</h4>
+<p><strong>Requirement</strong>: Handle Japanese text variations and synonyms</p>
+<div class="highlight"><pre><span></span><code>Variation Coverage: &gt; 80%
+Entity Recognition Recall: &gt; 80%
+Variation normalization overhead: &lt; 5ms
+</code></pre></div>
+<p><strong>Implementation</strong>: 
+- Sudachi tokenization
+- NER entity extraction
+- Query Expansion for synonyms</p>
+<h4 id="fr-3-evaluation-framework">FR-3: Evaluation Framework</h4>
+<p><strong>Requirement</strong>: Regular evaluation of search accuracy</p>
+<div class="highlight"><pre><span></span><code>Test cases: &gt;= 50
+Evaluation metrics: MRR, NDCG, Recall, Precision
+Automated evaluation script: Implemented
+</code></pre></div>
+<h3 id="22-non-functional-requirements">2.2 Non-Functional Requirements</h3>
+<h4 id="nfr-1-performance">NFR-1: Performance</h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Requirement</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P95 Latency</td>
+<td>&lt; 300ms</td>
+<td>query latency monitor</td>
+</tr>
+<tr>
+<td>P99 Latency</td>
+<td>&lt; 800ms</td>
+<td>query latency monitor</td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td>&gt;= 100 q/s</td>
+<td>load testing</td>
+</tr>
+<tr>
+<td>Index Rebuild</td>
+<td>&lt; 4h</td>
+<td>full rebuild time</td>
+</tr>
+</tbody>
+</table>
+<h4 id="nfr-2-availability">NFR-2: Availability</h4>
+<div class="highlight"><pre><span></span><code>Availability: &gt;= 99.5%
+MTTR (Mean Time To Recovery): &lt; 5 min
+Backup frequency: Daily
+</code></pre></div>
+<h4 id="nfr-3-scalability">NFR-3: Scalability</h4>
+<div class="highlight"><pre><span></span><code>Document Scaling: Up to 10M docs
+Language Support: Extensible to 3+ languages
+Customization: External rule/dictionary management
+</code></pre></div>
+<h4 id="nfr-4-security">NFR-4: Security</h4>
+<div class="highlight"><pre><span></span><code>Access Control: Role-based (RBAC)
+Data Encryption: in-transit (TLS) and at-rest
+Audit Logging: All query access
+</code></pre></div>
+<hr />
+<h2 id="3-technical-specification-details">3. Technical Specification Details</h2>
+<h3 id="31-34-previous-sections-language-detection-tokenization-ner-query-expansion-remain-unchanged">3.1 - 3.4 [Previous sections: Language Detection, Tokenization, NER, Query Expansion remain unchanged]</h3>
+<hr />
+<h2 id="35-evospikenet-core-memory-system-integration">3.5 EvoSpikeNet Core Memory System Integration</h2>
+<p>v3.0 integrates three memory modules from EvoSpikeNet-Core SDK to enhance RAG context enrichment and feedback loops.</p>
+<h3 id="351-core-components-overview">3.5.1 Core Components Overview</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Module</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SemanticMemory</code></td>
+<td><code>episodic_memory.py</code></td>
+<td>Entity concept knowledge graph + semantic enrichment</td>
+</tr>
+<tr>
+<td><code>EpisodicMemory</code></td>
+<td><code>episodic_memory.py</code></td>
+<td>Search session storage &amp; retrieval</td>
+</tr>
+<tr>
+<td><code>LongTermMemoryModule</code></td>
+<td><code>long_term_memory.py</code></td>
+<td>SNN gating + importance scoring + forgetting</td>
+</tr>
+<tr>
+<td><code>RAGSemanticLoader</code></td>
+<td><em>New</em></td>
+<td>Load domain vocabulary into SemanticMemory</td>
+</tr>
+<tr>
+<td><code>RAGEpisodicRecorder</code></td>
+<td><em>New</em></td>
+<td>Record search sessions &amp; user feedback</td>
+</tr>
+<tr>
+<td><code>RAGLongTermIntegrator</code></td>
+<td><em>New</em></td>
+<td>SNN-gated storage &amp; compression</td>
+</tr>
+<tr>
+<td><code>RAGMemoryIntegrator</code></td>
+<td><em>New</em></td>
+<td>Façade orchestrating all three</td>
+</tr>
+</tbody>
+</table>
+<h3 id="352-integration-sequence">3.5.2 Integration Sequence</h3>
+<pre class="mermaid"><code>sequenceDiagram
+    actor User
+    participant RAG_API
+    participant RAGMemoryIntegrator
+    participant SemanticMemory
+    participant EpisodicMemory
+    participant LongTermMemoryModule
+
+    User-&gt;&gt;RAG_API: Search query + context
+    RAG_API-&gt;&gt;RAGMemoryIntegrator: enrich_query_context()
+    RAGMemoryIntegrator-&gt;&gt;SemanticMemory: retrieve_semantic_knowledge(entities)
+    SemanticMemory--&gt;&gt;RAGMemoryIntegrator: [related concepts + embeddings]
+    RAGMemoryIntegrator-&gt;&gt;EpisodicMemory: integrate_episodic_semantic()
+    EpisodicMemory--&gt;&gt;RAGMemoryIntegrator: enriched_context
+    RAGMemoryIntegrator-&gt;&gt;EpisodicMemory: retrieve_memories(query, top_k=3)
+    EpisodicMemory--&gt;&gt;RAGMemoryIntegrator: [past sessions + scores]
+    RAGMemoryIntegrator--&gt;&gt;RAG_API: enhanced_query + memory_boost
+    RAG_API--&gt;&gt;User: Top-K results + memory_context
+
+    User-&gt;&gt;RAG_API: Provide rating (1-5)
+    RAG_API-&gt;&gt;RAGMemoryIntegrator: record_feedback(session_id, rating)
+    RAGMemoryIntegrator-&gt;&gt;EpisodicMemory: store_experience(reward=rating/5)
+    EpisodicMemory-&gt;&gt;LongTermMemoryModule: store_spike_episode(importance)
+    LongTermMemoryModule--&gt;&gt;EpisodicMemory: memory_id</code></pre>
+<h3 id="353-semanticmemory-specification">3.5.3 SemanticMemory Specification</h3>
+<p><strong>Purpose</strong>: Maintain concept knowledge graph for entity enrichment.</p>
+<p><strong>Field Mapping</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>SemanticMemoryEntry Field</th>
+<th>RAG Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>concept</code></td>
+<td>Entity (PROJECT_ID, PRODUCT, PERSON, ORG, DATE)</td>
+</tr>
+<tr>
+<td><code>definition</code></td>
+<td>Domain description from knowledge base</td>
+</tr>
+<tr>
+<td><code>related_concepts</code></td>
+<td>Synonyms / related entities</td>
+</tr>
+<tr>
+<td><code>concept_embedding</code></td>
+<td>384-dim MiniLM vector</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td>0.7 - 1.0 (knowledge certainty)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Integration</strong>: <code>RAGSemanticLoader</code> class</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RAGSemanticLoader</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Load domain vocabulary and entity knowledge into SemanticMemory.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_domain_vocabulary</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">vocabulary_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">embedding_model</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Load project entities (EV-2024-001, etc.) and domain terms.</span>
+<span class="sd">        Returns: count of loaded concepts.</span>
+<span class="sd">        """</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">enrich_entity_boost</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">entity_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">retrieved_concepts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">SemanticMemoryEntry</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Compute dynamic entity boost from semantic relatedness.</span>
+<span class="sd">        Returns: boost factor (1.0 - 10.0).</span>
+<span class="sd">        """</span>
+        <span class="k">pass</span>
+</code></pre></div>
+<h3 id="354-episodicmemory-specification">3.5.4 EpisodicMemory Specification</h3>
+<p><strong>Purpose</strong>: Store search sessions and retrieve similar past sessions for reranking.</p>
+<p><strong>Field Mapping</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>EpisodicMemoryEntry Field</th>
+<th>RAG Session Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>context</code></td>
+<td>{query, user_id, timestamp, extracted_entities}</td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td>Search pipeline (ES + Milvus)</td>
+</tr>
+<tr>
+<td><code>outcome</code></td>
+<td>Retrieved doc_ids (top-10)</td>
+</tr>
+<tr>
+<td><code>reward</code></td>
+<td>User rating / 5</td>
+</tr>
+<tr>
+<td><code>context_embedding</code></td>
+<td>Query 384-dim MiniLM vector</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Integration</strong>: <code>RAGEpisodicRecorder</code> class</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RAGEpisodicRecorder</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Record search sessions and retrieve similar past sessions.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">record_session</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">entity_extracted</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+        <span class="n">doc_ids_retrieved</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">ranking_scores</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+        <span class="n">query_embedding</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>  <span class="c1"># 384-dim</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Record search session to episodic memory.</span>
+<span class="sd">        Returns: session_id for later feedback linkage.</span>
+<span class="sd">        """</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve_similar_sessions</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">query_embedding</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Retrieve past sessions similar to current query.</span>
+<span class="sd">        Returns: [{doc_ids, reward, score}, ...] for reranking.</span>
+<span class="sd">        """</span>
+        <span class="k">pass</span>
+</code></pre></div>
+<h3 id="355-longtermmemorymodule-specification">3.5.5 LongTermMemoryModule Specification</h3>
+<p><strong>Purpose</strong>: Importance gating via SNN + automatic consolidation/forgetting.</p>
+<p><strong>Key Features</strong>:
+- Spiking Neural Network (SNN) gating of episodic memories
+- RecurrentRetentionCircuit (GRU-based) for temporal decay
+- ForgettingController: forget threshold = 0.3, consolidation threshold = 0.7</p>
+<p><strong>SNN Gating Logic</strong>:</p>
+<pre class="mermaid"><code>flowchart TD
+    EM["EpisodicMemory Entry&lt;br/&gt;(reward, timestamp)"] --&gt; SPIKE{"reward &gt; 0.6?
+    (Spike Fire)"}     
+    SPIKE --&gt;|YES| WEIGHT["Weight += learning_rate&lt;br/&gt;× (reward - baseline)"]
+    SPIKE --&gt;|NO| DECAY["Weight *= decay_rate&lt;br/&gt;(temporal decay)"]
+    WEIGHT --&gt; STORE["Store to LongTermMemory&lt;br/&gt;(high importance)"]
+    DECAY --&gt; FORGET{"importance &lt; 0.3?"}    
+    FORGET --&gt;|YES| DROP["Forget"]
+    FORGET --&gt;|NO| STORE</code></pre>
+<p><strong>Integration</strong>: <code>RAGLongTermIntegrator</code> class</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RAGLongTermIntegrator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    SNN-gated storage and compression for long-term memory.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">store_with_snn_gating</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">episodic_entry</span><span class="p">,</span>
+        <span class="n">spike_sequence</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>  <span class="c1"># SNN firing pattern</span>
+        <span class="n">reward</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>  <span class="c1"># User rating / 5</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Store episodic entry with SNN importance gating.</span>
+<span class="sd">        Returns: memory_id for retrieval.</span>
+<span class="sd">        """</span>
+        <span class="k">pass</span>
+
+
+<span class="c1"># Forgetting &amp; Compression Policy</span>
+<span class="n">FORGETTING_POLICY</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"forget_threshold"</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>         <span class="c1"># Drop if importance &lt; 0.3</span>
+    <span class="s2">"consolidation_threshold"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>  <span class="c1"># Compress if importance &gt; 0.7</span>
+    <span class="s2">"max_memories"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>           <span class="c1"># Enforce storage limit</span>
+    <span class="s2">"temporal_decay_per_day"</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>  <span class="c1"># 5% importance decay per day</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="356-embedding-dimension-unification">3.5.6 Embedding Dimension Unification</h3>
+<p>All memory embeddings must use <strong>384-dim</strong> (MiniLM <code>paraphrase-multilingual-MiniLM-L12-v2</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Embedding Size</th>
+<th>Adjustment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Query embedding (MiniLM)</td>
+<td>384-dim</td>
+<td>✓ Native</td>
+</tr>
+<tr>
+<td>SemanticMemory (default)</td>
+<td>512-dim</td>
+<td>→ Override to <strong>384-dim</strong></td>
+</tr>
+<tr>
+<td>EpisodicMemory (default)</td>
+<td>512-dim</td>
+<td>→ Override to <strong>384-dim</strong></td>
+</tr>
+<tr>
+<td>LongTermMemoryModule (default)</td>
+<td>512-dim</td>
+<td>→ Override state_dim=384, embedding_dim=384</td>
+</tr>
+<tr>
+<td>Milvus vector DB</td>
+<td>384-dim</td>
+<td>✓ Matching</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Initialization Code</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">evospikenet.episodic_memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">EpisodicMemory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">evospikenet.long_term_memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">LongTermMemoryModule</span>
+
+<span class="c1"># Override default 512-dim → 384-dim</span>
+<span class="n">epic_mem</span> <span class="o">=</span> <span class="n">EpisodicMemory</span><span class="p">(</span><span class="n">embedding_dim</span><span class="o">=</span><span class="mi">384</span><span class="p">,</span> <span class="n">max_memories</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">ltm</span> <span class="o">=</span> <span class="n">LongTermMemoryModule</span><span class="p">(</span><span class="n">state_dim</span><span class="o">=</span><span class="mi">384</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="o">=</span><span class="mi">384</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="357-ragmemoryintegrator-facade">3.5.7 RAGMemoryIntegrator Façade</h3>
+<p><strong>Purpose</strong>: Single entry point orchestrating all three memory modules.</p>
+<p><strong>Class Diagram</strong>:</p>
+<pre class="mermaid"><code>classDiagram
+    class RAGMemoryIntegrator {
+        -semantic_mem: SemanticMemory
+        -episodic_mem: EpisodicMemory
+        -ltm: LongTermMemoryModule
+        -embedding_model
+
+        +from_config(config_file): RAGMemoryIntegrator
+        +enrich_query_context(query, entities) Dict
+        +record_search_session(session_data) str
+        +record_feedback(session_id, rating) None
+        +retrieve_memory_boost(query, top_k) float
+    }
+
+    RAGMemoryIntegrator --&gt; SemanticMemory
+    RAGMemoryIntegrator --&gt; EpisodicMemory
+    RAGMemoryIntegrator --&gt; LongTermMemoryModule</code></pre>
+<p><strong>Key Methods</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RAGMemoryIntegrator</span><span class="p">:</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_config</span><span class="p">(</span><span class="n">config_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Initialize all three memory modules from config."""</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">enrich_query_context</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">extracted_entities</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Enrich query with semantic knowledge and past session context.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            {</span>
+<span class="sd">                "semantic_concepts": ["EV-2024-001", ...],</span>
+<span class="sd">                "semantic_knowledge": [...],</span>
+<span class="sd">                "past_session_boost": 0.15,</span>
+<span class="sd">                "memory_context": {...}</span>
+<span class="sd">            }</span>
+<span class="sd">        """</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">record_search_session</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">doc_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">ranking_scores</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+        <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Record search session to episodic memory.</span>
+<span class="sd">        Returns: session_id for feedback linkage.</span>
+<span class="sd">        """</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">record_feedback</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">rating</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>  <span class="c1"># 1-5</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Record user feedback (rating) and trigger LTM storage.</span>
+<span class="sd">        Returns: {memory_id, importance, consolidation_status}</span>
+<span class="sd">        """</span>
+        <span class="k">pass</span>
+
+<span class="o">---</span>
+
+<span class="c1">## 4. API Specification</span>
+
+<span class="c1">### 4.1 Search API</span>
+
+<span class="o">**</span><span class="n">Endpoint</span><span class="o">**</span><span class="p">:</span> <span class="err">`</span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">rag</span><span class="o">/</span><span class="n">search</span><span class="err">`</span>
+
+<span class="o">**</span><span class="n">Request</span><span class="p">:</span><span class="o">**</span>
+<span class="err">```</span><span class="n">json</span>
+<span class="p">{</span>
+  <span class="s2">"query"</span><span class="p">:</span> <span class="s2">"Project EV-2024-001 progress report"</span><span class="p">,</span>
+  <span class="s2">"top_k"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s2">"language"</span><span class="p">:</span> <span class="s2">"auto"</span><span class="p">,</span>
+  <span class="s2">"enable_query_expansion"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">"enable_entity_boosting"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">"return_debug_info"</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Response:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project EV-2024-001 progress report"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOC_001"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8234</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrf"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project EV-2024-001 is..."</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EV-2024-001"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-05-20"</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"execution_time_ms"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"debug_info"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Error Response:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVALID_QUERY"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Query is too short (min 2 characters)"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="42-feedback-api">4.2 Feedback API</h3>
+<p><strong>Endpoint</strong>: <code>POST /api/v2/rag/feedback</code></p>
+<p><strong>Request:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"session_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rag_20260520_143022_001"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project EV-2024-001 progress report"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"doc_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOC_001"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Exactly what I expected"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user_123"</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Response:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"feedback_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb_12345"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"memory_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_20260520_143155"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"importance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.72</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"recorded_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-05-20T10:30:00Z"</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<hr />
+<h3 id="43-memory-integrated-api-flow">4.3 Memory-Integrated API Flow</h3>
+<p>The current implementation integrates memory in-process through <code>RAGMemoryIntegrator</code>; the <code>/api/memory/*</code> endpoints remain available for external memory-management clients. The RAG v2 fast path does not call those REST endpoints.</p>
+<p><strong>Sequence Diagram</strong> (v3.1: End-to-end with in-process memory integration):</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant CLI as Client
+    participant RAG_API as RAG API
+    participant INTEG as RAGMemoryIntegrator
+    participant EM as EpisodicMemory
+    participant LTM as LongTermMemoryModule
+
+    CLI-&gt;&gt;RAG_API: POST /api/v2/rag/search {query, top_k}
+    RAG_API-&gt;&gt;INTEG: enrich_query_context(query_context)
+    INTEG-&gt;&gt;EM: integrate_episodic_semantic() and retrieve_memories(top_k=3)
+    EM--&gt;&gt;INTEG: semantic_concepts + past_sessions
+    INTEG--&gt;&gt;RAG_API: enriched_boost + past_sessions
+
+    RAG_API-&gt;&gt;RAG_API: Retrieve each expansion and add RRF by doc_id
+    RAG_API-&gt;&gt;INTEG: compute_memory_boost(doc_id, past_sessions)
+    INTEG--&gt;&gt;RAG_API: memory_boost
+    RAG_API-&gt;&gt;RAG_API: Sort by final_score and assign rank
+
+    RAG_API--&gt;&gt;CLI: 200 OK {results, memory_context, session_id}
+
+    CLI-&gt;&gt;RAG_API: POST /api/v2/rag/feedback {session_id, rating}
+    RAG_API-&gt;&gt;INTEG: record_feedback(session_id, rating)
+    INTEG-&gt;&gt;LTM: store_with_snn_gating(reward=rating/5)
+    LTM--&gt;&gt;INTEG: RetentionSummary(memory_id, importance)
+    INTEG--&gt;&gt;RAG_API: memory_id + importance
+    RAG_API--&gt;&gt;CLI: 200 OK {feedback_id, memory_id, importance}</code></pre>
+<p><strong>API Endpoint Integration Matrix</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>RAG phase</th>
+<th>Implementation call</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Query enrichment</td>
+<td><code>RAGMemoryIntegrator.enrich_query_context()</code></td>
+<td>Fetch semantic concepts and past sessions</td>
+</tr>
+<tr>
+<td>Expansion aggregation</td>
+<td>RRF accumulation in <code>rag_v2_api</code></td>
+<td>Add score when the same <code>doc_id</code> appears in multiple expansions</td>
+</tr>
+<tr>
+<td>Memory reranking</td>
+<td><code>RAGMemoryIntegrator.compute_memory_boost()</code></td>
+<td>Add <code>memory_boost</code> into <code>final_score</code></td>
+</tr>
+<tr>
+<td>Feedback storage</td>
+<td><code>RAGMemoryIntegrator.record_feedback()</code></td>
+<td>Store reward = rating/5 through the long-term memory path</td>
+</tr>
+<tr>
+<td>External memory management</td>
+<td><code>/api/memory/*</code></td>
+<td>REST API for non-RAG clients and operations</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Extended Response Format</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project EV-2024-001 progress report"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"session_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rag_20260520_143022_001"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOC_A"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.259</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"memory_boost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.146</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrf+memory"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project EV-2024-001 is..."</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EV-2024-001"</span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"memory_context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"semantic_concepts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"EV-2024-001"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Q-PFC Loop"</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"past_sessions_used"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"entity_boost_enriched"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"EV-2024-001"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.05</span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"execution_time_ms"</span><span class="p">:</span><span class="w"> </span><span class="mi">187</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Feedback Response</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"feedback_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb_12345"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"memory_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_20260520_143155"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"importance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.72</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"recorded_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-05-20T14:31:55Z"</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="5-search-algorithm">5. Search Algorithm</h2>
+<h3 id="51-language-specific-search-strategy">5.1 Language-Specific Search Strategy</h3>
+<h4 id="japanese-query-case-v30-memory-enhancednnnquery-project-ev-2024-001-progress-reportn-nnormalize-project-ev-2024-001-progress-reportn-ntokenize-with-sudachi-project-ev-2024-001-progress-reportn-nentity-extract-project_id-ev-2024-001n-nsemanticmemoryretrieve_semantic_knowledgeev-2024-001-top_k5n-related-concepts-q-pfc-loop-082-aeg-phase4-071n-boost-enrichment-project_id-50-1-082-05-705n-nepisodicmemoryintegrate_episodic_semanticquery_contextn-semantic_concepts-ev-2024-001-q-pfc-loopn-semantic_knowledge-ev-2024-001-is-q-pfc-control-integration-in-phase4n-nquery-expansion-optionaln-dictionary-llm-ev-2024-001-progress-phase-4-status-reportn-ndual-searchn-elasticsearch-bm25-sudachi-enriched-boost-705n-milvus-l2-384-dim-vector-searchn-nrrf-fusion-entity-boost-705-rankingn-nepisodicmemoryretrieve_memoriesquery_context-top_k3n-past-sessions-doc_idsdoc_adoc_b-reward08-score091-n-add-past-high-rated-documents-scores-with-memory_boostn-ntop-5-documents-response-generationn-nuser-rating-rating4-reward-08n-nlongtermmemorymodulestore_spike_episodespike_seq-context-reward08n-recurrentretentioncircuit-gru-importance-072n-episodicmemorystore_experienceimportance072n-nstore-to-long-term-memory-memory_idepi_20260520_001-used-in-future-similar-queriesn">Japanese Query Case (v3.0: Memory-Enhanced)\n\n<code>\nQuery: "Project EV-2024-001 progress report"\n       ↓\n[Normalize] → "Project EV-2024-001 progress report"\n       ↓\n[Tokenize with Sudachi] → ["Project", "EV-2024-001", "progress", "report"]\n       ↓\n[Entity Extract] → {PROJECT_ID: ["EV-2024-001"]}\n       ↓\n[SemanticMemory.retrieve_semantic_knowledge("EV-2024-001", top_k=5)]\n  → Related concepts: [("Q-PFC Loop", 0.82), ("AEG Phase4", 0.71)]\n  → Boost enrichment: PROJECT_ID = 5.0 × (1 + 0.82 × 0.5) = 7.05\n       ↓\n[EpisodicMemory.integrate_episodic_semantic(query_context)]\n  → semantic_concepts: ["EV-2024-001", "Q-PFC Loop"]\n  → semantic_knowledge: ["EV-2024-001 is Q-PFC control integration in Phase4"]\n       ↓\n[Query Expansion (Optional)]\n  - Dictionary + LLM: ["EV-2024-001 progress", "Phase 4 status report"]\n       ↓\n[Dual Search]\n  - Elasticsearch: BM25 (Sudachi + enriched Boost 7.05)\n  - Milvus: L2 384-dim vector search\n       ↓\n[RRF Fusion + Entity Boost (7.05)] → Ranking\n       ↓\n[EpisodicMemory.retrieve_memories(query_context, top_k=3)]\n  → Past sessions: [{doc_ids:["DOC_A","DOC_B"], reward:0.8, score:0.91}, ...]\n  → Add past high-rated documents scores with +memory_boost\n       ↓\n[Top-5 Documents] → Response generation\n       ↓\n[User rating: rating=4] → reward = 0.8\n       ↓\n[LongTermMemoryModule.store_spike_episode(spike_seq, context, reward=0.8)]\n  → RecurrentRetentionCircuit (GRU) → importance = 0.72\n  → EpisodicMemory.store_experience(importance=0.72)\n       ↓\n[Store to long-term memory: memory_id="epi_20260520_001"] (used in future similar queries)\n</code></h4>
+<h4 id="english-query-case">English Query Case</h4>
+<div class="highlight"><pre><span></span><code>Query: "project report"
+       ↓
+[Language Detect] → "en"
+       ↓
+[Normalize] → No Japanese processing
+       ↓
+[Tokenize] → ["project", "report"]
+       ↓
+[Dual Search with English Analyzer]
+  - Elasticsearch: Standard analyzer
+  - Milvus: Same as above
+       ↓
+[RRF Fusion] → Merged ranking
+</code></pre></div>
+<h3 id="52-ranking-algorithm">5.2 Ranking Algorithm</h3>
+<p><strong>Score Computation:</strong></p>
+<div class="highlight"><pre><span></span><code>rrf_score(doc) = Σ 1 / (60 + rank_i)
+base_score = rrf_score * entity_multiplier
+
+Where:
+    rank_i is the rank from each BM25 / vector / query-expansion path
+    entity_multiplier is the maximum SemanticMemory-enriched entity boost
+</code></pre></div>
+<hr />
+<h2 id="53-memory-enhanced-ranking">5.3 Memory-Enhanced Ranking</h2>
+<p>v3.0 adds a memory layer to RRF scoring for dynamic boosting of previously high-rated documents.</p>
+<h3 id="scoring-formula-v30">Scoring Formula (v3.0)</h3>
+<div class="highlight"><pre><span></span><code>final_score = rrf_score * entity_boost_enriched + memory_boost
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rrf_score</code></td>
+<td>RRF fusion score (k=60)</td>
+<td><code>0 to 1</code></td>
+</tr>
+<tr>
+<td><code>entity_boost_enriched</code></td>
+<td>Boost factor after SemanticMemory enrichment</td>
+<td><code>1.0 to 10.0</code></td>
+</tr>
+<tr>
+<td><code>memory_boost</code></td>
+<td>Score correction from past sessions; <code>alpha=0.2</code> is already applied internally</td>
+<td><code>0 to 0.3</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="memory_boost-calculation">memory_boost Calculation</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">compute_memory_boost</span><span class="p">(</span>
+    <span class="n">doc_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">past_sessions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
+    <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Add score from high-rated documents in past similar sessions.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        doc_id: Target document ID</span>
+<span class="sd">        past_sessions: Results from retrieve_similar_sessions()</span>
+<span class="sd">        alpha: Memory score weight</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        memory_boost: Additive score (0.0 to 0.3)</span>
+<span class="sd">    """</span>
+    <span class="n">boost</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">session</span> <span class="ow">in</span> <span class="n">past_sessions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">doc_id</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"doc_ids"</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="c1"># Weight by past rating (reward) × similarity (score)</span>
+            <span class="n">boost</span> <span class="o">+=</span> <span class="n">session</span><span class="p">[</span><span class="s2">"reward"</span><span class="p">]</span> <span class="o">*</span> <span class="n">session</span><span class="p">[</span><span class="s2">"score"</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">boost</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>  <span class="c1"># Cap at 0.3 to prevent over-amplification</span>
+</code></pre></div>
+<h3 id="memory-enhanced-ranking-flow">Memory-Enhanced Ranking Flow</h3>
+<pre class="mermaid"><code>flowchart TD
+    RRF_SCORES["RRF Scores\n{DOC_A: 0.016, DOC_B: 0.015, DOC_C: 0.012}"]
+    SM_BOOST["SemanticMemory\nenriched_boost\n{EV-2024-001: 7.05}"]
+    EP_SESSIONS["EpisodicMemory\npast_sessions\n[{doc_ids:[DOC_A,DOC_B], reward:0.8, score:0.91}]"]
+
+    RRF_SCORES --&gt; APPLY_BOOST["Apply entity_boost\nDOC_A: 0.016 × 7.05 = 0.113"]
+    SM_BOOST --&gt; APPLY_BOOST
+
+    APPLY_BOOST --&gt; APPLY_MEM["Add memory_boost\nDOC_A: 0.113 + (0.8×0.91×0.2) = 0.259\nDOC_B: 0.106 + (0.8×0.91×0.2) = 0.252"]
+    EP_SESSIONS --&gt; APPLY_MEM
+
+    APPLY_MEM --&gt; FINAL["Final Ranking\n1st: DOC_A (0.259)\n2nd: DOC_B (0.252)\n3rd: DOC_C (0.085)"]</code></pre>
+<hr />
+<h2 id="6-evaluation-testing">6. Evaluation &amp; Testing</h2>
+<h3 id="61-test-cases">6.1 Test Cases</h3>
+<p><strong>Test Set Composition:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Cases</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text Variations</td>
+<td>15</td>
+<td>"盆休み", "お盆休み"</td>
+</tr>
+<tr>
+<td>Named Entities</td>
+<td>30+</td>
+<td>"EV-2024-001", "John Doe"</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>50+</strong></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-evaluation-metrics">6.2 Evaluation Metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MRR</td>
+<td>&gt; 0.7</td>
+<td>Mean Reciprocal Rank for variations</td>
+</tr>
+<tr>
+<td>Recall</td>
+<td>&gt; 0.8</td>
+<td>Entity recall rate</td>
+</tr>
+<tr>
+<td>Precision</td>
+<td>&gt; 0.8</td>
+<td>Entity precision rate</td>
+</tr>
+<tr>
+<td>F1 Score</td>
+<td>&gt; 0.75</td>
+<td>Harmonic mean of recall/precision</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-deployment">7. Deployment</h2>
+<h3 id="71-environment-requirements">7.1 Environment Requirements</h3>
+<p><strong>Server:</strong>
+<div class="highlight"><pre><span></span><code>CPU: 8 cores
+Memory: 32GB
+Storage: 500GB
+GPU: Optional (CUDA 11.8+)
+</code></pre></div></p>
+<p><strong>Software:</strong>
+<div class="highlight"><pre><span></span><code>Python: 3.10+
+Elasticsearch: 8.0+
+Milvus: 2.3+
+</code></pre></div></p>
+<h3 id="72-installation">7.2 Installation</h3>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>rag-v2:latest<span class="w"> </span>.
+docker<span class="w"> </span>push<span class="w"> </span>registry/rag-v2:latest
+</code></pre></div>
+<hr />
+<h2 id="8-troubleshooting">8. Troubleshooting</h2>
+<h3 id="q-mrr-05">Q: MRR &lt; 0.5</h3>
+<p><strong>Solution</strong>: Upgrade Sudachi, adjust weights, enable Query Expansion</p>
+<h3 id="q-entity-recall-08">Q: Entity Recall &lt; 0.8</h3>
+<p><strong>Solution</strong>: Verify NER model, check Elasticsearch mapping, increase entity boost</p>
+<h3 id="q-query-latency-500ms">Q: Query latency &gt; 500ms</h3>
+<p><strong>Solution</strong>: Disable Query Expansion, reduce Milvus probe count</p>
+<hr />
+<h2 id="9-appendix">9. Appendix</h2>
+<h3 id="91-dependencies-list">9.1 Dependencies List</h3>
+<p><strong>RAG Pipeline Dependencies</strong>:
+<div class="highlight"><pre><span></span><code>sudachipy==0.7.5
+sudachipy-dict-small==20240716
+tner==1.8.0
+elasticsearch==8.6.2
+pymilvus==2.4.1
+sentence-transformers==2.2.2
+transformers==4.34.0
+pandas==2.0.0
+numpy==1.23.0
+pyyaml==6.0
+torch&gt;=2.0.0
+</code></pre></div></p>
+<p><strong>EvoSpikeNet Core SDK Dependencies (v3.0 Added)</strong>:
+<div class="highlight"><pre><span></span><code>evospikenet/episodic_memory.py     # EpisodicMemory, SemanticMemoryEntry
+evospikenet/long_term_memory.py    # LongTermMemoryModule
+evospikenet/forgetting_controller.py  # ForgettingController
+evospikenet/snn_memory_extension.py   # LargeScaleSpikeReservoir
+evospikenet/api_modules/memory_api.py  # REST API endpoints
+</code></pre></div></p>
+<p><strong>Configuration Files (New)</strong>:
+<div class="highlight"><pre><span></span><code>config/memory_config.yaml    # RAGMemoryIntegrator configuration
+config/domain_terms.yaml     # Domain vocabulary for SemanticMemory loading
+</code></pre></div></p>
+<h3 id="92-related-documentation">9.2 Related Documentation</h3>
+<ul>
+<li><a href="../RAG_SYSTEM_DETAILED/">RAG_SYSTEM_DETAILED.md</a> - Detailed RAG system design</li>
+<li><a href="../RAG_REMAINING_FUNCTIONALITY/">RAG_REMAINING_FUNCTIONALITY.md</a> - Future phases (Phase 6-11)</li>
+<li><a href="../RAG_JAPANESE_EVALUATE_GUIDE/">RAG_JAPANESE_EVALUATE_GUIDE.md</a> - Evaluation guide</li>
+<li><a href="../EPISODIC_MEMORY_IMPLEMENTATION/">EPISODIC_MEMORY_IMPLEMENTATION.md</a> - EvoSpikeNet episodic memory implementation details</li>
+</ul>
+<p><strong>Core SDK Source References</strong>:
+- <code>evospikenet/episodic_memory.py</code> - <code>EpisodicMemory</code>, <code>SemanticMemoryEntry</code>, <code>EpisodicMemoryEntry</code> classes
+- <code>evospikenet/long_term_memory.py</code> - <code>LongTermMemoryModule</code>, <code>RetentionSummary</code> classes
+- <code>evospikenet/api_modules/memory_api.py</code> - REST endpoint implementations</p>
+<hr />
+<p><strong>Document Version</strong>: 3.0<br />
+<strong>Last Updated</strong>: 2026-05-22<br />
+<strong>Approved By</strong>: RAG Development Team<br />
+<strong>Status</strong>: Implemented with Operational Hardening<br />
+<strong>v3.0 Changes</strong>: EvoSpikeNet Core memory system (SemanticMemory / EpisodicMemory / LongTermMemoryModule) integration added. Transition to Memory-Augmented RAG architecture.<br />
+<strong>2026-05-22 Update</strong>: Reflected the RAG v2 preprocessing health endpoint, fail-closed runtime policy, QueryExpander quality guards, and observability updates.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 14, 2026 10:14:05 UTC">August 14, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+<div class="md-copyright__highlight">
+  最終更新日: 2026-08-28 07:33:20 UTC
+</div>
+<div class="md-copyright__highlight">
+  Copyright evospikenet.org
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/i18n-nav-fix.js"></script>
+      
+        <script src="../../javascripts/set-logo-link.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/polyfill-library/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

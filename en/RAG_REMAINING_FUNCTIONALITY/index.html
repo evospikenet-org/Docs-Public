@@ -1,0 +1,8697 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://evospikenet-org.github.io/Docs-Public/en/RAG_REMAINING_FUNCTIONALITY/">
+      
+      
+        <link rel="prev" href="../RAG_SYSTEM_DETAILED/">
+      
+      
+        <link rel="next" href="../RAG_JAPANESE_SpecV2/">
+      
+      
+        
+          <link rel="alternate" href="../../RAG_REMAINING_FUNCTIONALITY/" hreflang="ja">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>RAG 2.0 残存機能・将来フェーズ - EvoSpikeNet Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rag-20-implementation-roadmap-remaining-functionality-and-future-phases" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="EvoSpikeNet Documentation" class="md-header__button md-logo" aria-label="EvoSpikeNet Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EvoSpikeNet Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RAG 2.0 残存機能・将来フェーズ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../RAG_REMAINING_FUNCTIONALITY/" hreflang="ja" class="md-select__link">
+              日本語
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../learning_guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  学習ガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../faq/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../release_notes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  リリースノート
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quizzes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  クイズ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MULTILINGUAL_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  多言語ドキュメントガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MULTILINGUAL_COMPLETION_REPORT/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  多言語化完了レポート
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/installation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  スタートガイド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/basic_features/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  概念・製品仕様
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/biomimetic_systems/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  生物学的模倣・自己進化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/distributed_brain/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  分散脳アーキテクチャ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../guides/memory_and_rag/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  記憶・言語・RAG
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/sdk_and_api/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SDK・API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/deployment_and_operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  運用・インフラ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/security_and_quality/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  セキュリティ・テスト・品質
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/research_and_multimodal/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  研究・応用・拡張
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../applications/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  応用例
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../documentation_index/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  索引・リファレンス
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="EvoSpikeNet Documentation" class="md-nav__button md-logo" aria-label="EvoSpikeNet Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/favicon.png" alt="logo">
+
+    </a>
+    EvoSpikeNet Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learning_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学習ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    リリースノート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クイズ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MULTILINGUAL_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多言語ドキュメントガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MULTILINGUAL_COMPLETION_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多言語化完了レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    スタートガイド
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    スタートガイド
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インストール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/first_simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    初めてのシミュレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BUILD_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ビルドガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_BUILD_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker ビルドガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_BUILD_MODES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker ビルドモード完全ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_PUBLISHING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker パブリッシングガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TROUBLESHOOTING_DOCKER_BUILDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker トラブルシューティング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONDA_SETUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conda セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GPU_CPU_LAUNCH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU/CPU クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MKDOCS_BUILD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs ビルド手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概念・製品仕様
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    概念・製品仕様
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/basic_features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core features and onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVOSPIKENET_CONCEPTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet コア概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRODUCT_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    製品概要書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEATURE_SPEC_TABLE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    機能スペック表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SOURCE_CODE_IMPLEMENTATION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ソースコード実装詳細ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../REMAINING_FUNCTIONALITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装ステータス（残存機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INFERENCE_PIPELINE_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推論パイプライン実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DATA_HANDLING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    データハンドリング方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEPENDENCY_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係管理ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEPENDENCY_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係アーキテクチャ改善
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEPENDENCY_IMPROVEMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係改善完了レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONFIGURATION_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    設定外部化実装ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ENVIRONMENT_VARIABLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    環境変数運用方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONNECT_BACKENDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バックエンド接続手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生物学的模倣・自己進化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    生物学的模倣・自己進化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/biomimetic_systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Biomimetic systems and evolutionary learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BIOMIMETIC_IMPLIMENTATION_PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生物模倣強化プラン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_SELF_EVOLUTION_11_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自己進化高度化 11.7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_EVOLUTION_PHASE5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    進化フェーズ 5-6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AEG_IMPLEMENTATION_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AEG 実装概要
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_DECISION_ENGINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高度意思決定エンジン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AUTO_RECOVERY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自動回復機能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Q_PFC_ADAPTIVE_CONTROL_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Q-PFC 適応制御ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BACKPROP_IMPLEMENTATION_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バックプロパゲーション実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DEV_BATCH_SHAPING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バッチシェーピング設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TRACKING_ACTION_MODELS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    トラッキング・行為認識モデル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../architecture/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分散脳アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    分散脳アーキテクチャ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/distributed_brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Distributed brain architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_SYSTEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分散脳システム技術仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_NODE_TYPES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノードタイプ仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_NODE_CONFIGURATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノード構成とモデルマッピング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_SPATIAL_NODES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    空間処理ノード仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_28NODE_EVALUATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28ノード評価
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DYNAMIC_LOAD_BALANCING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動的負荷分散
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FULL_BRAIN_NODE_REQUIREMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フル脳ノード要件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FULL_BRAIN_UI_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フル脳UI実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_SEQUENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動作フロー・シーケンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_EEG_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EEG 統合システム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_LLM_VERIFICATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_IMPLEMENTATION_VERIFICATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装完了検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_LOGGING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノードログ表示ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_MODEL_ARTIFACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モデルアーティファクト一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DISTRIBUTED_BRAIN_METRICS_UI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メトリクス UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SPIKE_COMMUNICATION_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spike 通信分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBNノードアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_EXTERNAL_OPTIMIZATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN外部定義最適化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SECURE_DISTRIBUTED_BRAIN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュア分散脳シミュレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADVANCED_NODE_DISCOVERY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノード発見（高度）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GEO_NODE_MANAGER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地理ノードマネージャー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ZENOH_VS_TORCH_DISTRIBUTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zenoh vs torch.distributed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CENTRALIZED_LOGGING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集中ロギングシステム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEDERATED_DB_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フェデレーテッドDB統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEDERATED_AGGREGATOR_SELECTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集約LLM選択戦略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/dense_chronospike_lm_training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dense Chrono-Spike LM 学習
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    記憶・言語・RAG
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    記憶・言語・RAG
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/memory_and_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory management and RAG systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../architecture/sparse_event_memory/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sparse Event-Memory LM
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12_2" id="__nav_12_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sparse Event-Memory LM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/sparse_event_memory/specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/sparse_event_memory/detailed_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    詳細数理・メモリ設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SPARSE_EVO_MEMORYLM_SYSTEM_REVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sparse Evo-MemoryLM システムレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMORY_ORCHESTRATION_E2E_SPEC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Orchestration End-to-End 仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMORY_ORCHESTRATION_MONITORING_SLO_SLA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Orchestration 監視仕様（SLO/SLA）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMORY_LEARNING_INTEGRATION_CONTROL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メモリと学習の統合制御設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EPISODIC_MEMORY_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エピソード記憶実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BRAIN_LANGUAGE_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脳内言語アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BRain_Language_Vocab_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Language Vocab README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MEMERIED_SPIKENETLM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEMERIED SpikeNetLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SWITCH_TO_EVOSPIKENET_LM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet LM への切替
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EvoLLMConverter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo-LLM Converter 設計書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM_INTEGRATION_STRATEGY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 統合戦略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM_TRAINING_SYSTEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 学習システム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LANGUAGE_MODEL_ARCHITECTURE_COMPATIBILITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LanguageModel アーキテクチャ互換性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LANGUAGE_MODEL_GPU_CAPACITY_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LanguageModel GPU 容量検証ポリシー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_SYSTEM_DETAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG システム詳細解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 2.0 残存機能・将来フェーズ
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 2.0 残存機能・将来フェーズ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-planning-phases-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation &amp; Planning Phases Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-5-core-phases-details-in-rag_japanese_specv2enmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1-5: Core Phases (Details in RAG_JAPANESE_SpecV2.en.md)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-22-implementation-reflection-rag-v2-hardening-and-operational-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-22 Implementation Reflection (RAG v2 Hardening and Operational Observability)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-05-22 Implementation Reflection (RAG v2 Hardening and Operational Observability)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#newly-added-updated-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Newly Added / Updated Environment Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remaining-forward-looking-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remaining Forward-Looking Work
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-23-implementation-reflection-rag-v2-memory-ranking-contract-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-23 Implementation Reflection (RAG v2 Memory-Ranking Contract Sync)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-6-advanced-context-aware-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 6: Advanced Context-Aware Search
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 6: Advanced Context-Aware Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-context-aware-rrf-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Context-Aware RRF Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-7-advanced-named-entity-recognition-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 7: Advanced Named Entity Recognition Fine-tuning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 7: Advanced Named Entity Recognition Fine-tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-domain-specific-ner-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Domain-Specific NER Fine-tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-8-automated-user-feedback-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 8: Automated User Feedback Loop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 8: Automated User Feedback Loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-relevance-feedback-self-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Relevance Feedback &amp; Self-Learning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-9-multilingual-multi-regional-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 9: Multilingual &amp; Multi-Regional Support
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 9: Multilingual &amp; Multi-Regional Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-multilingual-rag-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Multilingual RAG Extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-10-real-time-updates-streaming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 10: Real-time Updates &amp; Streaming
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 10: Real-time Updates &amp; Streaming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-real-time-index-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Real-time Index Updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-11-explainable-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 11: Explainable RAG
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 11: Explainable RAG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-search-result-rationale-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Search Result Rationale Display
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milestone-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Milestone Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource Planning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resource Planning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-5-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1-5 (Required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-6-11-extension-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 6-11 (Extension / Optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Success Metrics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Success Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-5-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1-5 Goals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-6-11-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 6-11 Goals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies &amp; Constraints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependencies &amp; Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#external-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technical-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risk Management
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_JAPANESE_SpecV2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語仕様書 V2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_JAPANESE_EVALUATE_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語評価ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG_JAPANESE_PARTICLE_ISSUE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語助詞問題
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QUERY_RESPONSE_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全脳クエリレスポンス解析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SIMULATION_RECORDING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シミュレーション記録ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SIMULATION_RECORDING_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シミュレーション記録 README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ZIGZAG_WHERE_WHAT_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Where-What 統合ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK・API
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SDK・API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/sdk_and_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK and API integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_QUICKSTART/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_INSTALLATION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK インストールガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_TUTORIAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK チュートリアル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DEVELOPER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 開発者ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_CONFIGURATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 設定ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK API リファレンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EvoSpikeNet_SDK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK（全機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DOCUMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ドキュメント概要
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DOCUMENTATION_INDEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ドキュメントインデックス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 変更履歴
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_ENHANCEMENT_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 機能強化・実装詳細
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_SPARSE_EVENT_MEMORY_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK Sparse Event-Memory LM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_DEVICE_PLUGIN_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK デバイスプラグインガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_SDK_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN SDK統合ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBNノードアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPDBN_EXTERNAL_OPTIMIZATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN外部定義最適化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_SOLVER_PLUGIN_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ソルバープラグインガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_LOIHI_BRAIN2LOIHI_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK Loihi Brain2Loihi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVALUATOR_SDK_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    評価系 SDK ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVALUATOR_SDK_SAMPLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    評価系 SDK サンプル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PLUGIN_MICROSERVICES_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグインアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVOSPIKENET_PLUGIN_FEASIBILITY_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグイン化 実装可能性評価
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EVOSPIKENET_PLUGIN_IMPLEMENTATION_ROADMAP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグイン化 実装ロードマップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PLUGIN_DOC_SYNC_MATRIX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin ドキュメント同期マトリクス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker_sdk_model_status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker SDK モデル配置状況
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/openapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAPI スキーマ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    運用・インフラ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    運用・インフラ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/deployment_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment, operations, and infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPC_SETUP_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPC 環境セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NGC_JUPYTER_SETUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NGC Jupyter セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NGC_VERIFICATION_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NGC 動作確認チェックリスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LARGE_SCALE_TRAINING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大規模学習ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INFRASTRUCTURE_AS_CODE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure as Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DB_MIGRATION_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    データベースマイグレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../E2E_RUNBOOK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E2E 実行ランブック
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MULTI_NODE_INTEGRATION_TESTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    マルチノード統合テスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HCP_DOWNLOAD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HCP ダウンロード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VAULT_K8S_EXAMPLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vault + Kubernetes 例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュリティ・テスト・品質
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    セキュリティ・テスト・品質
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/security_and_quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, audit, and quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TESTING_MARKERS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストマーカーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TEST_DATA_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストデータ管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TEST_MENU_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テスト統合メニュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TEST_CONSOLIDATION_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テスト統合レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VALIDATION_EXECUTION_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    検証実行サマリー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SECURE_KEY_INJECTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュアキー注入管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AUDIT_LOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    監査ログ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ERROR_MESSAGES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エラーメッセージ一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EXCEPTION_HANDLING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    例外処理ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EXCEPTION_LOGGING_IMPROVEMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    例外ログ改善レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BROKEN_LINKS_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    壊れたリンクレポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CI_BUILD_MATRIX_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI ビルドマトリクスガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FORK_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fork & Upstream 同期ポリシー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRIVACY_AND_AUTH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プライバシー・認証
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HEALTH_DATA_COMPLIANCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    健康データコンプライアンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/coding_standards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コーディング規約
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究・応用・拡張
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    研究・応用・拡張
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/research_and_multimodal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research, multimodal, and expansion domains
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NEUROSCIENCE_BRAIN_SIMULATION_BRIEF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    神経科学・脳シミュレーション研究要旨
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NEUROSCIENCE_BRAIN_SIMULATION_PAPER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    神経科学・脳シミュレーション論文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HUMAN_BRAIN_FULL_SIMULATION_CONCEPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全脳再現システム概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONNECTOME_INTEGRATION_PAPER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム統合論文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connectome_evospikenet_implementation_policy.ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム統合実装方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connectome_literature_review.ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム文献レビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONNECTOME_MIRROR_TEMPLATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトームミラーテンプレート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../detailed_paper_summaries.ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代表論文詳細要約
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HUMANOID_ROBOT_DESIGN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ヒューマノイドロボット詳細設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SENSOR_DRIVER_DEVELOPMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    センサードライバ開発
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VIDEO_AUDIO_ANALYSIS_SPEC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動画・音声解析仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VIDEO_AUDIO_MODEL_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動画・音声モデル統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edge_implementation_plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エッジ実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edge_phase1_5_implementation_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エッジ Phase 1-5 実装報告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evospikenet_edge_validation_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet エッジ検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FRONTEND_FILE_UI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フロントエンドファイル管理 UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FRONTEND_UI_IMPLEMENTATION_PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フロントエンド UI 実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../applications/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    応用例
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    応用例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_17_2" id="__nav_17_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainOS（次世代版）
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BrainOS（次世代版）
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_overview_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概要仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_detailed_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    詳細仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_implementation_plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装プラン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/brainos_nextgen_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユースケース・応用例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/BrainOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainOS 互換ページ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/core_social_implementation_apps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet-Core 社会実装アプリ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    索引・リファレンス
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    索引・リファレンス
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ドキュメントマップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../USER_MANUAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーマニュアル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDK_API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK API リファレンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EvoSpikeNet_SDK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK（全機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-planning-phases-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation &amp; Planning Phases Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-5-core-phases-details-in-rag_japanese_specv2enmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1-5: Core Phases (Details in RAG_JAPANESE_SpecV2.en.md)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-22-implementation-reflection-rag-v2-hardening-and-operational-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-22 Implementation Reflection (RAG v2 Hardening and Operational Observability)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-05-22 Implementation Reflection (RAG v2 Hardening and Operational Observability)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#newly-added-updated-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Newly Added / Updated Environment Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remaining-forward-looking-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remaining Forward-Looking Work
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-23-implementation-reflection-rag-v2-memory-ranking-contract-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-23 Implementation Reflection (RAG v2 Memory-Ranking Contract Sync)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-6-advanced-context-aware-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 6: Advanced Context-Aware Search
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 6: Advanced Context-Aware Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-context-aware-rrf-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Context-Aware RRF Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-7-advanced-named-entity-recognition-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 7: Advanced Named Entity Recognition Fine-tuning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 7: Advanced Named Entity Recognition Fine-tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-domain-specific-ner-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Domain-Specific NER Fine-tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-8-automated-user-feedback-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 8: Automated User Feedback Loop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 8: Automated User Feedback Loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-relevance-feedback-self-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Relevance Feedback &amp; Self-Learning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-9-multilingual-multi-regional-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 9: Multilingual &amp; Multi-Regional Support
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 9: Multilingual &amp; Multi-Regional Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-multilingual-rag-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Multilingual RAG Extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-10-real-time-updates-streaming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 10: Real-time Updates &amp; Streaming
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 10: Real-time Updates &amp; Streaming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-real-time-index-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Real-time Index Updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-11-explainable-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 11: Explainable RAG
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 11: Explainable RAG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-search-result-rationale-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Search Result Rationale Display
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milestone-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Milestone Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource Planning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resource Planning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-5-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1-5 (Required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-6-11-extension-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 6-11 (Extension / Optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Success Metrics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Success Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-5-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1-5 Goals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-6-11-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 6-11 Goals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies &amp; Constraints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependencies &amp; Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#external-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technical-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risk Management
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="rag-20-implementation-roadmap-remaining-functionality-and-future-phases">RAG 2.0 Implementation Roadmap - Remaining Functionality and Future Phases</h1>
+<p><strong>Last Updated</strong>: 2026-05-23<br />
+<strong>Status</strong>: Implementation Planning + Operational Hardening Implemented<br />
+<strong>Owner</strong>: RAG System Development Team</p>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>A comprehensive document for managing RAG 2.0 project implementation phases and remaining functionality.
+Phases 1-5 are detailed in <a href="../RAG_JAPANESE_SpecV2/">RAG_JAPANESE_SpecV2.en.md</a>. This document manages Phase 6+ extension features and continuous improvements.</p>
+<hr />
+<h2 id="implementation-planning-phases-overview">Implementation &amp; Planning Phases Overview</h2>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────────┐
+│                    RAG 2.0 Implementation Timeline               │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│ Phase 1 (Prep)      Phase 2 (KW Opt)    Phase 3 (Semantic)    │
+│ ─────────────       ──────────────────   ────────────────       │
+│ • Sudachi          • Sudachi + ES       • Query Expansion       │
+│ • NER Model        • Index Rebuild      • NER Integration       │
+│ • Test Cases       • Evaluation         • Entity Boosting       │
+│ [2-3 days]         [2-3 days]          [3-4 days]             │
+│                                                                 │
+│         ↓                    ↓                    ↓            │
+│ ┌─────────────┐    ┌──────────────┐    ┌──────────────┐        │
+│ │   READY     │    │  MRR &gt; 0.7   │    │ Recall &gt; 0.8 │        │
+│ └─────────────┘    └──────────────┘    └──────────────┘        │
+│                                                                 │
+│ Phase 4 (Integration)    Phase 5 (Operations)                 │
+│ ──────────────────       ───────────────────                  │
+│ • RRF Tuning            • Dashboard                           │
+│ • Full Test             • Monitoring                          │
+│ • Production            • Feedback Loop                       │
+│ [2-3 days]              [Ongoing]                             │
+│                                                                 │
+│         ↓                    ↓                                │
+│ ┌─────────────┐    ┌──────────────┐                          │
+│ │NDCG &gt; 0.75  │    │ Production   │                          │
+│ └─────────────┘    └──────────────┘                          │
+│                                                                 │
+│ Phase 6+ (REMAINING - This Document)                          │
+│ ────────────────────────────────────                          │
+│ • Context-aware RRF                                            │
+│ • Advanced NER fine-tuning                                     │
+│ • Relevance Feedback Loop                                      │
+│ • Multilingual Expansion                                       │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<hr />
+<h2 id="phase-1-5-core-phases-details-in-rag_japanese_specv2enmd">Phase 1-5: Core Phases (Details in RAG_JAPANESE_SpecV2.en.md)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Name</th>
+<th>Duration</th>
+<th>Key Tasks</th>
+<th>Exit Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Preparation &amp; Validation</td>
+<td>2-3 days</td>
+<td>Sudachi/NER/Test Cases</td>
+<td>Test set frozen</td>
+</tr>
+<tr>
+<td>2</td>
+<td>KW Search Optimization</td>
+<td>2-3 days</td>
+<td>Sudachi + ES integration</td>
+<td>MRR &gt; 0.7</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Semantic Optimization</td>
+<td>3-4 days</td>
+<td>Query Exp + NER</td>
+<td>Recall &gt; 0.8</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Integration &amp; Tuning</td>
+<td>2-3 days</td>
+<td>RRF tuning + full test</td>
+<td>NDCG &gt; 0.75</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Operations &amp; Monitoring</td>
+<td>Ongoing</td>
+<td>Dashboard + Feedback</td>
+<td>SLA achievement</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2026-05-22-implementation-reflection-rag-v2-hardening-and-operational-observability">2026-05-22 Implementation Reflection (RAG v2 Hardening and Operational Observability)</h2>
+<p>The following items are already reflected in EvoSpikeNet-Core implementation (<code>evospikenet/api_modules/rag_v2_api.py</code>).</p>
+<ul>
+<li>v2 API hardening:<ul>
+<li>Strengthened fail-closed behavior for <code>POST /api/v2/rag/search</code> and <code>POST /api/v2/rag/feedback</code>.</li>
+<li>Returns <code>503</code> when preprocessing dependencies (Sudachi/NER/QueryExpander) are unavailable instead of silently degrading.</li>
+</ul>
+</li>
+<li>Preprocessing component split:<ul>
+<li>Explicitly separated <code>SudachiTokenizer</code>, <code>EntityRecognizer</code>, and <code>QueryExpander</code> responsibilities.</li>
+</ul>
+</li>
+<li>Sudachi version guard:<ul>
+<li>Validates expected defaults <code>sudachipy=0.7.5</code> and dictionary <code>20240716</code>.</li>
+<li>Enforced as fail-closed in production-like environments, warning-only in non-production.</li>
+</ul>
+</li>
+<li>QueryExpander enhancements:<ul>
+<li>Implemented <code>rule|llm|hybrid</code> backends.</li>
+<li>LLM expansion is parsed through a fixed JSON schema (<code>{"expansions": [...]}</code>).</li>
+<li>Invalid JSON raises in strict mode and falls back to deterministic behavior in non-strict mode.</li>
+</ul>
+</li>
+<li>Quality guard:<ul>
+<li>Evaluates <code>diversity_score</code> and <code>redundancy_rate</code>.</li>
+<li>Automatically falls back from <code>llm/hybrid</code> to <code>rule</code> on low-quality expansion output.</li>
+</ul>
+</li>
+<li>Observability:<ul>
+<li>Added <code>GET /api/v2/rag/preprocessing/health</code>.</li>
+<li>Added <code>query_expansion_quality</code>, <code>query_expansion_guard</code>, <code>query_expansion_guard_stats</code>, <code>query_expansion_guard_history</code>, and <code>query_expansion_guard_hash_summary</code> to <code>debug_info.preprocessing</code>.</li>
+<li>Guard history is maintained as a ring buffer with timestamp, reason, fallback backend, query hash, and quality snapshot.</li>
+</ul>
+</li>
+</ul>
+<h3 id="newly-added-updated-environment-variables">Newly Added / Updated Environment Variables</h3>
+<ul>
+<li><code>RAG_V2_NER_BACKEND</code> (<code>transformers|regex</code>)</li>
+<li><code>RAG_V2_NER_MODEL</code></li>
+<li><code>RAG_V2_PREPROCESSING_WARMUP</code></li>
+<li><code>RAG_V2_PREPROCESSING_WARMUP_STRICT</code></li>
+<li><code>RAG_V2_SUDACHI_VERSION</code></li>
+<li><code>RAG_V2_SUDACHI_DICT_VERSION</code></li>
+<li><code>RAG_V2_SUDACHI_DICT_DIST_NAMES</code></li>
+<li><code>RAG_V2_QUERY_EXPANDER_BACKEND</code> (<code>rule|llm|hybrid</code>)</li>
+<li><code>RAG_V2_QUERY_EXPANDER_STRICT</code></li>
+<li><code>RAG_V2_QUERY_EXPANDER_LM_BACKEND</code></li>
+<li><code>RAG_V2_QUERY_EXPANDER_QUALITY_GUARD</code></li>
+<li><code>RAG_V2_QUERY_EXPANDER_MIN_DIVERSITY</code></li>
+<li><code>RAG_V2_QUERY_EXPANDER_MAX_REDUNDANCY</code></li>
+<li><code>RAG_V2_QUERY_EXPANDER_GUARD_HISTORY_SIZE</code></li>
+</ul>
+<h3 id="remaining-forward-looking-work">Remaining Forward-Looking Work</h3>
+<ul>
+<li>Full context-aware RRF rollout (Phase 6)</li>
+<li>Domain-specific NER fine-tuning (Phase 7)</li>
+<li>Automated feedback-driven adjustment loop (Phase 8)</li>
+<li>Multilingual extension (Phase 9)</li>
+</ul>
+<hr />
+<h2 id="2026-05-23-implementation-reflection-rag-v2-memory-ranking-contract-sync">2026-05-23 Implementation Reflection (RAG v2 Memory-Ranking Contract Sync)</h2>
+<p>The following items are now reflected in EvoSpikeNet-Core and <code>RAG_JAPANESE_SpecV2.en.md</code> v3.1.</p>
+<ul>
+<li>RRF aggregation across query expansions:<ul>
+<li>When the same <code>doc_id</code> appears in multiple expanded-query results, its RRF score is accumulated.</li>
+</ul>
+</li>
+<li>Memory-enhanced ranking:<ul>
+<li>The result of <code>RAGMemoryIntegrator.compute_memory_boost()</code> is added to <code>final_score</code>.</li>
+<li>Results are sorted by <code>final_score</code> before assigning <code>rank</code>.</li>
+</ul>
+</li>
+<li>API contract synchronization:<ul>
+<li><code>POST /api/v2/rag/search</code> explicitly documents <code>session_id</code>, <code>memory_context</code>, and <code>results[].memory_boost</code>.</li>
+<li><code>POST /api/v2/rag/feedback</code> requires <code>session_id</code> and returns <code>memory_id</code> plus <code>importance</code> on success.</li>
+</ul>
+</li>
+<li>Added test layers:<ul>
+<li>Unit: memory-enhanced ranking calculation.</li>
+<li>Integration: API-level final ranking with <code>memory_boost</code>.</li>
+<li>System: RRF accumulation contract across query expansions.</li>
+<li>E2E: search-to-feedback memory journey.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="phase-6-advanced-context-aware-search">Phase 6: Advanced Context-Aware Search</h2>
+<h3 id="61-context-aware-rrf-implementation">6.1 Context-Aware RRF Implementation</h3>
+<p><strong>Objective</strong>: Incorporate episodic memory (when, who, context) into ranking weights</p>
+<p><strong>Background:</strong>
+Currently, RRF treats BM25 scores and vector distances equally. However, considering user context (e.g., user belongs to Project A) enables more sophisticated ranking.</p>
+<p><strong>Implementation Specification:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ContextAwareRRF</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Context-aware RRF scoring"""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_context</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project_id</span> <span class="o">=</span> <span class="n">user_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"project_id"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">department</span> <span class="o">=</span> <span class="n">user_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"department"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">user_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"timestamp"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">search_history</span> <span class="o">=</span> <span class="n">user_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"search_history"</span><span class="p">,</span> <span class="p">[])</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_context_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Compute context weight based on document metadata</span>
+
+<span class="sd">        Returns: Weight multiplier 0.5 ~ 2.0</span>
+<span class="sd">        - High relevance: 2.0</span>
+<span class="sd">        - Neutral: 1.0</span>
+<span class="sd">        - Low relevance: 0.5</span>
+<span class="sd">        """</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+        <span class="c1"># Project match</span>
+        <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"project_id"</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_id</span><span class="p">:</span>
+            <span class="n">weight</span> <span class="o">*=</span> <span class="mf">1.5</span>
+
+        <span class="c1"># Department match</span>
+        <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"department"</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">department</span><span class="p">:</span>
+            <span class="n">weight</span> <span class="o">*=</span> <span class="mf">1.2</span>
+
+        <span class="c1"># Search history relevance</span>
+        <span class="k">for</span> <span class="n">prev_query</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_history</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]:</span>
+            <span class="k">if</span> <span class="n">prev_query</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"source"</span><span class="p">,</span> <span class="s2">""</span><span class="p">):</span>
+                <span class="n">weight</span> <span class="o">*=</span> <span class="mf">1.1</span>
+
+        <span class="c1"># Temporal recency</span>
+        <span class="n">doc_age_days</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">-</span> <span class="n">doc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"updated_at"</span><span class="p">))</span><span class="o">.</span><span class="n">days</span>
+        <span class="n">recency_penalty</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">doc_age_days</span> <span class="o">/</span> <span class="mi">365</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.3</span><span class="p">)</span>
+        <span class="n">weight</span> <span class="o">*=</span> <span class="n">recency_penalty</span>
+
+        <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">reciprocal_rank_fusion_with_context</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">search_results_lists</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]],</span>
+        <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">60</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        RRF with context weighting</span>
+<span class="sd">        """</span>
+        <span class="n">fused_scores</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">results</span> <span class="ow">in</span> <span class="n">search_results_lists</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+                <span class="n">doc_id</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span>
+                <span class="n">base_score</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">context_weight</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_context_weight</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="n">weighted_score</span> <span class="o">=</span> <span class="n">base_score</span> <span class="o">*</span> <span class="n">context_weight</span>
+
+                <span class="n">fused_scores</span><span class="p">[</span><span class="n">doc_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">fused_scores</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">doc_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">weighted_score</span>
+
+        <span class="n">reranked</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">fused_scores</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">doc_id</span> <span class="k">for</span> <span class="n">doc_id</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">reranked</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>Timeline</strong>: 3-4 weeks after Phase 5, 2-3 weeks implementation</p>
+<p><strong>Expected Impact</strong>:
+- NDCG@10: 0.75 → 0.82 (+9%)
+- User satisfaction: 85% → 92%</p>
+<hr />
+<h2 id="phase-7-advanced-named-entity-recognition-fine-tuning">Phase 7: Advanced Named Entity Recognition Fine-tuning</h2>
+<h3 id="71-domain-specific-ner-fine-tuning">7.1 Domain-Specific NER Fine-tuning</h3>
+<p><strong>Objective</strong>: Extract internal domain entities (org, department, project IDs) with 95%+ accuracy</p>
+<p><strong>Background:</strong>
+Standard NER models have insufficient accuracy (80-85%) for internal entities like project code "EV-2024-001" and department name "AI Systems Development Division".</p>
+<p><strong>Implementation Specification:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DomainSpecificNER</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Organization-specific NER"""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"tner/roberta-large-japanese-char-luw-ner"</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_model</span> <span class="o">=</span> <span class="n">base_model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fine_tuned_model</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entity_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_internal_entities</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_load_internal_entities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">"""Load internal entity dictionary"""</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">"PROJECT_ID"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"EV-2024-001"</span><span class="p">,</span> <span class="s2">"EV-2024-002"</span><span class="p">,</span> <span class="s2">"SPIKE-00123"</span><span class="p">],</span>
+            <span class="s2">"DEPARTMENT"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"AI Systems Dev"</span><span class="p">,</span> <span class="s2">"Data Science"</span><span class="p">,</span> <span class="s2">"Research Group"</span><span class="p">],</span>
+            <span class="s2">"PRODUCT"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"EvoSpikeNet Pro"</span><span class="p">,</span> <span class="s2">"EvoSpikeNet Core"</span><span class="p">],</span>
+            <span class="s2">"PERSON"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"John Doe"</span><span class="p">,</span> <span class="s2">"Jane Smith"</span><span class="p">]</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fine_tune_on_internal_data</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">training_data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span>
+        <span class="n">num_epochs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Fine-tune on internal annotated data</span>
+<span class="sd">        """</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoModelForTokenClassification</span><span class="p">,</span> <span class="n">Trainer</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForTokenClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_model</span><span class="p">)</span>
+        <span class="c1"># Fine-tuning process</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fine_tuned_model</span> <span class="o">=</span> <span class="n">model</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">extract_entities_with_dict_matching</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Ensemble model prediction + dictionary matching</span>
+<span class="sd">        """</span>
+        <span class="c1"># Model predictions</span>
+        <span class="n">model_predictions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_with_model</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="c1"># Dictionary matching</span>
+        <span class="n">dict_matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_match_against_internal_dict</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="c1"># Merge (deduplicate, combine confidence)</span>
+        <span class="n">merged</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_predictions</span><span class="p">(</span><span class="n">model_predictions</span><span class="p">,</span> <span class="n">dict_matches</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">merged</span>
+</code></pre></div>
+<p><strong>Timeline</strong>: 4 weeks after Phase 5, 3-4 weeks implementation</p>
+<p><strong>Expected Impact</strong>:
+- Entity Recall: 85% → 95%
+- Entity Precision: 88% → 96%</p>
+<hr />
+<h2 id="phase-8-automated-user-feedback-loop">Phase 8: Automated User Feedback Loop</h2>
+<h3 id="81-relevance-feedback-self-learning">8.1 Relevance Feedback &amp; Self-Learning</h3>
+<p><strong>Objective</strong>: Automatically improve model/rules from user "relevance" assessments</p>
+<p><strong>Background:</strong>
+Initial search results are evaluated by users. Accumulating these feedbacks and auto-adjusting model parameters enables continuous accuracy improvements.</p>
+<p><strong>Implementation Specification:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FeedbackLoop</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""User feedback collection and learning"""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rag_system</span><span class="p">,</span> <span class="n">feedback_db</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rag</span> <span class="o">=</span> <span class="n">rag_system</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">feedback_db</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">record_feedback</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">doc_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">rating</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">timestamp</span><span class="p">:</span> <span class="n">datetime</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Record user feedback"""</span>
+        <span class="n">feedback</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"query"</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span>
+            <span class="s2">"doc_id"</span><span class="p">:</span> <span class="n">doc_id</span><span class="p">,</span>
+            <span class="s2">"rating"</span><span class="p">:</span> <span class="n">rating</span><span class="p">,</span>
+            <span class="s2">"user_id"</span><span class="p">:</span> <span class="n">user_id</span><span class="p">,</span>
+            <span class="s2">"timestamp"</span><span class="p">:</span> <span class="n">timestamp</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">feedback</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">analyze_feedback_patterns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window_days</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Extract problem patterns from recent feedback</span>
+<span class="sd">        """</span>
+        <span class="n">feedbacks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">query_recent</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">window_days</span><span class="p">)</span>
+
+        <span class="n">patterns</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"low_rated_queries"</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">"false_negatives"</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">"entity_misses"</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">"variation_issues"</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">feedback</span> <span class="ow">in</span> <span class="n">feedbacks</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">feedback</span><span class="p">[</span><span class="s2">"rating"</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_entity_query</span><span class="p">(</span><span class="n">feedback</span><span class="p">[</span><span class="s2">"query"</span><span class="p">]):</span>
+                    <span class="n">patterns</span><span class="p">[</span><span class="s2">"entity_misses"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feedback</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_variation_query</span><span class="p">(</span><span class="n">feedback</span><span class="p">[</span><span class="s2">"query"</span><span class="p">]):</span>
+                    <span class="n">patterns</span><span class="p">[</span><span class="s2">"variation_issues"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feedback</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">patterns</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">auto_adjust_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patterns</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Auto-adjust parameters based on feedback patterns</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">patterns</span><span class="p">[</span><span class="s2">"entity_misses"</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rag</span><span class="o">.</span><span class="n">entity_boost_weight</span> <span class="o">*=</span> <span class="mf">1.1</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Auto-increased entity boost weight"</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">patterns</span><span class="p">[</span><span class="s2">"variation_issues"</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rag</span><span class="o">.</span><span class="n">query_expansion_enabled</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Auto-enabled query expansion"</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Timeline</strong>: 2 weeks after Phase 6, 2-3 weeks implementation</p>
+<p><strong>Expected Impact</strong>:
+- Monthly NDCG improvement: 0.5-1.0% (continuous)
+- User satisfaction auto-improvement</p>
+<hr />
+<h2 id="phase-9-multilingual-multi-regional-support">Phase 9: Multilingual &amp; Multi-Regional Support</h2>
+<h3 id="91-multilingual-rag-extension">9.1 Multilingual RAG Extension</h3>
+<p><strong>Objective</strong>: Support English, Chinese, and other languages</p>
+<p><strong>Current Status:</strong>
+- Japanese: Full support (Phase 1-5)
+- English: Basic support (language detection only)
+- Others: Not supported</p>
+<p><strong>Implementation Specification:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MultilingualRAG</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Multilingual RAG"""</span>
+
+    <span class="n">LANGUAGE_CONFIGS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"ja"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"tokenizer"</span><span class="p">:</span> <span class="s2">"sudachi"</span><span class="p">,</span>
+            <span class="s2">"stop_words"</span><span class="p">:</span> <span class="s2">"ja_stop"</span><span class="p">,</span>
+            <span class="s2">"embedding_model"</span><span class="p">:</span> <span class="s2">"paraphrase-multilingual-MiniLM-L12-v2"</span><span class="p">,</span>
+            <span class="s2">"ner_model"</span><span class="p">:</span> <span class="s2">"tner/roberta-large-japanese-char-luw-ner"</span>
+        <span class="p">},</span>
+        <span class="s2">"en"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"tokenizer"</span><span class="p">:</span> <span class="s2">"english"</span><span class="p">,</span>
+            <span class="s2">"stop_words"</span><span class="p">:</span> <span class="s2">"english"</span><span class="p">,</span>
+            <span class="s2">"embedding_model"</span><span class="p">:</span> <span class="s2">"paraphrase-multilingual-MiniLM-L12-v2"</span><span class="p">,</span>
+            <span class="s2">"ner_model"</span><span class="p">:</span> <span class="s2">"dslim/bert-base-NER"</span>
+        <span class="p">},</span>
+        <span class="s2">"zh"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"tokenizer"</span><span class="p">:</span> <span class="s2">"chinese"</span><span class="p">,</span>
+            <span class="s2">"stop_words"</span><span class="p">:</span> <span class="s2">"chinese"</span><span class="p">,</span>
+            <span class="s2">"embedding_model"</span><span class="p">:</span> <span class="s2">"paraphrase-multilingual-MiniLM-L12-v2"</span><span class="p">,</span>
+            <span class="s2">"ner_model"</span><span class="p">:</span> <span class="s2">"uer/roberta-base-chinese-cluener"</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve_multilingual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">languages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Simultaneous search across multiple languages</span>
+<span class="sd">        """</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">lang</span> <span class="ow">in</span> <span class="n">languages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">lang</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">supported_languages</span><span class="p">:</span>
+                <span class="n">detected_lang</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_detect_language</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">detected_lang</span> <span class="o">==</span> <span class="n">lang</span><span class="p">:</span>
+                    <span class="n">results</span><span class="p">[</span><span class="n">lang</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rag</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">lang_config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">LANGUAGE_CONFIGS</span><span class="p">[</span><span class="n">lang</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">translated_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_translate</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">detected_lang</span><span class="p">,</span> <span class="n">lang</span><span class="p">)</span>
+                    <span class="n">results</span><span class="p">[</span><span class="n">lang</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rag</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">translated_query</span><span class="p">,</span> <span class="n">lang_config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">LANGUAGE_CONFIGS</span><span class="p">[</span><span class="n">lang</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">results</span>
+</code></pre></div>
+<p><strong>Timeline</strong>: 3 weeks after Phase 7, 4-5 weeks implementation</p>
+<p><strong>Expected Impact</strong>:
+- Global support realization
+- User base expansion</p>
+<hr />
+<h2 id="phase-10-real-time-updates-streaming">Phase 10: Real-time Updates &amp; Streaming</h2>
+<h3 id="101-real-time-index-updates">10.1 Real-time Index Updates</h3>
+<p><strong>Objective</strong>: Immediately reflect document additions/updates in indexes</p>
+<p><strong>Current State:</strong>
+- Batch updates (hours-days lag)</p>
+<p><strong>After Improvement:</strong>
+- Real-time updates (seconds)</p>
+<p><strong>Implementation Specification:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RealtimeRAGIndexer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Real-time index updates"""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">milvus_client</span><span class="p">,</span> <span class="n">es_client</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">milvus</span> <span class="o">=</span> <span class="n">milvus_client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">es</span> <span class="o">=</span> <span class="n">es_client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_queue</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">process_updates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Asynchronously process documents from queue</span>
+<span class="sd">        """</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">doc</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_embedding</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="s2">"text"</span><span class="p">])</span>
+
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_milvus</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="n">embedding</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_elasticsearch</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="n">doc</span><span class="p">)</span>
+
+                <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Document </span><span class="si">{</span><span class="n">doc</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span><span class="si">}</span><span class="s2"> updated in real-time"</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Failed to update document: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Timeline</strong>: 2 weeks after Phase 8, 3-4 weeks implementation</p>
+<p><strong>Expected Impact</strong>:
+- Information freshness improvement
+- Enhanced user experience</p>
+<hr />
+<h2 id="phase-11-explainable-rag">Phase 11: Explainable RAG</h2>
+<h3 id="111-search-result-rationale-display">11.1 Search Result Rationale Display</h3>
+<p><strong>Objective</strong>: Explain to users "why this document appeared"</p>
+<p><strong>Implementation Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ExplainableRAG</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Explainable search results"""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve_with_explanation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Return search results with explanations</span>
+<span class="sd">        """</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">docs</span><span class="p">,</span> <span class="n">debug_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rag</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">return_debug_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">docs</span><span class="p">[:</span><span class="n">top_k</span><span class="p">]):</span>
+            <span class="n">explanation</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">"document"</span><span class="p">:</span> <span class="n">doc</span><span class="p">,</span>
+                <span class="s2">"rank"</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">"reasons"</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"keyword_match"</span><span class="p">,</span>
+                        <span class="s2">"matched_terms"</span><span class="p">:</span> <span class="n">debug_info</span><span class="p">[</span><span class="s2">"keyword_results"</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">"matched_keywords"</span><span class="p">],</span>
+                        <span class="s2">"score"</span><span class="p">:</span> <span class="n">debug_info</span><span class="p">[</span><span class="s2">"keyword_results"</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">"score"</span><span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"semantic_similarity"</span><span class="p">,</span>
+                        <span class="s2">"similarity"</span><span class="p">:</span> <span class="n">debug_info</span><span class="p">[</span><span class="s2">"vector_results"</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">"score"</span><span class="p">],</span>
+                        <span class="s2">"explanation"</span><span class="p">:</span> <span class="s2">"Small semantic distance to query"</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"rrf_fusion"</span><span class="p">,</span>
+                        <span class="s2">"combined_score"</span><span class="p">:</span> <span class="n">debug_info</span><span class="p">[</span><span class="s2">"rrf_scores"</span><span class="p">][</span><span class="n">doc</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]]</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">explanation</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">results</span>
+</code></pre></div>
+<p><strong>Timeline</strong>: 1 week after Phase 9, 2 weeks implementation</p>
+<p><strong>Expected Impact</strong>:
+- Increased user trust
+- Improved debugging/optimization efficiency</p>
+<hr />
+<h2 id="milestone-overview">Milestone Overview</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Name</th>
+<th>Start</th>
+<th>Duration</th>
+<th>Main Deliverable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Preparation</td>
+<td>Immediate</td>
+<td>2-3 days</td>
+<td>Test set frozen</td>
+</tr>
+<tr>
+<td>2</td>
+<td>KW Optimization</td>
+<td>Week 1</td>
+<td>2-3 days</td>
+<td>MRR 0.7+</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Semantic Optimization</td>
+<td>Week 2</td>
+<td>3-4 days</td>
+<td>Recall 0.8+</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Integration &amp; Tuning</td>
+<td>Week 3</td>
+<td>2-3 days</td>
+<td>NDCG 0.75+</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Operations &amp; Monitoring</td>
+<td>Week 4</td>
+<td>Ongoing</td>
+<td>Production ready</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td><strong>Context-aware RRF</strong></td>
+<td><strong>Week 7</strong></td>
+<td><strong>2-3 weeks</strong></td>
+<td><strong>NDCG 0.82+</strong></td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td><strong>Domain NER</strong></td>
+<td><strong>Week 10</strong></td>
+<td><strong>3-4 weeks</strong></td>
+<td><strong>Entity Recall 95%+</strong></td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td><strong>Feedback Loop</strong></td>
+<td><strong>Week 13</strong></td>
+<td><strong>2-3 weeks</strong></td>
+<td><strong>Auto-improvement</strong></td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td><strong>Multilingual</strong></td>
+<td><strong>Week 16</strong></td>
+<td><strong>4-5 weeks</strong></td>
+<td><strong>Global Ready</strong></td>
+</tr>
+<tr>
+<td><strong>10</strong></td>
+<td><strong>Real-time Updates</strong></td>
+<td><strong>Week 21</strong></td>
+<td><strong>3-4 weeks</strong></td>
+<td><strong>Second-level Updates</strong></td>
+</tr>
+<tr>
+<td><strong>11</strong></td>
+<td><strong>Explainability</strong></td>
+<td><strong>Week 25</strong></td>
+<td><strong>2 weeks</strong></td>
+<td><strong>Explainable RAG</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="resource-planning">Resource Planning</h2>
+<h3 id="phase-1-5-required">Phase 1-5 (Required)</h3>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>FTE</th>
+<th>Duration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ML Engineer</td>
+<td>1.5</td>
+<td>2 weeks</td>
+</tr>
+<tr>
+<td>Backend Engineer</td>
+<td>1.5</td>
+<td>2 weeks</td>
+</tr>
+<tr>
+<td>QA / Testing</td>
+<td>0.5</td>
+<td>2 weeks</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>3.5</strong></td>
+<td><strong>2 weeks</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-6-11-extension-optional">Phase 6-11 (Extension / Optional)</h3>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>FTE</th>
+<th>Duration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ML Engineer</td>
+<td>1.0</td>
+<td>8 weeks</td>
+</tr>
+<tr>
+<td>Backend Engineer</td>
+<td>1.0</td>
+<td>8 weeks</td>
+</tr>
+<tr>
+<td>DevOps</td>
+<td>0.5</td>
+<td>8 weeks</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>2.5</strong></td>
+<td><strong>8 weeks</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="success-metrics">Success Metrics</h2>
+<h3 id="phase-1-5-goals">Phase 1-5 Goals</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Baseline</th>
+<th>Target</th>
+<th>Deadline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Variation MRR</td>
+<td>0.42</td>
+<td>0.70</td>
+<td>Week 3</td>
+</tr>
+<tr>
+<td>Entity Recall</td>
+<td>0.35</td>
+<td>0.80</td>
+<td>Week 4</td>
+</tr>
+<tr>
+<td>Overall NDCG</td>
+<td>0.55</td>
+<td>0.75</td>
+<td>Week 4</td>
+</tr>
+<tr>
+<td>User Satisfaction</td>
+<td>78%</td>
+<td>90%</td>
+<td>Week 5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-6-11-goals">Phase 6-11 Goals</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Deadline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Context-aware NDCG</td>
+<td>0.82</td>
+<td>Week 8</td>
+</tr>
+<tr>
+<td>Entity Precision</td>
+<td>0.96</td>
+<td>Week 11</td>
+</tr>
+<tr>
+<td>Self-learning NDCG improvement</td>
+<td>+0.5-1.0%/month</td>
+<td>Week 13</td>
+</tr>
+<tr>
+<td>Global Support</td>
+<td>3 languages</td>
+<td>Week 21</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="dependencies-constraints">Dependencies &amp; Constraints</h2>
+<h3 id="external-dependencies">External Dependencies</h3>
+<ul>
+<li>✅ Sudachi / TNER / Elasticsearch - Available</li>
+<li>⚠️ Internal terminology dictionary - Must be built in Phase 1</li>
+<li>⚠️ User feedback mechanism - Implemented in Phase 5</li>
+</ul>
+<h3 id="technical-constraints">Technical Constraints</h3>
+<ul>
+<li>GPU Memory: 8GB+ recommended for NER model execution</li>
+<li>Elasticsearch Storage: 2x capacity needed during index rebuild</li>
+<li>Milvus Credits: Additional allocation for large-scale indexing</li>
+</ul>
+<hr />
+<h2 id="risk-management">Risk Management</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Probability</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sudachi dependency issues</td>
+<td>Medium</td>
+<td>High</td>
+<td>Prepare MeCab alternative</td>
+</tr>
+<tr>
+<td>NER model accuracy shortfall</td>
+<td>Low</td>
+<td>Medium</td>
+<td>Fine-tuning on internal data</td>
+</tr>
+<tr>
+<td>Index rebuild time overrun</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Incremental indexing strategy</td>
+</tr>
+<tr>
+<td>Insufficient user feedback</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Introduce incentive mechanism</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Document Version</strong>: 1.0<br />
+<strong>Status</strong>: Ready for Implementation<br />
+<strong>Owner</strong>: RAG Development Team<br />
+<strong>Last Updated</strong>: 2026-05-20</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 23, 2026 05:14:02 UTC">May 23, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+<div class="md-copyright__highlight">
+  最終更新日: 2026-08-28 07:33:20 UTC
+</div>
+<div class="md-copyright__highlight">
+  Copyright evospikenet.org
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/i18n-nav-fix.js"></script>
+      
+        <script src="../../javascripts/set-logo-link.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/polyfill-library/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

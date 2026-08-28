@@ -1,0 +1,9999 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://evospikenet-org.github.io/Docs-Public/applications/core_social_implementation_apps/">
+      
+      
+        <link rel="prev" href="../BrainOS/">
+      
+      
+        <link rel="next" href="../../documentation_index/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="ja">
+        
+          <link rel="alternate" href="../../en/applications/core_social_implementation_apps/" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>EvoSpikeNet-Core 社会実装アプリ - EvoSpikeNet Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#evospikenet-core" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="EvoSpikeNet Documentation" class="md-header__button md-logo" aria-label="EvoSpikeNet Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EvoSpikeNet Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              EvoSpikeNet-Core 社会実装アプリ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="言語切り替え">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="ja" class="md-select__link">
+              日本語
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../en/applications/core_social_implementation_apps/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../learning_guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  学習ガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../faq/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../release_notes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  リリースノート
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../quizzes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  クイズ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../MULTILINGUAL_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  多言語ドキュメントガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../MULTILINGUAL_COMPLETION_REPORT/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  多言語化完了レポート
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/installation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  スタートガイド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/basic_features/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  概念・製品仕様
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/biomimetic_systems/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  生物学的模倣・自己進化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/distributed_brain/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  分散脳アーキテクチャ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/memory_and_rag/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  記憶・言語・RAG
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/sdk_and_api/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SDK・API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/deployment_and_operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  運用・インフラ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/security_and_quality/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  セキュリティ・テスト・品質
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/research_and_multimodal/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  研究・応用・拡張
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  応用例
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../documentation_index/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  索引・リファレンス
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="EvoSpikeNet Documentation" class="md-nav__button md-logo" aria-label="EvoSpikeNet Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/favicon.png" alt="logo">
+
+    </a>
+    EvoSpikeNet Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learning_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学習ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release_notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    リリースノート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クイズ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MULTILINGUAL_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多言語ドキュメントガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MULTILINGUAL_COMPLETION_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多言語化完了レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    スタートガイド
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    スタートガイド
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インストール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/first_simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    初めてのシミュレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BUILD_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ビルドガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DOCKER_BUILD_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker ビルドガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DOCKER_BUILD_MODES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker ビルドモード完全ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DOCKER_PUBLISHING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker パブリッシングガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TROUBLESHOOTING_DOCKER_BUILDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker トラブルシューティング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONDA_SETUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conda セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GPU_CPU_LAUNCH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU/CPU クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MKDOCS_BUILD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs ビルド手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概念・製品仕様
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    概念・製品仕様
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/basic_features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本機能と導入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EVOSPIKENET_CONCEPTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet コア概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRODUCT_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    製品概要書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FEATURE_SPEC_TABLE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    機能スペック表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SOURCE_CODE_IMPLEMENTATION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ソースコード実装詳細ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../REMAINING_FUNCTIONALITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装ステータス（残存機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../INFERENCE_PIPELINE_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推論パイプライン実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DATA_HANDLING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    データハンドリング方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DEPENDENCY_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係管理ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DEPENDENCY_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係アーキテクチャ改善
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DEPENDENCY_IMPROVEMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依存関係改善完了レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONFIGURATION_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    設定外部化実装ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ENVIRONMENT_VARIABLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    環境変数運用方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONNECT_BACKENDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バックエンド接続手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生物学的模倣・自己進化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    生物学的模倣・自己進化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/biomimetic_systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生物学的模倣と進化学習
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BIOMIMETIC_IMPLIMENTATION_PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生物模倣強化プラン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADVANCED_SELF_EVOLUTION_11_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自己進化高度化 11.7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADVANCED_EVOLUTION_PHASE5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    進化フェーズ 5-6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AEG_IMPLEMENTATION_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AEG 実装概要
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADVANCED_DECISION_ENGINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高度意思決定エンジン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AUTO_RECOVERY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自動回復機能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Q_PFC_ADAPTIVE_CONTROL_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Q-PFC 適応制御ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BACKPROP_IMPLEMENTATION_OVERVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バックプロパゲーション実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DEV_BATCH_SHAPING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バッチシェーピング設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TRACKING_ACTION_MODELS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    トラッキング・行為認識モデル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../architecture/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分散脳アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    分散脳アーキテクチャ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/distributed_brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分散脳アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISTRIBUTED_BRAIN_SYSTEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分散脳システム技術仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISTRIBUTED_BRAIN_NODE_TYPES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノードタイプ仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISTRIBUTED_BRAIN_NODE_CONFIGURATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノード構成とモデルマッピング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISTRIBUTED_BRAIN_SPATIAL_NODES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    空間処理ノード仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISTRIBUTED_BRAIN_28NODE_EVALUATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28ノード評価
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DYNAMIC_LOAD_BALANCING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動的負荷分散
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FULL_BRAIN_NODE_REQUIREMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フル脳ノード要件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FULL_BRAIN_UI_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フル脳UI実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISTRIBUTED_BRAIN_SEQUENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動作フロー・シーケンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISTRIBUTED_BRAIN_EEG_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EEG 統合システム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISTRIBUTED_BRAIN_LLM_VERIFICATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISTRIBUTED_BRAIN_IMPLEMENTATION_VERIFICATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装完了検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISTRIBUTED_BRAIN_LOGGING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノードログ表示ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISTRIBUTED_BRAIN_MODEL_ARTIFACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モデルアーティファクト一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISTRIBUTED_BRAIN_METRICS_UI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メトリクス UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SPIKE_COMMUNICATION_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spike 通信分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HPDBN_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBNノードアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HPDBN_EXTERNAL_OPTIMIZATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN外部定義最適化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURE_DISTRIBUTED_BRAIN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュア分散脳シミュレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADVANCED_NODE_DISCOVERY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ノード発見（高度）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GEO_NODE_MANAGER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地理ノードマネージャー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ZENOH_VS_TORCH_DISTRIBUTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zenoh vs torch.distributed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CENTRALIZED_LOGGING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集中ロギングシステム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FEDERATED_DB_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フェデレーテッドDB統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FEDERATED_AGGREGATOR_SELECTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集約LLM選択戦略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/dense_chronospike_lm_training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dense Chrono-Spike LM 学習
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    記憶・言語・RAG
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    記憶・言語・RAG
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/memory_and_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    記憶管理とRAGシステム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../architecture/sparse_event_memory/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sparse Event-Memory LM
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12_2" id="__nav_12_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sparse Event-Memory LM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/sparse_event_memory/specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/sparse_event_memory/detailed_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    詳細数理・メモリ設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SPARSE_EVO_MEMORYLM_SYSTEM_REVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sparse Evo-MemoryLM システムレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MEMORY_ORCHESTRATION_E2E_SPEC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Orchestration End-to-End 仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MEMORY_ORCHESTRATION_MONITORING_SLO_SLA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Orchestration 監視仕様（SLO/SLA）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MEMORY_LEARNING_INTEGRATION_CONTROL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メモリと学習の統合制御設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EPISODIC_MEMORY_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エピソード記憶実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BRAIN_LANGUAGE_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脳内言語アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BRain_Language_Vocab_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Language Vocab README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MEMERIED_SPIKENETLM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEMERIED SpikeNetLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SWITCH_TO_EVOSPIKENET_LM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet LM への切替
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EvoLLMConverter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo-LLM Converter 設計書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LLM_INTEGRATION_STRATEGY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 統合戦略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LLM_TRAINING_SYSTEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM 学習システム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LANGUAGE_MODEL_ARCHITECTURE_COMPATIBILITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LanguageModel アーキテクチャ互換性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LANGUAGE_MODEL_GPU_CAPACITY_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LanguageModel GPU 容量検証ポリシー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RAG_SYSTEM_DETAILED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG システム詳細解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RAG_REMAINING_FUNCTIONALITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 2.0 残存機能・将来フェーズ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RAG_JAPANESE_SpecV2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語仕様書 V2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RAG_JAPANESE_EVALUATE_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語評価ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RAG_JAPANESE_PARTICLE_ISSUE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG 日本語助詞問題
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../QUERY_RESPONSE_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全脳クエリレスポンス解析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIMULATION_RECORDING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シミュレーション記録ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIMULATION_RECORDING_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シミュレーション記録 README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ZIGZAG_WHERE_WHAT_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Where-What 統合ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK・API
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SDK・API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/sdk_and_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDKとAPI統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_QUICKSTART/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK クイックスタート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_INSTALLATION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK インストールガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_TUTORIAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK チュートリアル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_DEVELOPER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 開発者ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_CONFIGURATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 設定ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK API リファレンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EvoSpikeNet_SDK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK（全機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_DOCUMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ドキュメント概要
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_DOCUMENTATION_INDEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ドキュメントインデックス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 変更履歴
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_ENHANCEMENT_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK 機能強化・実装詳細
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_SPARSE_EVENT_MEMORY_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK Sparse Event-Memory LM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_DEVICE_PLUGIN_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK デバイスプラグインガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HPDBN_SDK_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN SDK統合ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HPDBN_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBNノードアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HPDBN_EXTERNAL_OPTIMIZATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPDBN外部定義最適化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_SOLVER_PLUGIN_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK ソルバープラグインガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_LOIHI_BRAIN2LOIHI_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK Loihi Brain2Loihi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EVALUATOR_SDK_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    評価系 SDK ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EVALUATOR_SDK_SAMPLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    評価系 SDK サンプル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PLUGIN_MICROSERVICES_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグインアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EVOSPIKENET_PLUGIN_FEASIBILITY_ANALYSIS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグイン化 実装可能性評価
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EVOSPIKENET_PLUGIN_IMPLEMENTATION_ROADMAP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プラグイン化 実装ロードマップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PLUGIN_DOC_SYNC_MATRIX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin ドキュメント同期マトリクス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_sdk_model_status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker SDK モデル配置状況
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/openapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAPI スキーマ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    運用・インフラ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    運用・インフラ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/deployment_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    運用・デプロイ・インフラ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HPC_SETUP_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPC 環境セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NGC_JUPYTER_SETUP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NGC Jupyter セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NGC_VERIFICATION_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NGC 動作確認チェックリスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LARGE_SCALE_TRAINING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大規模学習ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../INFRASTRUCTURE_AS_CODE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure as Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB_MIGRATION_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    データベースマイグレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../E2E_RUNBOOK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E2E 実行ランブック
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MULTI_NODE_INTEGRATION_TESTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    マルチノード統合テスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HCP_DOWNLOAD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HCP ダウンロード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VAULT_K8S_EXAMPLES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vault + Kubernetes 例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュリティ・テスト・品質
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    セキュリティ・テスト・品質
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/security_and_quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュリティ・監査・品質
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TESTING_MARKERS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストマーカーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TEST_DATA_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テストデータ管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TEST_MENU_README/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テスト統合メニュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TEST_CONSOLIDATION_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テスト統合レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VALIDATION_EXECUTION_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    検証実行サマリー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURE_KEY_INJECTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュアキー注入管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AUDIT_LOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    監査ログ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ERROR_MESSAGES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エラーメッセージ一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EXCEPTION_HANDLING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    例外処理ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EXCEPTION_LOGGING_IMPROVEMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    例外ログ改善レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BROKEN_LINKS_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    壊れたリンクレポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CI_BUILD_MATRIX_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI ビルドマトリクスガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FORK_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fork & Upstream 同期ポリシー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRIVACY_AND_AUTH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プライバシー・認証
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HEALTH_DATA_COMPLIANCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    健康データコンプライアンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/coding_standards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コーディング規約
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究・応用・拡張
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    研究・応用・拡張
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/research_and_multimodal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究資料・マルチモーダル・拡張領域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NEUROSCIENCE_BRAIN_SIMULATION_BRIEF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    神経科学・脳シミュレーション研究要旨
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NEUROSCIENCE_BRAIN_SIMULATION_PAPER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    神経科学・脳シミュレーション論文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HUMAN_BRAIN_FULL_SIMULATION_CONCEPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全脳再現システム概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONNECTOME_INTEGRATION_PAPER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム統合論文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../connectome_evospikenet_implementation_policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム統合実装方針
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../connectome_literature_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトーム文献レビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONNECTOME_MIRROR_TEMPLATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コネクトームミラーテンプレート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../detailed_paper_summaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代表論文詳細要約
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../HUMANOID_ROBOT_DESIGN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ヒューマノイドロボット詳細設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SENSOR_DRIVER_DEVELOPMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    センサードライバ開発
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VIDEO_AUDIO_ANALYSIS_SPEC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動画・音声解析仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VIDEO_AUDIO_MODEL_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動画・音声モデル統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../edge_implementation_plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エッジ実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../edge_phase1_5_implementation_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エッジ Phase 1-5 実装報告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../evospikenet_edge_validation_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet エッジ検証レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FRONTEND_FILE_UI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フロントエンドファイル管理 UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FRONTEND_UI_IMPLEMENTATION_PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    フロントエンド UI 実装計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    応用例
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    応用例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_17_2" id="__nav_17_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainOS（次世代版）
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BrainOS（次世代版）
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../brainos_nextgen_overview_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概要仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../brainos_nextgen_detailed_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    詳細仕様書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../brainos_nextgen_implementation_plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実装プラン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../brainos_nextgen_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユースケース・応用例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BrainOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainOS 互換ページ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet-Core 社会実装アプリ
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet-Core 社会実装アプリ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アプリ別詳細
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="アプリ別詳細">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mineral_exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. mineral_exploration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ultra_large_scale_ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ultra_large_scale_ai
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-humanoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. humanoid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-immersive_entertainment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. immersive_entertainment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-takumi_network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. takumi_network
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-real_time_language_translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. real_time_language_translation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-climate_change_prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. climate_change_prediction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-personalized_education_platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. personalized_education_platform
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-financial_trading_optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. financial_trading_optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-cybersecurity_monitoring_system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. cybersecurity_monitoring_system
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-quantum_neuro_fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. quantum_neuro_fusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-smart_city_infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. smart_city_infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-autonomous_vehicle_system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. autonomous_vehicle_system
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-space_exploration_support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. space_exploration_support
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-smart_traffic_management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. smart_traffic_management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-social_media_recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. social_media_recommendation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-dream_realization_simulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. dream_realization_simulator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-industrial_iot_optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. industrial_iot_optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-alien_life_exploration_support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. alien_life_exploration_support
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-genetic_analysis_support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. genetic_analysis_support
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-location_aware_team_robotics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. location_aware_team_robotics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-precision_agriculture_optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        22. precision_agriculture_optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-medical_quantum_federated_learning_platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        23. medical_quantum_federated_learning_platform
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-medical_diagnostic_assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        24. medical_diagnostic_assistant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-logistics_routing_app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        25. logistics_routing_app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-eeg_brain_simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        26. eeg_brain_simulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-brain_machine_interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        27. brain_machine_interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-autonomous_robotics_control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        28. autonomous_robotics_control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-video_scene_app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        29. video_scene_app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#30-avatar_coevolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        30. avatar_coevolution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-cooperative_edge_robotics_system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        31. cooperative_edge_robotics_system
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-autonomous_disaster_response_system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        32. autonomous_disaster_response_system
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-tidal_crowd_simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33. tidal_crowd_simulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-space_debris_management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        34. space_debris_management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-project_vr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        35. project_vr
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-neuro_ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        36. neuro_ecosystem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-sports_strategy_evolution_system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        37. sports_strategy_evolution_system
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    索引・リファレンス
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    索引・リファレンス
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ドキュメントマップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../USER_MANUAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーマニュアル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDK_API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDK API リファレンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EvoSpikeNet_SDK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EvoSpikeNet SDK（全機能）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アプリ別詳細
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="アプリ別詳細">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mineral_exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. mineral_exploration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ultra_large_scale_ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ultra_large_scale_ai
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-humanoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. humanoid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-immersive_entertainment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. immersive_entertainment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-takumi_network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. takumi_network
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-real_time_language_translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. real_time_language_translation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-climate_change_prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. climate_change_prediction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-personalized_education_platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. personalized_education_platform
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-financial_trading_optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. financial_trading_optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-cybersecurity_monitoring_system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. cybersecurity_monitoring_system
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-quantum_neuro_fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. quantum_neuro_fusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-smart_city_infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. smart_city_infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-autonomous_vehicle_system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. autonomous_vehicle_system
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-space_exploration_support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. space_exploration_support
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-smart_traffic_management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. smart_traffic_management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-social_media_recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. social_media_recommendation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-dream_realization_simulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. dream_realization_simulator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-industrial_iot_optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. industrial_iot_optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-alien_life_exploration_support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. alien_life_exploration_support
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-genetic_analysis_support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. genetic_analysis_support
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-location_aware_team_robotics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. location_aware_team_robotics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-precision_agriculture_optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        22. precision_agriculture_optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-medical_quantum_federated_learning_platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        23. medical_quantum_federated_learning_platform
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-medical_diagnostic_assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        24. medical_diagnostic_assistant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-logistics_routing_app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        25. logistics_routing_app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-eeg_brain_simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        26. eeg_brain_simulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-brain_machine_interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        27. brain_machine_interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-autonomous_robotics_control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        28. autonomous_robotics_control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-video_scene_app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        29. video_scene_app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#30-avatar_coevolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        30. avatar_coevolution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-cooperative_edge_robotics_system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        31. cooperative_edge_robotics_system
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-autonomous_disaster_response_system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        32. autonomous_disaster_response_system
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-tidal_crowd_simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33. tidal_crowd_simulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-space_debris_management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        34. space_debris_management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-project_vr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        35. project_vr
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-neuro_ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        36. neuro_ecosystem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-sports_strategy_evolution_system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        37. sports_strategy_evolution_system
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="evospikenet-core">EvoSpikeNet-Core 社会実装アプリ一覧</h1>
+<h3 id="_1">アプリ別詳細</h3>
+<h4 id="1-mineral_exploration">1. <code>mineral_exploration</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 97.74（構造 15.00/15、実装 19.80/20、運用 19.63/20、SDK 15.00/15、テスト 20.00/20、Coverage 8.31/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>地質、衛星、地形、探査候補を組み合わせ、鉱物資源の有望エリア抽出とレポート作成を支援する探査プロダクト。 想定利用者は鉱物探査チーム、地質技術者、投資判断担当、現地調査計画者で、衛星画像、地形、地質図、鉱床候補、現地調査メモ、補助データを継続的に取り込み、有望度推定、地図可視化、候補比較、探査レポート、React UIによる操作を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>鉱物探査チーム、地質技術者、投資判断担当、現地調査計画者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>衛星画像、地形、地質図、鉱床候補、現地調査メモ、補助データ。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>有望度推定、地図可視化、候補比較、探査レポート、React UIによる操作。</td>
+</tr>
+<tr>
+<td>LanguageModel 構成管理</td>
+<td>LanguageMode のデータソース・Tokenizer・品質判定は実装済み。複数 <code>d_model</code> の安全な共存には、モデルごとの不変 <code>model_spec</code>、durable artifact URI、追加学習互換性検証、推論 preflight が必要であり、導入仕様は <a href="../../LANGUAGE_MODEL_ARCHITECTURE_COMPATIBILITY/">LanguageModel アーキテクチャ互換性・アーティファクト契約</a> で管理する。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、鉱物探査チーム、地質技術者、投資判断担当、現地調査計画者が衛星画像、地形、地質図、鉱床候補、現地調査メモ、補助データを確認しながら、有望度推定、地図可視化、候補比較、探査レポート、React UIによる操作を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は衛星画像、地形、地質図、鉱床候補、現地調査メモ、補助データを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>テスト証跡、SDK統合が先行し、統合/性能試験、本番gateは確認済み。coverage 83.1%を補強してA-readinessの実体を固める段階。 評価を牽引しているのはテスト証跡、SDK統合で、統合/性能試験、本番gate、SDK疎通確認を確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、運用ガード、実装深度、テスト証跡、構造、本番運用準備、SDK統合、coverage。補強点: coverage 83.1%。特にcoverage、本番運用準備を優先補強。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>React UI、coverage 85%、production gate、Docker SDK API本番スモークを確認済み。次は実データAPI連携、SNN/spiking-lm training capability検証、および <code>model_spec</code> を用いた可変 <code>d_model</code> の artifact/追加学習/推論互換性導入。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-ultra_large_scale_ai">2. <code>ultra_large_scale_ai</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 97.70（構造 14.30/15、実装 19.10/20、運用 20.00/20、SDK 15.00/15、テスト 20.00/20、Coverage 9.30/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>大規模AIワークロードの分散実行、モデル運用、リソース監視を統合し、大規模推論/学習を管理する基盤プロダクト。 想定利用者はAI基盤チーム、MLOps担当、研究者、クラスタ運用者、SREで、モデル、ジョブ定義、クラスタ状態、メトリクス、データセット、運用ポリシーを継続的に取り込み、分散ジョブ管理、モデル運用、リソース監視、障害検知、SLO確認を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>AI基盤チーム、MLOps担当、研究者、クラスタ運用者、SRE。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>モデル、ジョブ定義、クラスタ状態、メトリクス、データセット、運用ポリシー。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>分散ジョブ管理、モデル運用、リソース監視、障害検知、SLO確認。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、AI基盤チーム、MLOps担当、研究者、クラスタ運用者、SREがモデル、ジョブ定義、クラスタ状態、メトリクス、データセット、運用ポリシーを確認しながら、分散ジョブ管理、モデル運用、リソース監視、障害検知、SLO確認を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力はモデル、ジョブ定義、クラスタ状態、メトリクス、データセット、運用ポリシーを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>テスト証跡、本番運用準備が強く、統合/性能試験、coverage 93.0%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのはテスト証跡、本番運用準備で、統合/性能試験、coverage 93.0%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 93.0%、運用ガード、実装深度、テスト証跡、構造、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>運用UI、E2E、coverage、本番gateが揃った。次は実機負荷検証と運用SLO検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-humanoid">3. <code>humanoid</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 96.53（構造 15.00/15、実装 19.03/20、運用 20.00/20、SDK 15.00/15、テスト 18.75/20、Coverage 8.75/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>ヒューマノイドの制御、知覚、診断、シミュレーションを扱い、API群と運用ワークフローを統合するロボット基盤。 想定利用者はヒューマノイド研究者、制御開発者、実機運用者、保守担当で、関節/姿勢データ、センサー、行動計画、診断ログ、シミュレーション条件を継続的に取り込み、制御API、状態診断、行動シミュレーション、安全監視、運用ログを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>ヒューマノイド研究者、制御開発者、実機運用者、保守担当。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>関節/姿勢データ、センサー、行動計画、診断ログ、シミュレーション条件。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>制御API、状態診断、行動シミュレーション、安全監視、運用ログ。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、ヒューマノイド研究者、制御開発者、実機運用者、保守担当が関節/姿勢データ、センサー、行動計画、診断ログ、シミュレーション条件を確認しながら、制御API、状態診断、行動シミュレーション、安全監視、運用ログを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は関節/姿勢データ、センサー、行動計画、診断ログ、シミュレーション条件を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が強く、統合テスト、coverage 87.5%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合テスト、coverage 87.5%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合テスト、coverage 87.5%、運用ガード、実装深度、テスト証跡、構造、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>frontend検出、coverage 87.5%、production gateが揃いA到達。次は実機HILと運用SLO検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-immersive_entertainment">4. <code>immersive_entertainment</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 96.34（構造 14.30/15、実装 17.90/20、運用 20.00/20、SDK 15.00/15、テスト 19.50/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>ユーザーの反応、空間演出、生成コンテンツを統合し、没入型エンターテインメント体験を動的に最適化するプロダクト。 想定利用者はイベント運営者、XR/ゲーム制作者、演出家、体験設計チームで、ユーザー反応、センサー、演出シナリオ、音響/映像素材、体験ログを継続的に取り込み、演出生成、反応解析、シーン切替、体験品質監視、実行トレースを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>イベント運営者、XR/ゲーム制作者、演出家、体験設計チーム。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>ユーザー反応、センサー、演出シナリオ、音響/映像素材、体験ログ。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>演出生成、反応解析、シーン切替、体験品質監視、実行トレース。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、イベント運営者、XR/ゲーム制作者、演出家、体験設計チームがユーザー反応、センサー、演出シナリオ、音響/映像素材、体験ログを確認しながら、演出生成、反応解析、シーン切替、体験品質監視、実行トレースを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力はユーザー反応、センサー、演出シナリオ、音響/映像素材、体験ログを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、実装深度、テスト証跡、構造、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>運用UI、E2E、coverage、本番gateが揃った。次は実機デバイス連携と本番SLO検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="5-takumi_network">5. <code>takumi_network</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 94.82（構造 15.00/15、実装 17.32/20、運用 20.00/20、SDK 15.00/15、テスト 18.50/20、Coverage 9.00/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>熟練者の暗黙知をBa、RAG、記憶基盤として蓄積し、検索、継承、現場支援につなげるナレッジプロダクト。 想定利用者は熟練技術者、現場教育担当、ナレッジ管理者、研究開発チームで、作業記録、対話、手順書、映像/音声メモ、暗黙知タグ、レビューを継続的に取り込み、知識検索、RAG応答、経験継承、現場支援、知識品質レビューを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>熟練技術者、現場教育担当、ナレッジ管理者、研究開発チーム。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>作業記録、対話、手順書、映像/音声メモ、暗黙知タグ、レビュー。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>知識検索、RAG応答、経験継承、現場支援、知識品質レビュー。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、熟練技術者、現場教育担当、ナレッジ管理者、研究開発チームが作業記録、対話、手順書、映像/音声メモ、暗黙知タグ、レビューを確認しながら、知識検索、RAG応答、経験継承、現場支援、知識品質レビューを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は作業記録、対話、手順書、映像/音声メモ、暗黙知タグ、レビューを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が強く、統合/性能試験、coverage 90.0%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合/性能試験、coverage 90.0%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 90.0%、運用ガード、実装深度、テスト証跡、構造、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>運用UI、E2E、coverage 90%、production gate、Docker SDK API本番スモークを確認済み。次はモデル成果物bootstrapと現場データ検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="6-real_time_language_translation">6. <code>real_time_language_translation</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 94.51（構造 14.30/15、実装 17.32/20、運用 20.00/20、SDK 15.00/15、テスト 18.25/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>音声とテキストを低遅延で翻訳し、用語集、品質、会話状態を管理するリアルタイム翻訳プロダクト。 想定利用者は会議運営者、通訳支援チーム、コールセンター、教育/観光サービスで、音声、テキスト、用語集、話者情報、会話履歴、品質フィードバックを継続的に取り込み、低遅延翻訳、用語集適用、話者別履歴、品質監視、翻訳根拠トレースを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>会議運営者、通訳支援チーム、コールセンター、教育/観光サービス。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>音声、テキスト、用語集、話者情報、会話履歴、品質フィードバック。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>低遅延翻訳、用語集適用、話者別履歴、品質監視、翻訳根拠トレース。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、会議運営者、通訳支援チーム、コールセンター、教育/観光サービスが音声、テキスト、用語集、話者情報、会話履歴、品質フィードバックを確認しながら、低遅延翻訳、用語集適用、話者別履歴、品質監視、翻訳根拠トレースを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は音声、テキスト、用語集、話者情報、会話履歴、品質フィードバックを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、実装深度、テスト証跡、構造、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>翻訳運用UIを実装済み。次は実ストリーミング接続と用語集適用トレース検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="7-climate_change_prediction">7. <code>climate_change_prediction</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 94.41（構造 15.00/15、実装 14.77/20、運用 20.00/20、SDK 15.00/15、テスト 20.00/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>気象、海洋、衛星、環境統計を組み合わせ、気候変動シナリオと地域影響を予測する解析プロダクト。 想定利用者は気候研究者、自治体、インフラ事業者、環境政策担当、リスク分析チームで、気象時系列、衛星画像、排出シナリオ、海洋/地形データ、地域統計を継続的に取り込み、シナリオ比較、地域リスク予測、異常傾向検出、説明可能な予測レポートを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>気候研究者、自治体、インフラ事業者、環境政策担当、リスク分析チーム。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>気象時系列、衛星画像、排出シナリオ、海洋/地形データ、地域統計。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>シナリオ比較、地域リスク予測、異常傾向検出、説明可能な予測レポート。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、気候研究者、自治体、インフラ事業者、環境政策担当、リスク分析チームが気象時系列、衛星画像、排出シナリオ、海洋/地形データ、地域統計を確認しながら、シナリオ比較、地域リスク予測、異常傾向検出、説明可能な予測レポートを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は気象時系列、衛星画像、排出シナリオ、海洋/地形データ、地域統計を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>テスト証跡、本番運用準備が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのはテスト証跡、本番運用準備で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、テスト証跡、構造、実装深度、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>予測運用UIを実装済み。次は実データ接続と予測SLO検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="8-personalized_education_platform">8. <code>personalized_education_platform</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 94.16（構造 14.30/15、実装 15.22/20、運用 20.00/20、SDK 15.00/15、テスト 20.00/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>学習履歴、理解度、教材メタデータを使い、学習者ごとの教材推薦と進捗支援を行う教育プロダクト。 想定利用者は学習者、教師、教育機関、教材制作者、学習支援担当で、学習ログ、テスト結果、教材、目標、理解度、フィードバックを継続的に取り込み、個別教材推薦、理解度推定、学習計画、進捗監視、介入候補提示を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>学習者、教師、教育機関、教材制作者、学習支援担当。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>学習ログ、テスト結果、教材、目標、理解度、フィードバック。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>個別教材推薦、理解度推定、学習計画、進捗監視、介入候補提示。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、学習者、教師、教育機関、教材制作者、学習支援担当が学習ログ、テスト結果、教材、目標、理解度、フィードバックを確認しながら、個別教材推薦、理解度推定、学習計画、進捗監視、介入候補提示を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は学習ログ、テスト結果、教材、目標、理解度、フィードバックを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>テスト証跡、本番運用準備が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのはテスト証跡、本番運用準備で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、テスト証跡、構造、実装深度、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>学習運用UIを実装済み。次は学習者向け実データ接続と運用SLO検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="9-financial_trading_optimization">9. <code>financial_trading_optimization</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 94.14（構造 14.30/15、実装 17.70/20、運用 20.00/20、SDK 13.00/15、テスト 19.50/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>市場データ、リスク制約、約定履歴を統合し、取引候補、ポジション、リスク承認を支援する金融最適化プロダクト。 想定利用者はトレーダー、クオンツ、リスク管理、コンプライアンス担当、運用監視者で、価格/板/約定データ、リスク制約、ポートフォリオ、ニュース/指標、注文履歴を継続的に取り込み、取引候補生成、リスク評価、注文シミュレーション、承認ワークフロー、監査ログを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>トレーダー、クオンツ、リスク管理、コンプライアンス担当、運用監視者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>価格/板/約定データ、リスク制約、ポートフォリオ、ニュース/指標、注文履歴。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>取引候補生成、リスク評価、注文シミュレーション、承認ワークフロー、監査ログ。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、トレーダー、クオンツ、リスク管理、コンプライアンス担当、運用監視者が価格/板/約定データ、リスク制約、ポートフォリオ、ニュース/指標、注文履歴を確認しながら、取引候補生成、リスク評価、注文シミュレーション、承認ワークフロー、監査ログを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は価格/板/約定データ、リスク制約、ポートフォリオ、ニュース/指標、注文履歴を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、テスト証跡が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、テスト証跡で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、実装深度、テスト証跡、構造、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>運用UI、E2E、coverage、本番gateが揃った。次は実取引所接続と規制監査証跡の検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="10-cybersecurity_monitoring_system">10. <code>cybersecurity_monitoring_system</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 93.70（構造 15.00/15、実装 14.06/20、運用 20.00/20、SDK 15.00/15、テスト 20.00/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>ログ、イベント、脅威インテリジェンスを統合し、SOCでの検知、優先度付け、対応記録を支援する監視基盤。 想定利用者はSOCアナリスト、CSIRT、セキュリティ運用者、監査担当で、認証ログ、ネットワークイベント、EDR/SIEMアラート、脅威IOC、対応履歴を継続的に取り込み、脅威検知、アラートtriage、対応ワークフロー、監査証跡、リスクレポートを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>SOCアナリスト、CSIRT、セキュリティ運用者、監査担当。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>認証ログ、ネットワークイベント、EDR/SIEMアラート、脅威IOC、対応履歴。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>脅威検知、アラートtriage、対応ワークフロー、監査証跡、リスクレポート。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、SOCアナリスト、CSIRT、セキュリティ運用者、監査担当が認証ログ、ネットワークイベント、EDR/SIEMアラート、脅威IOC、対応履歴を確認しながら、脅威検知、アラートtriage、対応ワークフロー、監査証跡、リスクレポートを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は認証ログ、ネットワークイベント、EDR/SIEMアラート、脅威IOC、対応履歴を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>テスト証跡、本番運用準備が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのはテスト証跡、本番運用準備で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、テスト証跡、構造、実装深度、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>SOC運用UIを実装済み。次は実アラート連携と対応自動化。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="11-quantum_neuro_fusion">11. <code>quantum_neuro_fusion</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 93.70（構造 14.30/15、実装 17.61/20、運用 20.00/20、SDK 15.00/15、テスト 17.15/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>量子回路実験とニューラル処理を同じ実験管理下に置き、比較、可視化、再現性確認を支援する研究プロダクト。 想定利用者は量子AI研究者、実験担当、アルゴリズム開発者、レビュー担当で、量子回路、ニューラルモデル、実験条件、測定結果、比較指標を継続的に取り込み、実験設計、量子/神経処理比較、結果可視化、再実行、監査可能な実験ログを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>量子AI研究者、実験担当、アルゴリズム開発者、レビュー担当。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>量子回路、ニューラルモデル、実験条件、測定結果、比較指標。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>実験設計、量子/神経処理比較、結果可視化、再実行、監査可能な実験ログ。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、量子AI研究者、実験担当、アルゴリズム開発者、レビュー担当が量子回路、ニューラルモデル、実験条件、測定結果、比較指標を確認しながら、実験設計、量子/神経処理比較、結果可視化、再実行、監査可能な実験ログを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は量子回路、ニューラルモデル、実験条件、測定結果、比較指標を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が強く、統合テスト、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合テスト、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合テスト、coverage 96.4%、運用ガード、実装深度、構造、本番運用準備、SDK統合、テスト証跡、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>実験運用UIを実装済み。次は実機バックエンド状態監視と結果比較検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="12-smart_city_infrastructure">12. <code>smart_city_infrastructure</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 93.66（構造 15.00/15、実装 14.88/20、運用 19.14/20、SDK 15.00/15、テスト 20.00/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>都市設備、交通、環境、保守イベントを統合し、インフラ異常、保全計画、運用判断を支援するスマートシティ基盤。 想定利用者は自治体、都市OS運用者、インフラ保守会社、防災/環境担当で、設備センサー、交通/環境データ、保守履歴、通報、地図、優先度ルールを継続的に取り込み、異常検知、保守優先度付け、都市ダッシュボード、対応履歴、SLO監視を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>自治体、都市OS運用者、インフラ保守会社、防災/環境担当。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>設備センサー、交通/環境データ、保守履歴、通報、地図、優先度ルール。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>異常検知、保守優先度付け、都市ダッシュボード、対応履歴、SLO監視。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、自治体、都市OS運用者、インフラ保守会社、防災/環境担当が設備センサー、交通/環境データ、保守履歴、通報、地図、優先度ルールを確認しながら、異常検知、保守優先度付け、都市ダッシュボード、対応履歴、SLO監視を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は設備センサー、交通/環境データ、保守履歴、通報、地図、優先度ルールを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>テスト証跡、SDK統合が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのはテスト証跡、SDK統合で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、テスト証跡、構造、実装深度、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>都市運用UIを実装済み。次は実センサー連携と現場運用SLO検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="13-autonomous_vehicle_system">13. <code>autonomous_vehicle_system</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 93.58（構造 15.00/15、実装 15.19/20、運用 20.00/20、SDK 15.00/15、テスト 18.75/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>車両テレメトリ、走行計画、道路状況、安全制約を統合し、自動運転フリートの実行と監視を支援する基盤。 想定利用者は自動運転開発者、フリート運用者、安全監視チーム、モビリティ事業者で、車両状態、地図、経路、交通状況、障害物検知、運行計画、インシデントログを継続的に取り込み、経路最適化、安全停止判定、走行状態監視、シミュレータ連携、運行監査を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>自動運転開発者、フリート運用者、安全監視チーム、モビリティ事業者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>車両状態、地図、経路、交通状況、障害物検知、運行計画、インシデントログ。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>経路最適化、安全停止判定、走行状態監視、シミュレータ連携、運行監査。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、自動運転開発者、フリート運用者、安全監視チーム、モビリティ事業者が車両状態、地図、経路、交通状況、障害物検知、運行計画、インシデントログを確認しながら、経路最適化、安全停止判定、走行状態監視、シミュレータ連携、運行監査を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は車両状態、地図、経路、交通状況、障害物検知、運行計画、インシデントログを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、テスト証跡、構造、実装深度、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>フリート運用UIを実装済み。次は実車/シミュレータ連携と運用SLO検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="14-space_exploration_support">14. <code>space_exploration_support</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 93.55（構造 14.30/15、実装 17.81/20、運用 20.00/20、SDK 13.00/15、テスト 18.80/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>探査機テレメトリ、観測計画、科学目標、通信制約を統合し、ミッション計画と再計画を支援する宇宙探査基盤。 想定利用者はミッション管制、惑星科学者、探査機運用者、観測計画担当で、テレメトリ、観測候補、通信窓、電力/熱制約、科学優先度を継続的に取り込み、観測計画、ミッション再計画、異常監視、優先度調整、管制UIを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>ミッション管制、惑星科学者、探査機運用者、観測計画担当。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>テレメトリ、観測候補、通信窓、電力/熱制約、科学優先度。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>観測計画、ミッション再計画、異常監視、優先度調整、管制UI。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、ミッション管制、惑星科学者、探査機運用者、観測計画担当がテレメトリ、観測候補、通信窓、電力/熱制約、科学優先度を確認しながら、観測計画、ミッション再計画、異常監視、優先度調整、管制UIを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力はテレメトリ、観測候補、通信窓、電力/熱制約、科学優先度を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、coverageが強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、coverageで、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、実装深度、テスト証跡、構造、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>ミッション管制UIを実装済み。次は実テレメトリ接続と運用SLO検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="15-smart_traffic_management">15. <code>smart_traffic_management</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 93.43（構造 14.30/15、実装 17.14/20、運用 20.00/20、SDK 15.00/15、テスト 17.35/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>交通センサー、信号制御、事故情報、道路状況を使い、都市交通流と緊急対応を最適化する管制プロダクト。 想定利用者は交通管制センター、自治体、道路事業者、緊急対応チームで、交通量、速度、信号状態、事故/工事情報、道路ネットワーク、気象を継続的に取り込み、信号最適化、渋滞予測、事故対応、グリーンウェーブ、管制画面を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>交通管制センター、自治体、道路事業者、緊急対応チーム。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>交通量、速度、信号状態、事故/工事情報、道路ネットワーク、気象。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>信号最適化、渋滞予測、事故対応、グリーンウェーブ、管制画面。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、交通管制センター、自治体、道路事業者、緊急対応チームが交通量、速度、信号状態、事故/工事情報、道路ネットワーク、気象を確認しながら、信号最適化、渋滞予測、事故対応、グリーンウェーブ、管制画面を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は交通量、速度、信号状態、事故/工事情報、道路ネットワーク、気象を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、実装深度、構造、本番運用準備、SDK統合、テスト証跡、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>交通管制UIを実装済み。次は信号機実接続と運用SLO検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="16-social_media_recommendation">16. <code>social_media_recommendation</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 93.33（構造 14.30/15、実装 17.59/20、運用 20.00/20、SDK 13.00/15、テスト 18.80/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>投稿、ユーザー反応、安全フィルタを統合し、推薦順位、理由、リスクを管理するソーシャル推薦基盤。 想定利用者はSNS運営者、推薦エンジニア、安全性レビュー担当、コンテンツ運用者で、投稿、ユーザー行動、関係グラフ、安全ラベル、フィードバック、ポリシーを継続的に取り込み、推薦ランキング、理由表示、安全フィルタ、反応解析、監査用ログを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>SNS運営者、推薦エンジニア、安全性レビュー担当、コンテンツ運用者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>投稿、ユーザー行動、関係グラフ、安全ラベル、フィードバック、ポリシー。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>推薦ランキング、理由表示、安全フィルタ、反応解析、監査用ログ。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、SNS運営者、推薦エンジニア、安全性レビュー担当、コンテンツ運用者が投稿、ユーザー行動、関係グラフ、安全ラベル、フィードバック、ポリシーを確認しながら、推薦ランキング、理由表示、安全フィルタ、反応解析、監査用ログを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は投稿、ユーザー行動、関係グラフ、安全ラベル、フィードバック、ポリシーを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、coverageが強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、coverageで、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、実装深度、テスト証跡、構造、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>推薦運用UIを実装済み。次は実ランキング配信接続と安全性監査検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="17-dream_realization_simulator">17. <code>dream_realization_simulator</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 92.83（構造 14.30/15、実装 16.09/20、運用 20.00/20、SDK 15.00/15、テスト 17.80/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>目標、制約、日々の進捗から、実現可能な計画、代替ルート、達成確率を継続的に再評価する個人/組織向け支援プロダクト。 想定利用者は個人ユーザー、コーチ、教育担当、事業計画担当、チームリーダーで、目標、期限、制約、進捗ログ、リソース、行動履歴、振り返りメモを継続的に取り込み、達成計画生成、進捗差分解析、再計画、リスク検出、実行トレースを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>個人ユーザー、コーチ、教育担当、事業計画担当、チームリーダー。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>目標、期限、制約、進捗ログ、リソース、行動履歴、振り返りメモ。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>達成計画生成、進捗差分解析、再計画、リスク検出、実行トレース。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、個人ユーザー、コーチ、教育担当、事業計画担当、チームリーダーが目標、期限、制約、進捗ログ、リソース、行動履歴、振り返りメモを確認しながら、達成計画生成、進捗差分解析、再計画、リスク検出、実行トレースを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は目標、期限、制約、進捗ログ、リソース、行動履歴、振り返りメモを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、実装深度、構造、本番運用準備、SDK統合、テスト証跡、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>進捗運用UIを実装済み。次は実セッションデータ接続と計画差分検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="18-industrial_iot_optimization">18. <code>industrial_iot_optimization</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 92.76（構造 15.00/15、実装 14.74/20、運用 20.00/20、SDK 14.50/15、テスト 20.00/20、Coverage 8.52/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>設備センサー、稼働ログ、保全情報を統合し、異常予兆、最適運転、保守計画を支援する産業IoT基盤。 想定利用者は工場運用者、設備保全、品質管理、生産技術、現場監督で、設備センサー、稼働率、異常ログ、保全履歴、生産計画、環境データを継続的に取り込み、異常検知、予知保全、運転条件最適化、設備監視、保全レポートを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>工場運用者、設備保全、品質管理、生産技術、現場監督。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>設備センサー、稼働率、異常ログ、保全履歴、生産計画、環境データ。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>異常検知、予知保全、運転条件最適化、設備監視、保全レポート。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、工場運用者、設備保全、品質管理、生産技術、現場監督が設備センサー、稼働率、異常ログ、保全履歴、生産計画、環境データを確認しながら、異常検知、予知保全、運転条件最適化、設備監視、保全レポートを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は設備センサー、稼働率、異常ログ、保全履歴、生産計画、環境データを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>テスト証跡、本番運用準備が強く、統合/性能試験、coverage 85.2%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのはテスト証跡、本番運用準備で、統合/性能試験、coverage 85.2%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 85.2%、運用ガード、テスト証跡、構造、実装深度、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>設備運用UIを実装済み。次は実 telemetry 接続と設備保全SLO検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="19-alien_life_exploration_support">19. <code>alien_life_exploration_support</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 92.57（構造 14.30/15、実装 16.28/20、運用 20.00/20、SDK 15.00/15、テスト 17.35/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>探査機、望遠鏡、分光、地質サンプルから得られる生命兆候候補を統合し、仮説、根拠、反証条件を研究チームが追跡できる探査支援プロダクト。 想定利用者は宇宙生物学者、惑星科学者、観測計画担当、査読/レビューチームで、観測スペクトル、画像、地質・化学サンプル、ミッション計画、候補シグネチャ定義を継続的に取り込み、生命兆候候補の優先度付け、観測計画の再提案、証拠チェーン管理、査読用レポート生成を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>宇宙生物学者、惑星科学者、観測計画担当、査読/レビューチーム。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>観測スペクトル、画像、地質・化学サンプル、ミッション計画、候補シグネチャ定義。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>生命兆候候補の優先度付け、観測計画の再提案、証拠チェーン管理、査読用レポート生成。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、宇宙生物学者、惑星科学者、観測計画担当、査読/レビューチームが観測スペクトル、画像、地質・化学サンプル、ミッション計画、候補シグネチャ定義を確認しながら、生命兆候候補の優先度付け、観測計画の再提案、証拠チェーン管理、査読用レポート生成を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は観測スペクトル、画像、地質・化学サンプル、ミッション計画、候補シグネチャ定義を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、実装深度、構造、本番運用準備、SDK統合、テスト証跡、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>観測レビューUIを実装済み。次は実観測データ接続と査読ワークフロー検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="20-genetic_analysis_support">20. <code>genetic_analysis_support</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 92.51（構造 14.30/15、実装 14.77/20、運用 20.00/20、SDK 15.00/15、テスト 18.80/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>遺伝子配列、変異、注釈情報を統合し、研究・臨床レビューで使う候補変異と根拠を整理する解析支援プロダクト。 想定利用者はゲノム研究者、臨床検査担当、医師、バイオインフォマティクス担当で、FASTQ/VCF、参照ゲノム、変異注釈、表現型、レビューコメントを継続的に取り込み、変異検出支援、注釈付け、候補優先度付け、レビュー履歴、レポート生成を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>ゲノム研究者、臨床検査担当、医師、バイオインフォマティクス担当。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>FASTQ/VCF、参照ゲノム、変異注釈、表現型、レビューコメント。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>変異検出支援、注釈付け、候補優先度付け、レビュー履歴、レポート生成。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、ゲノム研究者、臨床検査担当、医師、バイオインフォマティクス担当がFASTQ/VCF、参照ゲノム、変異注釈、表現型、レビューコメントを確認しながら、変異検出支援、注釈付け、候補優先度付け、レビュー履歴、レポート生成を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力はFASTQ/VCF、参照ゲノム、変異注釈、表現型、レビューコメントを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、テスト証跡、構造、実装深度、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>ゲノム解析UIを実装済み。次は実シーケンス投入と変異レビュー運用検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="21-location_aware_team_robotics">21. <code>location_aware_team_robotics</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 92.40（構造 14.30/15、実装 15.96/20、運用 20.00/20、SDK 13.00/15、テスト 19.50/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>位置情報とロボット群の状態を使い、チーム単位の任務割当、経路、干渉回避、安全監視を行う協調制御プロダクト。 想定利用者は倉庫/工場管制、群ロボット研究者、現場オペレーター、安全管理者で、ロボット位置、地図、任務、障害物、通信状態、安全エリアを継続的に取り込み、チーム編成、経路調整、干渉回避、任務進捗監視、地図UI連携を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>倉庫/工場管制、群ロボット研究者、現場オペレーター、安全管理者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>ロボット位置、地図、任務、障害物、通信状態、安全エリア。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>チーム編成、経路調整、干渉回避、任務進捗監視、地図UI連携。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、倉庫/工場管制、群ロボット研究者、現場オペレーター、安全管理者がロボット位置、地図、任務、障害物、通信状態、安全エリアを確認しながら、チーム編成、経路調整、干渉回避、任務進捗監視、地図UI連携を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力はロボット位置、地図、任務、障害物、通信状態、安全エリアを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、テスト証跡が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、テスト証跡で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、テスト証跡、構造、実装深度、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>チームロボティクスUIを実装済み。次は実ロボット連携と地図・編隊可視化検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="22-precision_agriculture_optimization">22. <code>precision_agriculture_optimization</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 92.13（構造 14.30/15、実装 16.84/20、運用 20.00/20、SDK 13.00/15、テスト 18.35/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>圃場センサー、気象、画像、作物状態を統合し、灌漑、施肥、防除、収量を最適化する農業支援プロダクト。 想定利用者は農業法人、農場管理者、普及員、スマート農業ベンダーで、土壌/水分センサー、気象、圃場画像、作物状態、作業計画、収量履歴を継続的に取り込み、圃場状態監視、施肥/灌漑提案、収量予測、作業計画、マップUIを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>農業法人、農場管理者、普及員、スマート農業ベンダー。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>土壌/水分センサー、気象、圃場画像、作物状態、作業計画、収量履歴。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>圃場状態監視、施肥/灌漑提案、収量予測、作業計画、マップUI。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、農業法人、農場管理者、普及員、スマート農業ベンダーが土壌/水分センサー、気象、圃場画像、作物状態、作業計画、収量履歴を確認しながら、圃場状態監視、施肥/灌漑提案、収量予測、作業計画、マップUIを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は土壌/水分センサー、気象、圃場画像、作物状態、作業計画、収量履歴を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、coverageが強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、coverageで、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、実装深度、テスト証跡、構造、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>圃場運用UIを実装済み。次は実センサー接続と収量予測運用検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="23-medical_quantum_federated_learning_platform">23. <code>medical_quantum_federated_learning_platform</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 91.54（構造 14.30/15、実装 18.24/20、運用 17.76/20、SDK 15.00/15、テスト 16.60/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>複数医療機関のデータを直接集約せず、フェデレーテッド学習と量子集約の実験を扱う医療AI研究基盤。 想定利用者は医療AI研究者、病院データ管理者、プライバシー担当、共同研究チームで、施設別学習メタデータ、モデル更新、プライバシー設定、量子集約パラメータ、監査証跡を継続的に取り込み、フェデレーテッド学習管理、量子集約実験、プライバシー監査、施設別状態監視を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>医療AI研究者、病院データ管理者、プライバシー担当、共同研究チーム。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>施設別学習メタデータ、モデル更新、プライバシー設定、量子集約パラメータ、監査証跡。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>フェデレーテッド学習管理、量子集約実験、プライバシー監査、施設別状態監視。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、医療AI研究者、病院データ管理者、プライバシー担当、共同研究チームが施設別学習メタデータ、モデル更新、プライバシー設定、量子集約パラメータ、監査証跡を確認しながら、フェデレーテッド学習管理、量子集約実験、プライバシー監査、施設別状態監視を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は施設別学習メタデータ、モデル更新、プライバシー設定、量子集約パラメータ、監査証跡を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>SDK統合、coverageが強く、統合テスト、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのはSDK統合、coverageで、統合テスト、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合テスト、coverage 96.4%、実装深度、構造、本番運用準備、SDK統合、テスト証跡、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>連合学習運用UIを実装済み。次は実施設接続とプライバシー監査運用検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="24-medical_diagnostic_assistant">24. <code>medical_diagnostic_assistant</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 90.97（構造 14.30/15、実装 14.70/20、運用 18.33/20、SDK 15.00/15、テスト 19.00/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>症状、検査値、画像メタデータ、臨床メモを統合し、診断候補と根拠を医師レビュー前提で提示する医療支援プロダクト。 想定利用者は医師、臨床検査担当、医療AI評価者、病院情報システム担当で、症状、検査値、画像メタデータ、既往歴、臨床ガイドライン、レビュー結果を継続的に取り込み、診断候補提示、根拠説明、禁忌/リスク確認、医師レビュー、監査ログを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>医師、臨床検査担当、医療AI評価者、病院情報システム担当。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>症状、検査値、画像メタデータ、既往歴、臨床ガイドライン、レビュー結果。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>診断候補提示、根拠説明、禁忌/リスク確認、医師レビュー、監査ログ。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、医師、臨床検査担当、医療AI評価者、病院情報システム担当が症状、検査値、画像メタデータ、既往歴、臨床ガイドライン、レビュー結果を確認しながら、診断候補提示、根拠説明、禁忌/リスク確認、医師レビュー、監査ログを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は症状、検査値、画像メタデータ、既往歴、臨床ガイドライン、レビュー結果を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>SDK統合、coverageが強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのはSDK統合、coverageで、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、テスト証跡、構造、実装深度、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>臨床運用UIを実装済み。次は実症例接続と医師レビュー運用検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="25-logistics_routing_app">25. <code>logistics_routing_app</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 90.93（構造 13.50/15、実装 16.04/20、運用 20.00/20、SDK 15.00/15、テスト 16.75/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>注文、車両、倉庫、交通、時間制約を組み合わせ、配送ルートと配車判断を最適化する物流プロダクト。 想定利用者は物流管理者、配車担当、倉庫運用者、ラストマイル事業者で、注文、車両容量、配送先、時間窓、交通、倉庫在庫、ドライバー制約を継続的に取り込み、配車最適化、ルート再計算、遅延リスク検出、配送状況監視、計画比較を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>物流管理者、配車担当、倉庫運用者、ラストマイル事業者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>注文、車両容量、配送先、時間窓、交通、倉庫在庫、ドライバー制約。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>配車最適化、ルート再計算、遅延リスク検出、配送状況監視、計画比較。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、物流管理者、配車担当、倉庫運用者、ラストマイル事業者が注文、車両容量、配送先、時間窓、交通、倉庫在庫、ドライバー制約を確認しながら、配車最適化、ルート再計算、遅延リスク検出、配送状況監視、計画比較を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は注文、車両容量、配送先、時間窓、交通、倉庫在庫、ドライバー制約を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が強く、統合テスト、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合テスト、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合テスト、coverage 96.4%、運用ガード、実装深度、構造、本番運用準備、SDK統合、テスト証跡、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>配車運用UI、E2E、coverage、本番gateが揃った。次は実交通API連携と運用SLO。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="26-eeg_brain_simulation">26. <code>eeg_brain_simulation</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 90.76（構造 14.30/15、実装 14.02/20、運用 20.00/20、SDK 15.00/15、テスト 17.80/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>EEG信号と実験条件を用いて脳活動の特徴、反応、シミュレーション結果を比較する研究支援プロダクト。 想定利用者は脳科学研究者、臨床研究者、実験担当、データ解析者で、EEG波形、イベントマーカー、被験者条件、実験プロトコル、解析パラメータを継続的に取り込み、波形解析、特徴抽出、条件比較、シミュレーション、実験結果レポートを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>脳科学研究者、臨床研究者、実験担当、データ解析者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>EEG波形、イベントマーカー、被験者条件、実験プロトコル、解析パラメータ。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>波形解析、特徴抽出、条件比較、シミュレーション、実験結果レポート。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、脳科学研究者、臨床研究者、実験担当、データ解析者がEEG波形、イベントマーカー、被験者条件、実験プロトコル、解析パラメータを確認しながら、波形解析、特徴抽出、条件比較、シミュレーション、実験結果レポートを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力はEEG波形、イベントマーカー、被験者条件、実験プロトコル、解析パラメータを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が強く、統合/性能試験、coverage 96.4%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合/性能試験、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 96.4%、運用ガード、構造、実装深度、本番運用準備、SDK統合、テスト証跡、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>EEG実験運用UIを実装済み。次は実波形データ接続と解析運用検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="27-brain_machine_interface">27. <code>brain_machine_interface</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 90.74（構造 14.30/15、実装 18.03/20、運用 20.00/20、SDK 10.50/15、テスト 18.80/20、Coverage 9.11/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>神経信号と外部デバイス制御を結び、刺激、フィードバック、安全監視を扱うBMI研究・運用支援プロダクト。 想定利用者は神経工学研究者、臨床研究チーム、リハビリ担当、デバイス開発者で、神経信号、刺激パラメータ、デバイス状態、被験者プロトコル、安全閾値を継続的に取り込み、信号特徴抽出、制御変換、刺激/フィードバック管理、安全監視、実験ログ管理を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>神経工学研究者、臨床研究チーム、リハビリ担当、デバイス開発者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>神経信号、刺激パラメータ、デバイス状態、被験者プロトコル、安全閾値。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>信号特徴抽出、制御変換、刺激/フィードバック管理、安全監視、実験ログ管理。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、神経工学研究者、臨床研究チーム、リハビリ担当、デバイス開発者が神経信号、刺激パラメータ、デバイス状態、被験者プロトコル、安全閾値を確認しながら、信号特徴抽出、制御変換、刺激/フィードバック管理、安全監視、実験ログ管理を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は神経信号、刺激パラメータ、デバイス状態、被験者プロトコル、安全閾値を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、構造が強く、統合/性能試験、coverage 91.1%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのは本番運用準備、構造で、統合/性能試験、coverage 91.1%、本番gateを確認できる。 強み: 実画面、統合/性能試験、coverage 91.1%、運用ガード、実装深度、テスト証跡、構造、本番運用準備、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>BMI安全運用UIを実装済み。次は実 EEG ストリーム接続と臨床安全検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="28-autonomous_robotics_control">28. <code>autonomous_robotics_control</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 90.70（構造 15.00/15、実装 15.14/20、運用 17.03/20、SDK 15.00/15、テスト 20.00/20、Coverage 8.53/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>センサー入力、行動計画、安全制約を統合し、自律ロボットの制御判断と異常時停止を管理する制御基盤。 想定利用者はロボット開発者、運用監視者、設備保全担当、安全管理者で、LiDAR/カメラ/IMU、経路計画、制御パラメータ、作業エリア定義、安全ポリシーを継続的に取り込み、動作計画、センサー融合、安全停止、制御ログ、シミュレーション/実機切替を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>ロボット開発者、運用監視者、設備保全担当、安全管理者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>LiDAR/カメラ/IMU、経路計画、制御パラメータ、作業エリア定義、安全ポリシー。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>動作計画、センサー融合、安全停止、制御ログ、シミュレーション/実機切替。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、ロボット開発者、運用監視者、設備保全担当、安全管理者がLiDAR/カメラ/IMU、経路計画、制御パラメータ、作業エリア定義、安全ポリシーを確認しながら、動作計画、センサー融合、安全停止、制御ログ、シミュレーション/実機切替を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力はLiDAR/カメラ/IMU、経路計画、制御パラメータ、作業エリア定義、安全ポリシーを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>テスト証跡、SDK統合が強く、統合/性能試験、coverage 85.3%まで確認済み。実利用検証と本番運用検証を前に進める段階。 評価を牽引しているのはテスト証跡、SDK統合で、統合/性能試験、coverage 85.3%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、coverage 85.3%、テスト証跡、構造、実装深度、本番運用準備、SDK統合、coverage。補強点: 実利用データ、運用SLO、実機負荷検証。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>ロボット制御UIを実装済み。次は実機コマンド接続と安全運用SLO検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="29-video_scene_app">29. <code>video_scene_app</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 90.32（構造 14.30/15、実装 16.29/20、運用 20.00/20、SDK 15.00/15、テスト 19.50/20、Coverage 5.23/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>動画シーン解析または生成の初期プロトタイプで、入力動画、シーン単位の特徴、生成/解析結果を扱う想定のプロダクト。 想定利用者は映像制作者、解析担当、コンテンツ運用者、研究開発チームで、動画、フレーム、シーン境界、メタデータ、解析/生成パラメータを継続的に取り込み、シーン分割、特徴抽出、生成候補、結果確認、評価レポートを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>映像制作者、解析担当、コンテンツ運用者、研究開発チーム。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>動画、フレーム、シーン境界、メタデータ、解析/生成パラメータ。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>シーン分割、特徴抽出、生成候補、結果確認、評価レポート。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、映像制作者、解析担当、コンテンツ運用者、研究開発チームが動画、フレーム、シーン境界、メタデータ、解析/生成パラメータを確認しながら、シーン分割、特徴抽出、生成候補、結果確認、評価レポートを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は動画、フレーム、シーン境界、メタデータ、解析/生成パラメータを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が先行し、統合/性能試験、本番gateは確認済み。coverage 52.3%を補強してA-readinessの実体を固める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合/性能試験、本番gate、SDK疎通確認を確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、運用ガード、実装深度、テスト証跡、構造、本番運用準備、SDK統合。補強点: coverage 52.3%。特にcoverage、実装深度を優先補強。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>運用UI、SDK runtime contract、coverage、本番gateを揃えた。次は実 SDK capability と運用 SLO の最終検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="30-avatar_coevolution">30. <code>avatar_coevolution</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 90.02（構造 14.30/15、実装 15.38/20、運用 20.00/20、SDK 15.00/15、テスト 15.70/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>ユーザー反応、対話履歴、表情/行動パターンを使い、アバターの振る舞いを安全に共進化させる対話体験基盤。 想定利用者はアバターサービス運営者、UX研究者、対話設計者、コンテンツ制作者で、対話ログ、反応指標、表情/音声特徴、行動候補、安全ポリシーを継続的に取り込み、振る舞い候補生成、反応学習、安全フィルタ、A/B評価、アバター状態の可視化を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>アバターサービス運営者、UX研究者、対話設計者、コンテンツ制作者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>対話ログ、反応指標、表情/音声特徴、行動候補、安全ポリシー。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>振る舞い候補生成、反応学習、安全フィルタ、A/B評価、アバター状態の可視化。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、アバターサービス運営者、UX研究者、対話設計者、コンテンツ制作者が対話ログ、反応指標、表情/音声特徴、行動候補、安全ポリシーを確認しながら、振る舞い候補生成、反応学習、安全フィルタ、A/B評価、アバター状態の可視化を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は対話ログ、反応指標、表情/音声特徴、行動候補、安全ポリシーを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が先行し、統合テスト、coverage 96.4%は確認済み。テスト拡充を補強してA-readinessの実体を固める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合テスト、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合テスト、coverage 96.4%、運用ガード、構造、実装深度、本番運用準備、SDK統合、coverage。補強点: テスト拡充。特に実装深度、テスト証跡を優先補強。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>アバター進化UIを実装済み。次は実session接続と安全フィルタ運用検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="31-cooperative_edge_robotics_system">31. <code>cooperative_edge_robotics_system</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 89.08（構造 14.30/15、実装 19.18/20、運用 20.00/20、SDK 7.00/15、テスト 18.75/20、Coverage 9.85/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>複数のエッジロボットを現場ネットワーク上で協調させ、任務、状態、障害、再配置を管制するロボティクス基盤。 想定利用者は工場/倉庫運用者、ロボット管制担当、現場保守、エッジAI開発者で、ロボット状態、任務キュー、地図、通信品質、センサーデータ、障害イベントを継続的に取り込み、協調任務割当、ヘルス監視、管制UI、障害復旧、エッジ推論連携を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>工場/倉庫運用者、ロボット管制担当、現場保守、エッジAI開発者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>ロボット状態、任務キュー、地図、通信品質、センサーデータ、障害イベント。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>協調任務割当、ヘルス監視、管制UI、障害復旧、エッジ推論連携。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、工場/倉庫運用者、ロボット管制担当、現場保守、エッジAI開発者がロボット状態、任務キュー、地図、通信品質、センサーデータ、障害イベントを確認しながら、協調任務割当、ヘルス監視、管制UI、障害復旧、エッジ推論連携を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力はロボット状態、任務キュー、地図、通信品質、センサーデータ、障害イベントを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、coverageが先行し、統合テスト、coverage 98.5%は確認済み。SDK統合を補強してA-readinessの実体を固める段階。 評価を牽引しているのは本番運用準備、coverageで、統合テスト、coverage 98.5%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合テスト、coverage 98.5%、運用ガード、実装深度、テスト証跡、構造、本番運用準備、coverage。補強点: SDK統合。特にSDK統合、テスト証跡を優先補強。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>フロントエンド実装済み。次はSDK統合の強化とcoverage向上。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="32-autonomous_disaster_response_system">32. <code>autonomous_disaster_response_system</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 88.65（構造 14.30/15、実装 16.83/20、運用 20.00/20、SDK 12.00/15、テスト 16.90/20、Coverage 8.62/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>災害現場の状況把握、資源配置、ロボット/ドローン運用を束ね、緊急対応の意思決定を支援する災害対応基盤。 想定利用者は自治体、防災本部、消防/救助隊、現場指揮官、ロボット運用者で、被害報告、地図、気象、センサー、ドローン映像、避難所/道路/資材情報を継続的に取り込み、被害推定、任務割当、ルート再計画、現場リスク監視、対応ログと監査記録を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>自治体、防災本部、消防/救助隊、現場指揮官、ロボット運用者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>被害報告、地図、気象、センサー、ドローン映像、避難所/道路/資材情報。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>被害推定、任務割当、ルート再計画、現場リスク監視、対応ログと監査記録。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、自治体、防災本部、消防/救助隊、現場指揮官、ロボット運用者が被害報告、地図、気象、センサー、ドローン映像、避難所/道路/資材情報を確認しながら、被害推定、任務割当、ルート再計画、現場リスク監視、対応ログと監査記録を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は被害報告、地図、気象、センサー、ドローン映像、避難所/道路/資材情報を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、構造が先行し、統合/性能試験、coverage 86.2%は確認済み。SDK疎通確認を補強してA-readinessの実体を固める段階。 評価を牽引しているのは本番運用準備、構造で、統合/性能試験、coverage 86.2%、本番gateを確認できる。 強み: 実画面、統合/性能試験、coverage 86.2%、運用ガード、実装深度、構造、本番運用準備、SDK統合、テスト証跡、coverage。補強点: SDK疎通確認。特にSDK統合、実装深度を優先補強。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>災害対応UIを実装済み。次は実災害データ接続と現場運用SLO検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="33-tidal_crowd_simulation">33. <code>tidal_crowd_simulation</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 88.25（構造 13.50/15、実装 16.41/20、運用 20.00/20、SDK 15.00/15、テスト 13.70/20、Coverage 9.64/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>人流、潮汐、地形、避難経路を組み合わせ、沿岸部やイベント会場の混雑・避難シナリオを評価するシミュレーションプロダクト。 想定利用者は自治体、防災担当、イベント運営、都市計画、沿岸施設管理者で、人流データ、潮汐、地形、避難経路、施設容量、シナリオ条件を継続的に取り込み、混雑予測、避難シミュレーション、密度ヒートマップ、シナリオ比較を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>自治体、防災担当、イベント運営、都市計画、沿岸施設管理者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>人流データ、潮汐、地形、避難経路、施設容量、シナリオ条件。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>混雑予測、避難シミュレーション、密度ヒートマップ、シナリオ比較。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、自治体、防災担当、イベント運営、都市計画、沿岸施設管理者が人流データ、潮汐、地形、避難経路、施設容量、シナリオ条件を確認しながら、混雑予測、避難シミュレーション、密度ヒートマップ、シナリオ比較を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は人流データ、潮汐、地形、避難経路、施設容量、シナリオ条件を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が先行し、統合テスト、coverage 96.4%は確認済み。テスト拡充を補強してA-readinessの実体を固める段階。 評価を牽引しているのは本番運用準備、SDK統合で、統合テスト、coverage 96.4%、本番gateを確認できる。 強み: 実画面、SDK疎通確認、統合テスト、coverage 96.4%、運用ガード、実装深度、構造、本番運用準備、SDK統合、coverage。補強点: テスト拡充。特にテスト証跡、実装深度を優先補強。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>混雑シミュレーションUIを実装済み。次は実潮汐データ接続と避難シナリオ検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="34-space_debris_management">34. <code>space_debris_management</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 87.23（構造 15.00/15、実装 14.15/20、運用 20.00/20、SDK 15.00/15、テスト 17.00/20、Coverage 6.08/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>軌道情報、観測データ、接近リスクを統合し、宇宙デブリ追跡と回避計画を支援する宇宙運用プロダクト。 想定利用者は衛星運用者、宇宙機関、軌道解析担当、ミッション管制で、軌道要素、観測データ、衛星状態、接近予測、回避制約を継続的に取り込み、デブリ追跡、衝突リスク評価、回避計画、アラート、軌道可視化を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>衛星運用者、宇宙機関、軌道解析担当、ミッション管制。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>軌道要素、観測データ、衛星状態、接近予測、回避制約。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>デブリ追跡、衝突リスク評価、回避計画、アラート、軌道可視化。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、衛星運用者、宇宙機関、軌道解析担当、ミッション管制が軌道要素、観測データ、衛星状態、接近予測、回避制約を確認しながら、デブリ追跡、衝突リスク評価、回避計画、アラート、軌道可視化を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は軌道要素、観測データ、衛星状態、接近予測、回避制約を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、SDK統合が先行し、性能試験、本番gateは確認済み。coverage 60.8%を補強してA-readinessの実体を固める段階。 評価を牽引しているのは本番運用準備、SDK統合で、性能試験、本番gate、SDK疎通確認を確認できる。 強み: 実画面、SDK疎通確認、性能試験、運用ガード、構造、実装深度、本番運用準備、SDK統合、テスト証跡。補強点: coverage 60.8%。特にcoverage、実装深度を優先補強。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>軌道解析UIを実装済み。次はcoverage向上と live orbital data 検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="35-project_vr">35. <code>project_vr</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 86.94（構造 15.00/15、実装 18.92/20、運用 18.70/20、SDK 9.50/15、テスト 19.50/20、Coverage 5.32/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>VR空間、操作イベント、体験状態、API運用を統合し、没入型アプリケーションの実行と監視を支援するプロダクト。 想定利用者はVR開発者、イベント運用者、教育/訓練担当、体験設計者で、VRシーン、ユーザー操作、デバイス状態、体験ログ、運用API設定を継続的に取り込み、VR体験制御、状態監視、API連携、操作ログ、シナリオ実行を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>VR開発者、イベント運用者、教育/訓練担当、体験設計者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>VRシーン、ユーザー操作、デバイス状態、体験ログ、運用API設定。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>VR体験制御、状態監視、API連携、操作ログ、シナリオ実行。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、VR開発者、イベント運用者、教育/訓練担当、体験設計者がVRシーン、ユーザー操作、デバイス状態、体験ログ、運用API設定を確認しながら、VR体験制御、状態監視、API連携、操作ログ、シナリオ実行を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力はVRシーン、ユーザー操作、デバイス状態、体験ログ、運用API設定を中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>構造、テスト証跡が先行し、統合/性能試験、本番gateは確認済み。coverage 53.2%、SDK統合を補強してA-readinessの実体を固める段階。 評価を牽引しているのは構造、テスト証跡で、統合/性能試験、本番gate、SDK疎通確認を確認できる。 強み: 実画面、SDK疎通確認、統合/性能試験、運用ガード、実装深度、テスト証跡、構造、本番運用準備。補強点: coverage 53.2%、SDK統合。特にcoverage、SDK統合を優先補強。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>実装深度とテストが強い。次はSDKとcoverageの改善。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="36-neuro_ecosystem">36. <code>neuro_ecosystem</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>A / 86.81（構造 14.30/15、実装 18.00/20、運用 20.00/20、SDK 7.50/15、テスト 18.50/20、Coverage 8.51/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>分散エージェントと人工生態系の進化過程を扱い、相互作用、資源、適応をシミュレーションする研究基盤。 想定利用者は複雑系研究者、AI研究者、シミュレーション開発者、教育/展示担当で、エージェント設定、環境条件、資源分布、相互作用ルール、観測ログを継続的に取り込み、進化シミュレーション、相互作用解析、環境変更実験、可視化、結果比較を一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>複雑系研究者、AI研究者、シミュレーション開発者、教育/展示担当。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>エージェント設定、環境条件、資源分布、相互作用ルール、観測ログ。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>進化シミュレーション、相互作用解析、環境変更実験、可視化、結果比較。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、複雑系研究者、AI研究者、シミュレーション開発者、教育/展示担当がエージェント設定、環境条件、資源分布、相互作用ルール、観測ログを確認しながら、進化シミュレーション、相互作用解析、環境変更実験、可視化、結果比較を使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力はエージェント設定、環境条件、資源分布、相互作用ルール、観測ログを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>本番運用準備、構造が先行し、統合テスト、coverage 85.1%は確認済み。SDK統合を補強してA-readinessの実体を固める段階。 評価を牽引しているのは本番運用準備、構造で、統合テスト、coverage 85.1%、本番gateを確認できる。 強み: 実画面、統合テスト、coverage 85.1%、運用ガード、実装深度、テスト証跡、構造、本番運用準備、coverage。補強点: SDK統合。特にSDK統合、coverageを優先補強。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>生態系進化UIを実装済み。次は実シミュレーション接続と可視化運用検証。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="37-sports_strategy_evolution_system">37. <code>sports_strategy_evolution_system</code></h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>評価</td>
+<td>B / 82.09（構造 14.30/15、実装 14.32/20、運用 13.88/20、SDK 15.00/15、テスト 16.05/20、Coverage 8.54/10）</td>
+</tr>
+<tr>
+<td>プロダクト詳細</td>
+<td>選手データ、試合状況、戦術候補を使い、進化的探索で戦略案とリスクを比較するスポーツ戦略支援プロダクト。 想定利用者は監督、コーチ、分析担当、選手育成チーム、スポーツデータ事業者で、選手能力、試合ログ、相手傾向、戦術候補、コンディション、映像メタデータを継続的に取り込み、戦術探索、選手起用案、相手分析、シナリオ比較、戦略レポートを一連の業務フローとして提供する。単なるデモではなく、EvoSpikeNet SDK連携、運用監視、監査証跡、UI/手順書を合わせて整備し、実運用で判断根拠と実行結果を追えるプロダクトとして成熟させる。</td>
+</tr>
+<tr>
+<td>想定利用者</td>
+<td>監督、コーチ、分析担当、選手育成チーム、スポーツデータ事業者。</td>
+</tr>
+<tr>
+<td>主な入力/連携データ</td>
+<td>選手能力、試合ログ、相手傾向、戦術候補、コンディション、映像メタデータ。</td>
+</tr>
+<tr>
+<td>主要機能</td>
+<td>戦術探索、選手起用案、相手分析、シナリオ比較、戦略レポート。</td>
+</tr>
+<tr>
+<td>利用シーン/提供価値</td>
+<td>主な利用シーンは、監督、コーチ、分析担当、選手育成チーム、スポーツデータ事業者が選手能力、試合ログ、相手傾向、戦術候補、コンディション、映像メタデータを確認しながら、戦術探索、選手起用案、相手分析、シナリオ比較、戦略レポートを使って計画、実行、監視、解析、報告までを閉じる流れ。READMEでは概要を示し、画面設計、設定項目、データ取得、監視、機能トレース、実行、解析の詳細は各プロダクトの implementation_plan.md で管理する。</td>
+</tr>
+<tr>
+<td>データ取得/連携方針</td>
+<td>入力は選手能力、試合ログ、相手傾向、戦術候補、コンディション、映像メタデータを中心に、外部API、センサー、ログ、ファイル、ユーザー操作をプロダクト特性に応じて接続する。実データ接続では、取得元、更新頻度、欠損時の扱い、監査ログ、strict modeでのstub禁止を明確にし、テストでは正常系だけでなく欠損、遅延、認証失敗、再試行、fallback拒否を確認する。</td>
+</tr>
+<tr>
+<td>画面/運用観点</td>
+<td>Frontendは実装あり。Overview、Settings、Data Acquisition、Monitoring、Functional Trace、Execution、Analysis、Audit/Adminを標準画面として実装し、設定、データ取得、監視、機能トレース、実行、解析、監査を追跡できる。</td>
+</tr>
+<tr>
+<td>フロントエンド</td>
+<td>実装あり</td>
+</tr>
+<tr>
+<td>実装評価</td>
+<td>SDK統合、構造の土台はあり、coverage 85.4%、本番gateも見えている。本番運用ガードを補強してA判定到達を狙う段階。 評価を牽引しているのはSDK統合、構造で、coverage 85.4%、本番gate、SDK疎通確認を確認できる。 強み: 実画面、SDK疎通確認、coverage 85.4%、構造、実装深度、SDK統合、テスト証跡、coverage。補強点: 本番運用ガード。特に本番運用準備、実装深度を優先補強。</td>
+</tr>
+<tr>
+<td>次の重点</td>
+<td>戦術進化UIを実装済み。次は実試合データ接続と戦略評価運用検証。</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最終更新日">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年8月9日 17:24:35 UTC">2026年8月9日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+<div class="md-copyright__highlight">
+  最終更新日: 2026-08-28 07:33:10 UTC
+</div>
+<div class="md-copyright__highlight">
+  Copyright evospikenet.org
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/i18n-nav-fix.js"></script>
+      
+        <script src="../../javascripts/set-logo-link.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/polyfill-library/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
